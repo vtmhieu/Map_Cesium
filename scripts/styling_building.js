@@ -1,3 +1,4 @@
+Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3ZjBhOTE2Zi02YThiLTQzYjktYmJhYS04NWFlOTBhMWY0YjIiLCJpZCI6MTMwNTkxLCJpYXQiOjE2Nzk4Mjc5MTd9.K49im6hOTuNd17su5CPQFffIH8rtBUPDMUYv5iebR-c';
 const viewer = new Cesium.Viewer("cesiumContainer", {
     terrant: Cesium.Terrain.fromWorldTerrain(),
   });
