@@ -1,15 +1,18 @@
-Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3ZjBhOTE2Zi02YThiLTQzYjktYmJhYS04NWFlOTBhMWY0YjIiLCJpZCI6MTMwNTkxLCJpYXQiOjE2Nzk4Mjc5MTd9.K49im6hOTuNd17su5CPQFffIH8rtBUPDMUYv5iebR-c';
+window.startup = async function (Cesium){
+  "use strict";
+
+ // Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkOGIyNzkyOS0yOGYwLTRkNWQtYjViNi0xZmIyZmFkNmZlNjciLCJpZCI6MTMwNTkxLCJpYXQiOjE2ODE1NTE5NDV9.eFwl27eq0qznhWe1gBK71xqKF_WbLDwXbHgjiV6Uh-M';
 const viewer = new Cesium.Viewer("cesiumContainer", {
     terrant: Cesium.Terrain.fromWorldTerrain(),
   });
-  const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
   // add Cesium OSM building to scene as our example 3D tileset
-  const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
-  viewer.scene.primitives.add(osmBuildingTilesets);
+const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
+  viewer.scene.primitives.add(osmBuildingsTileset);
 
   // Set the initial camera to look at Seattle = set the initial location of camera
   viewer.scene.camera.setView({
-    destination: Cesium.Cartestian3.fromDegrees(-122.3472, 47.598, 3700),
+    destination: Cesium.Cartesian3.fromDegrees(-122.3472, 47.598, 3700),
     orientation:{
       heading: Cesium.Math.toRadians(10),
       pitch: Cesium.Math.toRadians(-10),
@@ -24,7 +27,7 @@ const viewer = new Cesium.Viewer("cesiumContainer", {
   //buildings have the material property
 
   function colorByMaterial(){
-    osmBuildingTilesets.style = new Cesium.Cesium3DTileStyle({
+    osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
       defines:{
         material: "${feature['building:material']}",
       },
@@ -45,7 +48,7 @@ const viewer = new Cesium.Viewer("cesiumContainer", {
 
   //function to hightlight all the resident building
   function highlightAllResidentialBuildings(){
-    osmBuildingTilesets.style = new Cesium.Cesium3DTileStyle({
+    osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
       color: {
         conditions: [
         [
@@ -62,7 +65,7 @@ const viewer = new Cesium.Viewer("cesiumContainer", {
   function showByBuildingType(buildingType){
     switch(buildingType){
         case "office":
-            osmBuildingTileset.style = new Cesium.Cesium3DTileStyle({
+            osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
             show: "${feature['building']} === 'office'",
         });
         break;
@@ -104,7 +107,7 @@ const viewer = new Cesium.Viewer("cesiumContainer", {
   }
 
   //add event listeners to dropdown menu options
-  document.querySelector(".infoPanel").style.visibility = "hidden"
+  document.querySelector(".infoPanel").style.visibility = "hidden";
   const menu = document.getElementById("dropdown");
 
 
@@ -138,21 +141,31 @@ const viewer = new Cesium.Viewer("cesiumContainer", {
     highlightAllResidentialBuildings();
   };
 
-  menu.option[3].onselect = function(){
+  menu.options[3].onselect = function(){
     removeCoordinatePickingOnLeftClick();
     showByBuildingType("office");
   };
   
-  menu.option[4].onselect = function(){
+  menu.options[4].onselect = function(){
     removeCoordinatePickingOnLeftClick();
     showByBuildingType("apartments");
   };
 
   menu.onchange = function(){
-    const item = menu.option[menu.selectionIndex];
+    const item = menu.options[menu.selectionIndex];
     if (item && typeof item.onselect == "function"){
         item.onslect();
     }
   };
 
   colorByMaterial();
+};
+if (typeof Cesium !== "undefined"){
+  window.startupCalled = true;
+  window.startup(Cesium).catch((error)=>{
+    "use strict";
+    console.error(error);
+  });
+  Sandcastle.finishedLoading();
+}
+
