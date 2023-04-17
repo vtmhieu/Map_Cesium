@@ -12,7 +12,7 @@ const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
 
   // Set the initial camera to look at Seattle = set the initial location of camera
   viewer.scene.camera.setView({
-    destination: Cesium.Cartesian3.fromDegrees(-122.3472, 47.598, 3700),
+    destination: Cesium.Cartesian3.fromDegrees(-122.3472, 47.598, 370),
     orientation:{
       heading: Cesium.Math.toRadians(10),
       pitch: Cesium.Math.toRadians(-10),
@@ -152,9 +152,10 @@ const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
   };
 
   menu.onchange = function(){
-    const item = menu.options[menu.selectionIndex];
+    Sandcastle.reset();
+    const item = menu.options[menu.selectedIndex];
     if (item && typeof item.onselect == "function"){
-        item.onslect();
+        item.onselect();
     }
   };
 
