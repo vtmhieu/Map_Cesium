@@ -119,7 +119,7 @@ const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
 
 
 
-  menu.options[1].onslect = function(){
+  menu.options[1].onselect = function(){
     colorByDistanceToCoordinate(47.62051, -122.34931);
     document.querySelector(".infoPanel").style.visibility = "visible";
 
@@ -154,12 +154,10 @@ const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
   menu.onchange = function(){
     Sandcastle.reset();
     const item = menu.options[menu.selectedIndex];
-    if (item && typeof item.onselect == "function"){
+    if (item && typeof item.onselect === "function"){
         item.onselect();
     }
   };
-
-  colorByMaterial();
 };
 if (typeof Cesium !== "undefined"){
   window.startupCalled = true;
