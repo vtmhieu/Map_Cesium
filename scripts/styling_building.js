@@ -72,7 +72,7 @@ const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
 
         case "apartments":
             osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
-                show: "${feature['building]} === 'apartments'",
+                show: "${feature['building']} === 'apartments'",
             });
             break;
         default:
