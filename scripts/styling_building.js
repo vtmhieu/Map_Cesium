@@ -12,26 +12,38 @@ const viewer = new Cesium.Viewer("cesiumContainer", {
       Cesium.buildModuleUrl("/cesium/Source/Assets/Textures/NaturalEarthII")
     )
   ),
-  baseLayerPicker: true,
-  geocoder: true,
+  baseLayerPicker: false,
+  geocoder: false,
 });
+
 
 
 const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
   // add Cesium OSM building to scene as our example 3D tileset
-const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
+/*const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
+  viewer.scene.primitives.add(osmBuildingsTileset);*/
+
+try{
+  const osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
+    "./cesium/Specs/Data/Cesium3DTiles/Tilesets/TilesetReplacement3/tileset.json"
+  );
   viewer.scene.primitives.add(osmBuildingsTileset);
+  viewer.zoomTo(osmBuildingsTileset);
+}catch(error){
+  console.log(`Error loading tileset: ${error}`);
+}
+
 
   // Set the initial camera to look at Seattle = set the initial location of camera
-  viewer.scene.camera.setView({
-    destination: Cesium.Cartesian3.fromDegrees(-122.3472, 47.598, 370),
+  /*viewer.scene.camera.setView({
+    destination: Cesium.Cartesian3.fromDegrees(-1.31968, 0.698874, 370),
     orientation:{
       heading: Cesium.Math.toRadians(10),
       pitch: Cesium.Math.toRadians(-10),
 
     },
   });
-
+*/
 
   //Styling functions
 
@@ -40,21 +52,18 @@ const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
 
   function colorByMaterial(){
     osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
-      defines:{
-        material: "${feature['building:material']}",
-      },
       color:{
         conditions: [
-        ["${material} === null", "color('white')"],
-        ["${material} === 'glass'", "color('skyblue', 0.5)"],
-        ["${material} === 'concrete'", "color('grey')"],
-        ["${material} === 'brick'", "color('indianred')"],
-        ["${material} === 'stone'", "color('lightslategrey')"],
-        ["${material} === 'metal'", "color('lightgrey')"],
-        ["${material} === 'steel'", "color('lightsteelblue')"],
+        ["${id} === null", "color('white')"],
+        ["${id} === '0'", "color('skyblue', 0.5)"],
+        ["${id} === '1'", "color('grey')"],
+        ["${id} === '3'", "color('indianred')"],
+        ["${id} === '4'", "color('lightslategrey')"],
+        ["${id} === '5'", "color('lightgrey')"],
+        ["${id} === '6'", "color('lightsteelblue')"],
         ["true", "color('white')"], // else case -> white
-        ],
-      },
+        ]
+      }
     });
   }
 

@@ -33,7 +33,7 @@
       ]
     },
     "geometricError": 70,
-    "refine": "REPLACE",
+    "refine": "ADD",
     "content": {
       "uri": "parent.b3dm",
       "boundingVolume": {
@@ -45,8 +45,22 @@
           0,
           88
         ]
+      },
+      "extras":{
+        "name":"building"
+      },
+      "viewerRequestVolume":{
+        "region":[
+          -1.3197004795898053,
+          0.6988582109,
+          -1.3196595204101946,
+          0.6988897891,
+          0,
+          88
+        ]
       }
     },
+    
     "children": [
       {
         "boundingVolume": {
@@ -56,7 +70,7 @@
             -1.3196390408203893,
             0.6989055782,
             0,
-            20
+            50
           ]
         },
         "geometricError": 70,
