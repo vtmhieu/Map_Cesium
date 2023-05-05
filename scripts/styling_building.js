@@ -2,9 +2,9 @@ window.startup = async function (Cesium){
   "use strict";
 
  // Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkOGIyNzkyOS0yOGYwLTRkNWQtYjViNi0xZmIyZmFkNmZlNjciLCJpZCI6MTMwNTkxLCJpYXQiOjE2ODE1NTE5NDV9.eFwl27eq0qznhWe1gBK71xqKF_WbLDwXbHgjiV6Uh-M';
-/*const viewer = new Cesium.Viewer("cesiumContainer", {
-    terrant: Cesium.Terrain.fromWorldTerrain(),
-  });*/
+// const viewer = new Cesium.Viewer("cesiumContainer", {
+//     terrant: Cesium.Terrain.fromWorldTerrain(),
+//   });
 
 const viewer = new Cesium.Viewer("cesiumContainer", {
   baseLayer: Cesium.ImageryLayer.fromProviderAsync(
