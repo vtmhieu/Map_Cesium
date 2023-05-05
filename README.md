@@ -1,4 +1,4 @@
-# FINAL PROJECT in Hanoi University of Science and Technology
+# FINAL PROJECT at Hanoi University of Science and Technology
 
 Hi! This is the project I developed to stream the 3D scenes into web.
 
