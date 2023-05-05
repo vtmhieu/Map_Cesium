@@ -2,6 +2,7 @@ const fs = require("fs");
 const { gltfToGlb } = require("gltf-pipeline");
 const { convert } = require("3d-tiles-tools");
 
+
 // Load the glTF file
 const gltfData = fs.readFileSync('/home/hieuvu/DATN/Map_Cesium/worker/data/map.gltf',  "utf8");
 

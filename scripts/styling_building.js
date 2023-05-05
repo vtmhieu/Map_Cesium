@@ -25,7 +25,7 @@ const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
 
 try{
   const osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
-    "./cesium/Apps/SampleData/Cesium3DTiles/Tilesets/Tileset/tileset.json"
+    "../tileset_data/demo_dhbkhn_1/tileset.json"
     //"./cdb-to-3dtiles/Tests/Data/ElevationMoreLODPositiveImagery/VerifiedTileset.json"
   );
   viewer.scene.primitives.add(osmBuildingsTileset);
