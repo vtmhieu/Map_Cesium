@@ -12,6 +12,6 @@ Using OSM2World to convert the .osm to .glTF (also opensource).
 
 Following this, convert the .glTF file into .b3dm files and create the 3D tileset. At this stage, you can use the Cesium ion as a middleware to import the .gltf and export the 3D tile base on the data that you put in.
 
-Run this app.
+Run this app. "node server.js"
 
 Hope you enjoy!
