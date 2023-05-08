@@ -23,13 +23,18 @@ const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
 /*const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
   viewer.scene.primitives.add(osmBuildingsTileset);*/
 
+viewer.scene.globe.depthTestAgainstTerrain = true;
+
+viewer.extend(Cesium.viewerCesium3DTilesInspectorMixin);
+const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 try{
   const osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
     //demo 1
     //"../tileset_data/demo_dhbkhn_1/tileset.json"
 
     //demo 2 combine
-    "../tileset_data/demo_dhbkhn_2_combine/11788/tileset.json"
+    "../tileset_data/demo_dhbkhn_2_combine/11788/tileset.json",
+    {enableDebugWireframe: true,}
     //mau cua Cesium
     //"./cdb-to-3dtiles/Tests/Data/ElevationMoreLODPositiveImagery/VerifiedTileset.json"
   );
