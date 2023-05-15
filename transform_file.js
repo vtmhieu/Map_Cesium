@@ -5,7 +5,8 @@ const gltfToGlb = require('gltf-pipeline').gltfToGlb;
 const fetch = require('node-fetch');
 
 // Path to the original GLTF file
-const originalFilePath = '/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf'
+const originalFilePath = '/home/hieuvu/DATN/Map_Cesium/cesium/Specs/Data/Cesium3DTiles/GltfContentWithCopyright/glTF/parent.gltf';
+
 // Maximum number of triangles per tile
 const maxTrianglesPerTile = 100;
 
@@ -29,7 +30,7 @@ fetchArrayBuffer(originalFilePath)
     //console.log(gltf);
     const tileset = new Cesium.Cesium3DTileset(gltf);
 //
-    var meshPrimitives = tileset.meshes.primitives;
+    var meshPrimitives = gltf.meshes[0].primitives;
     var triangleCount= 0;
     for (var i=0; i< meshPrimitives.length; i++){
       var primitive = meshPrimitives[i];
