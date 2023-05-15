@@ -9,7 +9,9 @@
   "dependencies": {
     "3d-tiles-tools": "latest",
     "express": "^4.16.4",
-    "gltf-pipeline": "^4.1.0"
+    "gltf-pipeline": "^4.1.0",
+    "node-fetch": "^2.6.11",
+    "ws": "^8.13.0"
   },
   "engines": {
     "node": "8.x"

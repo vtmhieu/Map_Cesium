@@ -30,15 +30,23 @@ const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 try{
   const osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
     //demo 1
-    //"../tileset_data/demo_dhbkhn_1/tileset.json"
+    //"../tileset_data/demo_dhbkhn_1/tileset.json",
 
     //demo 2 combine
-    "../tileset_data/demo_dhbkhn_2_combine/11788/tileset.json",
-    {enableDebugWireframe: true,}
+    //"../tileset_data/demo_dhbkhn_2_combine/11788/tileset.json",
+
+    //demo 3
+    //"../test/data/tileset.json",
+    
     //mau cua Cesium
-    //"./cdb-to-3dtiles/Tests/Data/ElevationMoreLODPositiveImagery/VerifiedTileset.json"
+    //"./cdb-to-3dtiles/Tests/Data/ElevationMoreLODPositiveImagery/VerifiedTileset.json",
+
+    "../cesium/Specs/Data/Cesium3DTiles/Tilesets/TilesetWithViewerRequestVolume/tileset.json",
+    {enableDebugWireframe: true,}
   );
   viewer.scene.primitives.add(osmBuildingsTileset);
+  osmBuildingsTileset.maximumScreenSpaceError = 10;
+
   viewer.zoomTo(osmBuildingsTileset);
 }catch(error){
   console.log(`Error loading tileset: ${error}`);
