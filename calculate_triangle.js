@@ -5,7 +5,9 @@ const fs = require('fs');
 const { gltfValidation } = require('gltf-pipeline');
 
 // Read the glTF file
-const gltfData = fs.readFileSync('/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf', 'utf8');
+//const gltfData = fs.readFileSync('/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf', 'utf8');
+const gltfData = fs.readFileSync('/home/hieuvu/DATN/Map_Cesium/cesium/Specs/Data/Cesium3DTiles/GltfContentWithCopyright/glTF/parent.gltf', 'utf8');
+
 const gltf = JSON.parse(gltfData);
 
 // Validate the glTF
