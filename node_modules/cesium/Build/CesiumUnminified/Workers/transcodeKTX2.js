@@ -1534,3 +1534,4 @@ define(['./defaultValue-fe22d8c0', './Check-6ede7e26', './WebGLConstants-0b1ce7b
   return transcodeKTX2;
 
 }));
+//# sourceMappingURL=transcodeKTX2.js.map

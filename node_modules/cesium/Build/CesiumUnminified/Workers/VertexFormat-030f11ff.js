@@ -310,3 +310,4 @@ define(['exports', './defaultValue-fe22d8c0', './Check-6ede7e26'], (function (ex
   exports.VertexFormat = VertexFormat;
 
 }));
+//# sourceMappingURL=VertexFormat-030f11ff.js.map
