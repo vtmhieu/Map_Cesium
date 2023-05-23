@@ -39,14 +39,16 @@ function calculateTriangles(gltfPath) {
 					indicesBufferView.byteOffset + indicesAccessor.byteOffset;
 
 				let indicesBufferData = readBinFile(indicesBuffer.uri);
-
+				let componentTypeSize = getComponentTypeSize(
+					indicesAccessor.componentType,
+				);
 				let byteStride = 12;
 				if (indicesAccessor.type === "VEC3") {
-					byteStride = 12;
+					byteStride = componentTypeSize * 3;
 				} else if (indicesAccessor.type === "VEC2") {
-					byteStride = 4;
+					byteStride = componentTypeSize * 2;
 				} else if (indicesAccessor.type === "SCALAR") {
-					byteStride = 1;
+					byteStride = componentTypeSize * 1;
 				} else {
 					continue;
 				}
@@ -54,35 +56,18 @@ function calculateTriangles(gltfPath) {
 				// 	indicesOffset,
 				// 	indicesOffset + indicesAccessor.count * byteStride,
 				// );
-				const indicesData = Buffer.alloc(indicesAccessor.count * byteStride);
-				indicesBufferData.copy(
-					indicesData,
-					0,
-					indicesOffset,
-					indicesOffset + indicesData.length,
-				);
 
-				let componentTypeSize = getComponentTypeSize(
-					indicesAccessor.componentType,
-				);
 				//console.log(indicesData.length);
-				for (let i = 0; i < indicesData.length; i += componentTypeSize) {
+				for (let i = 0; i < indicesAccessor.count; i += 3) {
 					const vertexIndices = [];
 
-					for (let j = 0; j < componentTypeSize; j += byteStride) {
-						if (
-							i + j == indicesData.length - 2 ||
-							i + j > indicesData.length - 2
-						) {
-							return triangles;
-						} else {
-							const vertexIndex = indicesData.readUIntLE(
-								i + j,
-								componentTypeSize,
-							);
-							//console.log(vertexIndex);
-							vertexIndices.push(vertexIndex);
-						}
+					for (let j = 0; j < 3; j++) {
+						const vertexIndex = indicesBufferData.readUIntLE(
+							indicesOffset + (i + j) * byteStride,
+							byteStride,
+						);
+						//console.log(vertexIndex);
+						vertexIndices.push(vertexIndex);
 					}
 					triangles.push(vertexIndices);
 				}

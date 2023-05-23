@@ -44,13 +44,14 @@ function calculateBoundingVolume(gltfFilePath) {
 		const buffer = gltf.buffers[bufferView.buffer];
 		const vertexCount = accessor.count;
 		const byteOffset = bufferView.byteOffset + accessor.byteOffset;
+		const componentTypeSize = getComponentTypeSize(accessor.componentType);
 		let byteStride = 12;
 		if (accessor.type === "VEC3") {
-			byteStride = 12;
+			byteStride = componentTypeSize * 3;
 		} else if (accessor.type === "VEC2") {
-			byteStride = 4;
+			byteStride = componentTypeSize * 2;
 		} else if (accessor.type === "SCALAR") {
-			byteStride = 1;
+			byteStride = componentTypeSize * 1;
 		} else {
 			continue;
 		}
@@ -86,12 +87,13 @@ function calculateBoundingVolume(gltfFilePath) {
 
 function ByteStride(indicesAccessor) {
 	let byteStride = 12;
+	const componentTypeSize = getComponentTypeSize(indicesAccessor.componentType);
 	if (indicesAccessor.type === "VEC3") {
-		byteStride = 12;
+		byteStride = componentTypeSize * 3;
 	} else if (indicesAccessor.type === "VEC2") {
-		byteStride = 4;
+		byteStride = componentTypeSize * 2;
 	} else if (indicesAccessor.type === "SCALAR") {
-		byteStride = 1;
+		byteStride = componentTypeSize * 1;
 	} else {
 		return;
 	}
