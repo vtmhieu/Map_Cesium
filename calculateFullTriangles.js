@@ -66,11 +66,14 @@ function calculateTriangles(gltfPath) {
 					indicesAccessor.componentType,
 				);
 				//console.log(indicesData.length);
-				for (let i = 0; i < indicesData.length; i += byteStride) {
+				for (let i = 0; i < indicesData.length; i += componentTypeSize) {
 					const vertexIndices = [];
 
-					for (let j = 0; j < byteStride; j += componentTypeSize) {
-						if (i + j == indicesData.length || i + i > indicesData.length) {
+					for (let j = 0; j < componentTypeSize; j += byteStride) {
+						if (
+							i + j == indicesData.length - 2 ||
+							i + j > indicesData.length - 2
+						) {
 							return triangles;
 						} else {
 							const vertexIndex = indicesData.readUIntLE(
