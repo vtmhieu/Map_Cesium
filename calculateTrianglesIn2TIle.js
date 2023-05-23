@@ -5,6 +5,27 @@ function readBinFile(filename) {
 	const typedArray = Buffer.from(rawData);
 	return typedArray;
 }
+
+function getComponentTypeSize(componentType) {
+	switch (componentType) {
+		case 5120: // BYTE
+		case 5121: // UNSIGNED_BYTE
+			return 1;
+		case 5122: // SHORT
+		case 5123: // UNSIGNED_SHORT
+			return 2;
+		case 5125: // UNSIGNED_INT
+		case 5126: // FLOAT
+			return 4;
+		default:
+			return 0;
+	}
+}
+function ParseGLTF(filename) {
+	const gltfData = fs.readFileSync(gltfPath);
+	const gltf = JSON.parse(gltfData);
+	return gltf;
+}
 function calculateBoundingVolume(gltfFilePath) {
 	// Read the glTF file
 	const gltfData = fs.readFileSync(gltfFilePath, "utf8");
@@ -67,4 +88,24 @@ function calculateBoundingVolume(gltfFilePath) {
 const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
 
 const boundingVolume = calculateBoundingVolume(gltfFilePath);
-console.log(boundingVolume);
+
+function divideInto2(boundingVolume) {
+	const middle = {
+		midX,
+		midY,
+		midZ,
+	};
+	middle.midX = (boundingVolume.minX + boundingVolume.maxX) / 2;
+	middle.midY = (boundingVolume.minY + boundingVolume.maxY) / 2;
+	middle.midZ = (boundingVolume.minZ + boundingVolume.maxZ) / 2;
+	return middle;
+}
+
+function calculateTrianglesIn2(gltfFilePath) {
+	let gltf = ParseGLTF(gltfFilePath);
+	let boundingVolume = calculateBoundingVolume(gltfFilePath);
+	let middle = divideInto2(boundingVolume);
+
+	let tri_0 = 0;
+	let tri_1 = 0;
+}
