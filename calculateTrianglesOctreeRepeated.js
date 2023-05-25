@@ -151,81 +151,6 @@ function calculateByteStride(indicesAccessor) {
 	return byteStride;
 }
 
-function locateOcteeTriangles(
-	triangleMidPoint,
-	middle,
-	tri_000,
-	tri_001,
-	tri_010,
-	tri_011,
-	tri_100,
-	tri_101,
-	tri_110,
-	tri_111,
-) {
-	if (
-		triangleMidPoint.x <= middle.midX &&
-		triangleMidPoint.y <= middle.midY &&
-		triangleMidPoint.z <= middle.midZ
-	) {
-		tri_000++;
-	} else if (
-		triangleMidPoint.x <= middle.midX &&
-		triangleMidPoint.y <= middle.midY &&
-		triangleMidPoint.z > middle.midZ
-	) {
-		tri_001++;
-	} else if (
-		triangleMidPoint.x <= middle.midX &&
-		triangleMidPoint.y > middle.midY &&
-		triangleMidPoint.z <= middle.midZ
-	) {
-		tri_010++;
-	} else if (
-		triangleMidPoint.x <= middle.midX &&
-		triangleMidPoint.y > middle.midY &&
-		triangleMidPoint.z > middle.midZ
-	) {
-		tri_011++;
-	} else if (
-		triangleMidPoint.x > middle.midX &&
-		triangleMidPoint.y <= middle.midY &&
-		triangleMidPoint.z <= middle.midZ
-	) {
-		tri_100++;
-	} else if (
-		triangleMidPoint.x > middle.midX &&
-		triangleMidPoint.y <= middle.midY &&
-		triangleMidPoint.z > middle.midZ
-	) {
-		tri_101++;
-	} else if (
-		triangleMidPoint.x > middle.midX &&
-		triangleMidPoint.y > middle.midY &&
-		triangleMidPoint.z <= middle.midZ
-	) {
-		tri_110++;
-	} else if (
-		triangleMidPoint.x > middle.midX &&
-		triangleMidPoint.y > middle.midY &&
-		triangleMidPoint.z > middle.midZ
-	) {
-		tri_111++;
-	}
-}
-
-// const structTile = {
-// 	boundingVolume: {
-// 		minX: 0,
-// 		minY: 0,
-// 		minZ: 0,
-// 		maxX: 0,
-// 		maxY: 0,
-// 		maxZ: 0,
-// 	},
-// 	NumberOfTriangles: 0,
-// };
-
 const Tiles = [];
 //Tiles.push(structTile);
 
@@ -667,7 +592,7 @@ function calculateBasedOnIndiceList(
 
 const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
 let boundingVolume = calculateBoundingVolume(gltfFilePath);
-let result = calculateTriangles(gltfFilePath, boundingVolume, 2500);
+let result = calculateTriangles(gltfFilePath, boundingVolume, 5000);
 
 // for (let i = 0; i < result.length; i++) {
 // 	if (result[i].NumberOfTriangles === 0) {
