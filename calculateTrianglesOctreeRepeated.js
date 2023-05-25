@@ -592,7 +592,7 @@ function calculateBasedOnIndiceList(
 
 const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
 let boundingVolume = calculateBoundingVolume(gltfFilePath);
-const result = calculateTriangles(gltfFilePath, boundingVolume, 5000);
+const result = calculateTriangles(gltfFilePath, boundingVolume, 6000);
 
 for (let i = 0; i < result.length; i++) {
 	if (result[i].NumberOfTriangles === 0) {
