@@ -601,4 +601,4 @@ for (let i = 0; i < result.length; i++) {
 	}
 }
 console.log(result);
-console.log(result.length);
+console.log("Number of Tiles: " + result.length);
