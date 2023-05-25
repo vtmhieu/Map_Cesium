@@ -1,9 +1,15 @@
 const fs = require("fs");
 
 function readBinFile(filename) {
-	const rawData = fs.readFileSync(filename);
-	const typedArray = Buffer.from(rawData);
-	return typedArray;
+	if (filename.startWith("data:")) {
+		const data = filename.split(",")[1];
+		const buffer = Buffer.from(data, "base64");
+		return buffer;
+	} else {
+		const rawData = fs.readFileSync(filename);
+		const typedArray = Buffer.from(rawData);
+		return typedArray;
+	}
 }
 
 function getComponentTypeSize(componentType) {
