@@ -163,54 +163,34 @@ function locateOcteeTriangles(
 	tri_110,
 	tri_111,
 ) {
-	if (
-		triangleMidPoint.x <= middle.midX &&
-		triangleMidPoint.y <= middle.midY &&
-		triangleMidPoint.z <= middle.midZ
-	) {
-		tri_000++;
-	} else if (
-		triangleMidPoint.x <= middle.midX &&
-		triangleMidPoint.y <= middle.midY &&
-		triangleMidPoint.z > middle.midZ
-	) {
-		tri_001++;
-	} else if (
-		triangleMidPoint.x <= middle.midX &&
-		triangleMidPoint.y > middle.midY &&
-		triangleMidPoint.z <= middle.midZ
-	) {
-		tri_010++;
-	} else if (
-		triangleMidPoint.x <= middle.midX &&
-		triangleMidPoint.y > middle.midY &&
-		triangleMidPoint.z > middle.midZ
-	) {
-		tri_011++;
-	} else if (
-		triangleMidPoint.x > middle.midX &&
-		triangleMidPoint.y <= middle.midY &&
-		triangleMidPoint.z <= middle.midZ
-	) {
-		tri_100++;
-	} else if (
-		triangleMidPoint.x > middle.midX &&
-		triangleMidPoint.y <= middle.midY &&
-		triangleMidPoint.z > middle.midZ
-	) {
-		tri_101++;
-	} else if (
-		triangleMidPoint.x > middle.midX &&
-		triangleMidPoint.y > middle.midY &&
-		triangleMidPoint.z <= middle.midZ
-	) {
-		tri_110++;
-	} else if (
-		triangleMidPoint.x > middle.midX &&
-		triangleMidPoint.y > middle.midY &&
-		triangleMidPoint.z > middle.midZ
-	) {
-		tri_111++;
+	if (triangleMidPoint.x > middle.midX) {
+		if (triangleMidPoint.y > middle.midY) {
+			if (triangleMidPoint.z > middle.midZ) {
+				tri_111++;
+			} else {
+				tri_110++;
+			}
+		} else {
+			if (triangleMidPoint.z > middle.midZ) {
+				tri_101++;
+			} else {
+				tri_100++;
+			}
+		}
+	} else {
+		if (triangleMidPoint.y > middle.midY) {
+			if (triangleMidPoint.z > middle.midZ) {
+				tri_011++;
+			} else {
+				tri_010++;
+			}
+		} else {
+			if (triangleMidPoint.z > middle.midZ) {
+				tri_001++;
+			} else {
+				tri_000++;
+			}
+		}
 	}
 }
 
@@ -278,62 +258,42 @@ function calculateTriangles(gltfFilePath) {
 						indicesBufferData,
 						byteStride,
 					);
-					if (
-						triangleMidPoint.x <= middle.midX &&
-						triangleMidPoint.y <= middle.midY &&
-						triangleMidPoint.z <= middle.midZ
-					) {
-						tri_000++;
-						indiceList000.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x <= middle.midX &&
-						triangleMidPoint.y <= middle.midY &&
-						triangleMidPoint.z > middle.midZ
-					) {
-						tri_001++;
-						indiceList001.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x <= middle.midX &&
-						triangleMidPoint.y > middle.midY &&
-						triangleMidPoint.z <= middle.midZ
-					) {
-						tri_010++;
-						indiceList010.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x <= middle.midX &&
-						triangleMidPoint.y > middle.midY &&
-						triangleMidPoint.z > middle.midZ
-					) {
-						tri_011++;
-						indiceList011.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x > middle.midX &&
-						triangleMidPoint.y <= middle.midY &&
-						triangleMidPoint.z <= middle.midZ
-					) {
-						tri_100++;
-						indiceList100.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x > middle.midX &&
-						triangleMidPoint.y <= middle.midY &&
-						triangleMidPoint.z > middle.midZ
-					) {
-						tri_101++;
-						indiceList101.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x > middle.midX &&
-						triangleMidPoint.y > middle.midY &&
-						triangleMidPoint.z <= middle.midZ
-					) {
-						tri_110++;
-						indiceList110.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x > middle.midX &&
-						triangleMidPoint.y > middle.midY &&
-						triangleMidPoint.z > middle.midZ
-					) {
-						tri_111++;
-						indiceList111.push(triangleIndices);
+					if (triangleMidPoint.x > middle.midX) {
+						if (triangleMidPoint.y > middle.midY) {
+							if (triangleMidPoint.z > middle.midZ) {
+								tri_111++;
+								indiceList111.push(triangleIndices);
+							} else {
+								tri_110++;
+								indiceList110.push(triangleIndices);
+							}
+						} else {
+							if (triangleMidPoint.z > middle.midZ) {
+								tri_101++;
+								indiceList101.push(triangleIndices);
+							} else {
+								tri_100++;
+								indiceList100.push(triangleIndices);
+							}
+						}
+					} else {
+						if (triangleMidPoint.y > middle.midY) {
+							if (triangleMidPoint.z > middle.midZ) {
+								tri_011++;
+								indiceList011.push(triangleIndices);
+							} else {
+								tri_010++;
+								indiceList010.push(triangleIndices);
+							}
+						} else {
+							if (triangleMidPoint.z > middle.midZ) {
+								tri_001++;
+								indiceList001.push(triangleIndices);
+							} else {
+								tri_000++;
+								indiceList000.push(triangleIndices);
+							}
+						}
 					}
 				}
 			}
@@ -462,4 +422,8 @@ function repeated(tiles, maxTrianglesPerTile) {
 const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
 //let boundingVolume = calculateBoundingVolume(gltfFilePath);
 let result = calculateTriangles(gltfFilePath);
-console.log(result);
+let triangles = 0;
+for (let i = 0; i < result.length; i++) {
+	triangles += result[i].NumberOfTriangles;
+}
+console.log(triangles);

@@ -5,7 +5,6 @@ function readBinFile(filename) {
 	const typedArray = Buffer.from(rawData);
 	return typedArray;
 }
-
 function getComponentTypeSize(componentType) {
 	switch (componentType) {
 		case 5120: // BYTE
@@ -20,6 +19,11 @@ function getComponentTypeSize(componentType) {
 		default:
 			return 0;
 	}
+}
+function ParseGLTF(gltfPath) {
+	const gltfData = fs.readFileSync(gltfPath);
+	const gltf = JSON.parse(gltfData);
+	return gltf;
 }
 function calculateBoundingVolume(gltfFilePath) {
 	// Read the glTF file
@@ -39,13 +43,14 @@ function calculateBoundingVolume(gltfFilePath) {
 		const buffer = gltf.buffers[bufferView.buffer];
 		const vertexCount = accessor.count;
 		const byteOffset = bufferView.byteOffset + accessor.byteOffset;
+		const componentTypeSize = getComponentTypeSize(accessor.componentType);
 		let byteStride = 12;
 		if (accessor.type === "VEC3") {
-			byteStride = 12;
+			byteStride = componentTypeSize * 3;
 		} else if (accessor.type === "VEC2") {
-			byteStride = 4;
+			byteStride = componentTypeSize * 2;
 		} else if (accessor.type === "SCALAR") {
-			byteStride = 1;
+			byteStride = componentTypeSize * 1;
 		} else {
 			continue;
 		}
@@ -79,6 +84,30 @@ function calculateBoundingVolume(gltfFilePath) {
 	return boundingVolume;
 }
 
+function ByteStride(indicesAccessor) {
+	let byteStride = 12;
+	const componentTypeSize = getComponentTypeSize(indicesAccessor.componentType);
+	if (indicesAccessor.type === "VEC3") {
+		byteStride = componentTypeSize * 3;
+	} else if (indicesAccessor.type === "VEC2") {
+		byteStride = componentTypeSize * 2;
+	} else if (indicesAccessor.type === "SCALAR") {
+		byteStride = componentTypeSize * 1;
+	} else {
+		return;
+	}
+	return byteStride;
+}
+
+//const boundingVolume = calculateBoundingVolume(gltfFilePath);
+
+function divideInto4(boundingVolume) {
+	midX = (boundingVolume.minX + boundingVolume.maxX) / 2;
+	midY = (boundingVolume.minY + boundingVolume.maxY) / 2;
+	midZ = (boundingVolume.minZ + boundingVolume.maxZ) / 2;
+	return { midX: midX, midY: midY, midZ: midZ };
+}
+
 function CalculateMidTriangle(triangleIndices, indicesBufferData, byteStride) {
 	const vertex1Index = triangleIndices[0];
 	const vertex2Index = triangleIndices[1];
@@ -88,29 +117,17 @@ function CalculateMidTriangle(triangleIndices, indicesBufferData, byteStride) {
 	const vertex2Offset = vertex2Index * byteStride;
 	const vertex3Offset = vertex3Index * byteStride;
 
-	// const vertex1X = indicesBufferData.readFloatLE(vertex1Offset);
-	// const vertex1Y = indicesBufferData.readFloatLE(vertex1Offset + 4);
-	// const vertex1Z = indicesBufferData.readFloatLE(vertex1Offset + 8);
+	const vertex1X = indicesBufferData.readFloatLE(vertex1Offset);
+	const vertex1Y = indicesBufferData.readFloatLE(vertex1Offset + 4);
+	const vertex1Z = indicesBufferData.readFloatLE(vertex1Offset + 8);
 
-	// const vertex2X = indicesBufferData.readFloatLE(vertex2Offset);
-	// const vertex2Y = indicesBufferData.readFloatLE(vertex2Offset + 4);
-	// const vertex2Z = indicesBufferData.readFloatLE(vertex2Offset + 8);
+	const vertex2X = indicesBufferData.readFloatLE(vertex2Offset);
+	const vertex2Y = indicesBufferData.readFloatLE(vertex2Offset + 4);
+	const vertex2Z = indicesBufferData.readFloatLE(vertex2Offset + 8);
 
-	// const vertex3X = indicesBufferData.readFloatLE(vertex3Offset);
-	// const vertex3Y = indicesBufferData.readFloatLE(vertex3Offset + 4);
-	// const vertex3Z = indicesBufferData.readFloatLE(vertex3Offset + 8);
-
-	vertex1X = indicesBufferData.readUInt16LE(vertex1Offset) / 65535;
-	vertex1Y = indicesBufferData.readUInt16LE(vertex1Offset + 2) / 65535;
-	vertex1Z = indicesBufferData.readUInt16LE(vertex1Offset + 4) / 65535;
-
-	vertex2X = indicesBufferData.readUInt16LE(vertex2Offset) / 65535;
-	vertex2Y = indicesBufferData.readUInt16LE(vertex2Offset + 2) / 65535;
-	vertex2Z = indicesBufferData.readUInt16LE(vertex2Offset + 4) / 65535;
-
-	vertex3X = indicesBufferData.readUInt16LE(vertex3Offset) / 65535;
-	vertex3Y = indicesBufferData.readUInt16LE(vertex3Offset + 2) / 65535;
-	vertex3Z = indicesBufferData.readUInt16LE(vertex3Offset + 4) / 65535;
+	const vertex3X = indicesBufferData.readFloatLE(vertex3Offset);
+	const vertex3Y = indicesBufferData.readFloatLE(vertex3Offset + 4);
+	const vertex3Z = indicesBufferData.readFloatLE(vertex3Offset + 8);
 
 	const midX = (vertex1X + vertex2X + vertex3X) / 3;
 	const midY = (vertex1Y + vertex2Y + vertex3Y) / 3;
@@ -118,13 +135,18 @@ function CalculateMidTriangle(triangleIndices, indicesBufferData, byteStride) {
 
 	return { x: midX, y: midY, z: midZ };
 }
-function calculateTriangles(gltfPath) {
-	const triangles = [];
 
-	const gltfData = fs.readFileSync(gltfPath);
-	const gltf = JSON.parse(gltfData);
-	let boundingVolume = calculateBoundingVolume(gltfPath);
-	let trianglesInBoundingVolume = 0;
+let Tiles = [];
+function calculateTrianglesIn2(gltfFilePath) {
+	let gltf = ParseGLTF(gltfFilePath);
+	let boundingVolume = calculateBoundingVolume(gltfFilePath);
+	let middle = divideInto4(boundingVolume);
+
+	let tri_00 = 0;
+	let tri_01 = 0;
+	let tri_10 = 0;
+	let tri_11 = 0;
+
 	for (const mesh of gltf.meshes) {
 		for (const primitive of mesh.primitives) {
 			if (primitive.mode === 4) {
@@ -136,66 +158,46 @@ function calculateTriangles(gltfPath) {
 					indicesBufferView.byteOffset + indicesAccessor.byteOffset;
 
 				let indicesBufferData = readBinFile(indicesBuffer.uri);
-				let componentTypeSize = getComponentTypeSize(
-					indicesAccessor.componentType,
-				);
-				let byteStride = 12;
-				if (indicesAccessor.type === "VEC3") {
-					byteStride = componentTypeSize * 3;
-				} else if (indicesAccessor.type === "VEC2") {
-					byteStride = componentTypeSize * 2;
-				} else if (indicesAccessor.type === "SCALAR") {
-					byteStride = componentTypeSize * 1;
-				} else {
-					continue;
-				}
-				// const indicesData = indicesBufferData.slice(
-				// 	indicesOffset,
-				// 	indicesOffset + indicesAccessor.count * byteStride,
-				// );
+				let byteStride = ByteStride(indicesAccessor);
 
-				//console.log(indicesData.length);
 				for (let i = 0; i < indicesAccessor.count; i += 3) {
-					const vertexIndices = [];
+					const triangleIndices = [];
 
 					for (let j = 0; j < 3; j++) {
 						const vertexIndex = indicesBufferData.readUIntLE(
 							indicesOffset + (i + j) * byteStride,
 							byteStride,
 						);
-						//console.log(vertexIndex);
-						vertexIndices.push(vertexIndex);
+						triangleIndices.push(vertexIndex);
 					}
-					triangles.push(vertexIndices);
 					triangleMidPoint = CalculateMidTriangle(
-						vertexIndices,
+						triangleIndices,
 						indicesBufferData,
 						byteStride,
 					);
-					if (
-						triangleMidPoint.x >= boundingVolume.minX &&
-						triangleMidPoint.x <= boundingVolume.maxX &&
-						triangleMidPoint.y >= boundingVolume.minY &&
-						triangleMidPoint.y <= boundingVolume.maxY &&
-						triangleMidPoint.z >= boundingVolume.minZ &&
-						triangleMidPoint.z <= boundingVolume.maxZ
-					) {
-						trianglesInBoundingVolume++;
+
+					if (triangleMidPoint.x > middle.midX) {
+						if (triangleMidPoint.y > middle.midY) {
+							tri_11++;
+						} else {
+							tri_10++;
+						}
 					} else {
-						continue;
+						if (triangleMidPoint.y > middle.midY) {
+							tri_01++;
+						} else {
+							tri_00++;
+						}
 					}
 				}
 			}
 		}
 	}
-	console.log(
-		"Total triangles in Bounding Volume: ",
-		trianglesInBoundingVolume,
-	);
-	return triangles;
+	console.log("triangles in 1s half: ", tri_00);
+	console.log("triangles in 2s half: ", tri_01);
+	console.log("triangles in 3s half: ", tri_10);
+	console.log("triangles in 4s half: ", tri_11);
 }
 
-// Example usage
-const gltfPath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
-const triangles = calculateTriangles(gltfPath);
-console.log(`Total triangles: `, triangles.length);
+const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
+calculateTrianglesIn2(gltfFilePath);

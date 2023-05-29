@@ -117,17 +117,29 @@ function CalculateMidTriangle(triangleIndices, indicesBufferData, byteStride) {
 	const vertex2Offset = vertex2Index * byteStride;
 	const vertex3Offset = vertex3Index * byteStride;
 
-	const vertex1X = indicesBufferData.readFloatLE(vertex1Offset);
-	const vertex1Y = indicesBufferData.readFloatLE(vertex1Offset + 4);
-	const vertex1Z = indicesBufferData.readFloatLE(vertex1Offset + 8);
+	// const vertex1X = indicesBufferData.readFloatLE(vertex1Offset);
+	// const vertex1Y = indicesBufferData.readFloatLE(vertex1Offset + 4);
+	// const vertex1Z = indicesBufferData.readFloatLE(vertex1Offset + 8);
 
-	const vertex2X = indicesBufferData.readFloatLE(vertex2Offset);
-	const vertex2Y = indicesBufferData.readFloatLE(vertex2Offset + 4);
-	const vertex2Z = indicesBufferData.readFloatLE(vertex2Offset + 8);
+	// const vertex2X = indicesBufferData.readFloatLE(vertex2Offset);
+	// const vertex2Y = indicesBufferData.readFloatLE(vertex2Offset + 4);
+	// const vertex2Z = indicesBufferData.readFloatLE(vertex2Offset + 8);
 
-	const vertex3X = indicesBufferData.readFloatLE(vertex3Offset);
-	const vertex3Y = indicesBufferData.readFloatLE(vertex3Offset + 4);
-	const vertex3Z = indicesBufferData.readFloatLE(vertex3Offset + 8);
+	// const vertex3X = indicesBufferData.readFloatLE(vertex3Offset);
+	// const vertex3Y = indicesBufferData.readFloatLE(vertex3Offset + 4);
+	// const vertex3Z = indicesBufferData.readFloatLE(vertex3Offset + 8);
+
+	vertex1X = indicesBufferData.readUInt16LE(vertex1Offset) / 65535;
+	vertex1Y = indicesBufferData.readUInt16LE(vertex1Offset + 2) / 65535;
+	vertex1Z = indicesBufferData.readUInt16LE(vertex1Offset + 4) / 65535;
+
+	vertex2X = indicesBufferData.readUInt16LE(vertex2Offset) / 65535;
+	vertex2Y = indicesBufferData.readUInt16LE(vertex2Offset + 2) / 65535;
+	vertex2Z = indicesBufferData.readUInt16LE(vertex2Offset + 4) / 65535;
+
+	vertex3X = indicesBufferData.readUInt16LE(vertex3Offset) / 65535;
+	vertex3Y = indicesBufferData.readUInt16LE(vertex3Offset + 2) / 65535;
+	vertex3Z = indicesBufferData.readUInt16LE(vertex3Offset + 4) / 65535;
 
 	const midX = (vertex1X + vertex2X + vertex3X) / 3;
 	const midY = (vertex1Y + vertex2Y + vertex3Y) / 3;
@@ -151,7 +163,7 @@ function calculateByteStride(indicesAccessor) {
 	return byteStride;
 }
 
-const Tiles = [];
+let Tiles = [];
 //Tiles.push(structTile);
 
 function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
@@ -203,65 +215,46 @@ function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
 						indicesBufferData,
 						byteStride,
 					);
-					if (
-						triangleMidPoint.x <= middle.midX &&
-						triangleMidPoint.y <= middle.midY &&
-						triangleMidPoint.z <= middle.midZ
-					) {
-						tri_000++;
-						indiceList000.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x <= middle.midX &&
-						triangleMidPoint.y <= middle.midY &&
-						triangleMidPoint.z > middle.midZ
-					) {
-						tri_001++;
-						indiceList001.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x <= middle.midX &&
-						triangleMidPoint.y > middle.midY &&
-						triangleMidPoint.z <= middle.midZ
-					) {
-						tri_010++;
-						indiceList010.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x <= middle.midX &&
-						triangleMidPoint.y > middle.midY &&
-						triangleMidPoint.z > middle.midZ
-					) {
-						tri_011++;
-						indiceList011.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x > middle.midX &&
-						triangleMidPoint.y <= middle.midY &&
-						triangleMidPoint.z <= middle.midZ
-					) {
-						tri_100++;
-						indiceList100.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x > middle.midX &&
-						triangleMidPoint.y <= middle.midY &&
-						triangleMidPoint.z > middle.midZ
-					) {
-						tri_101++;
-						indiceList101.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x > middle.midX &&
-						triangleMidPoint.y > middle.midY &&
-						triangleMidPoint.z <= middle.midZ
-					) {
-						tri_110++;
-						indiceList110.push(triangleIndices);
-					} else if (
-						triangleMidPoint.x > middle.midX &&
-						triangleMidPoint.y > middle.midY &&
-						triangleMidPoint.z > middle.midZ
-					) {
-						tri_111++;
-						indiceList111.push(triangleIndices);
+					if (triangleMidPoint.x > middle.midX) {
+						if (triangleMidPoint.y > middle.midY) {
+							if (triangleMidPoint.z > middle.midZ) {
+								tri_111++;
+								indiceList111.push(triangleIndices);
+							} else {
+								tri_110++;
+								indiceList110.push(triangleIndices);
+							}
+						} else {
+							if (triangleMidPoint.z > middle.midZ) {
+								tri_101++;
+								indiceList101.push(triangleIndices);
+							} else {
+								tri_100++;
+								indiceList100.push(triangleIndices);
+							}
+						}
+					} else {
+						if (triangleMidPoint.y > middle.midY) {
+							if (triangleMidPoint.z > middle.midZ) {
+								tri_011++;
+								indiceList011.push(triangleIndices);
+							} else {
+								tri_010++;
+								indiceList010.push(triangleIndices);
+							}
+						} else {
+							if (triangleMidPoint.z > middle.midZ) {
+								tri_001++;
+								indiceList001.push(triangleIndices);
+							} else {
+								tri_000++;
+								indiceList000.push(triangleIndices);
+							}
+						}
 					}
 				}
 				Tiles.push({
+					level: 0,
 					boundingVolume: {
 						minX: boundingVolume.minX,
 						minY: boundingVolume.minY,
@@ -275,6 +268,7 @@ function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
 				});
 
 				Tiles.push({
+					level: 0,
 					boundingVolume: {
 						minX: boundingVolume.minX,
 						minY: boundingVolume.minY,
@@ -288,6 +282,7 @@ function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
 				});
 
 				Tiles.push({
+					level: 0,
 					boundingVolume: {
 						minX: boundingVolume.minX,
 						minY: middle.midY,
@@ -301,6 +296,7 @@ function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
 				});
 
 				Tiles.push({
+					level: 0,
 					boundingVolume: {
 						minX: boundingVolume.minX,
 						minY: middle.midY,
@@ -314,6 +310,7 @@ function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
 				});
 
 				Tiles.push({
+					level: 0,
 					boundingVolume: {
 						minX: middle.midX,
 						minY: boundingVolume.minY,
@@ -327,6 +324,7 @@ function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
 				});
 
 				Tiles.push({
+					level: 0,
 					boundingVolume: {
 						minX: middle.midX,
 						minY: boundingVolume.minY,
@@ -340,6 +338,7 @@ function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
 				});
 
 				Tiles.push({
+					level: 0,
 					boundingVolume: {
 						minX: middle.midX,
 						minY: middle.midY,
@@ -353,6 +352,7 @@ function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
 				});
 
 				Tiles.push({
+					level: 0,
 					boundingVolume: {
 						minX: middle.midX,
 						minY: middle.midY,
@@ -374,11 +374,17 @@ function calculateTriangles(gltfFilePath, boundingVolume, maxTrianglesPerTile) {
 }
 
 function repeated(tiles, maxTrianglesPerTile, indicesBufferData, byteStride) {
-	for (let i = 0; i < tiles.length; i++) {
+	let i = 0;
+	while (i < tiles.length) {
 		if (tiles[i].NumberOfTriangles > maxTrianglesPerTile) {
 			let tile = tiles[i];
 			tiles.splice(i, 1); // Remove the element at index i
-			i--;
+
+			console.log(
+				"Processing tile with more triangles than the threshold:",
+				tile,
+			);
+
 			//let tile = tiles.shift();
 			//calculateTriangles(gltfFilePath, tile.boundingVolume);
 			calculateBasedOnIndiceList(
@@ -386,11 +392,15 @@ function repeated(tiles, maxTrianglesPerTile, indicesBufferData, byteStride) {
 				indicesBufferData,
 				byteStride,
 				tile.boundingVolume,
+				tile.level,
 			);
+		} else if (tiles[i].NumberOfTriangles === 0) {
+			tiles.splice(i, 1);
 		} else {
-			continue;
+			i++;
 		}
 	}
+
 	//repeated(tiles, maxTrianglesPerTile, indicesBufferData, byteStride);
 	return tiles;
 }
@@ -399,6 +409,7 @@ function calculateBasedOnIndiceList(
 	indicesBufferData,
 	byteStride,
 	boundingVolume,
+	level,
 ) {
 	let tri_000 = 0;
 	let tri_001 = 0;
@@ -427,65 +438,55 @@ function calculateBasedOnIndiceList(
 			byteStride,
 		);
 		if (
-			triangleMidPoint.x <= middle.midX &&
-			triangleMidPoint.y <= middle.midY &&
-			triangleMidPoint.z <= middle.midZ
-		) {
-			tri_000++;
-			indiceList000.push(triangleIndices);
-		} else if (
-			triangleMidPoint.x <= middle.midX &&
-			triangleMidPoint.y <= middle.midY &&
-			triangleMidPoint.z > middle.midZ
-		) {
-			tri_001++;
-			indiceList001.push(triangleIndices);
-		} else if (
-			triangleMidPoint.x <= middle.midX &&
-			triangleMidPoint.y > middle.midY &&
-			triangleMidPoint.z <= middle.midZ
-		) {
-			tri_010++;
-			indiceList010.push(triangleIndices);
-		} else if (
-			triangleMidPoint.x <= middle.midX &&
-			triangleMidPoint.y > middle.midY &&
-			triangleMidPoint.z > middle.midZ
-		) {
-			tri_011++;
-			indiceList011.push(triangleIndices);
-		} else if (
 			triangleMidPoint.x > middle.midX &&
-			triangleMidPoint.y <= middle.midY &&
-			triangleMidPoint.z <= middle.midZ
+			triangleMidPoint.x <= boundingVolume.maxX
 		) {
-			tri_100++;
-			indiceList100.push(triangleIndices);
-		} else if (
-			triangleMidPoint.x > middle.midX &&
-			triangleMidPoint.y <= middle.midY &&
-			triangleMidPoint.z > middle.midZ
-		) {
-			tri_101++;
-			indiceList101.push(triangleIndices);
-		} else if (
-			triangleMidPoint.x > middle.midX &&
-			triangleMidPoint.y > middle.midY &&
-			triangleMidPoint.z <= middle.midZ
-		) {
-			tri_110++;
-			indiceList110.push(triangleIndices);
-		} else if (
-			triangleMidPoint.x > middle.midX &&
-			triangleMidPoint.y > middle.midY &&
-			triangleMidPoint.z > middle.midZ
-		) {
-			tri_111++;
-			indiceList111.push(triangleIndices);
+			if (
+				triangleMidPoint.y > middle.midY &&
+				triangleMidPoint.y <= boundingVolume.maxY
+			) {
+				if (
+					triangleMidPoint.z > middle.midZ &&
+					triangleMidPoint.z <= boundingVolume.maxZ
+				) {
+					tri_111++;
+					indiceList111.push(triangleIndices);
+				} else {
+					tri_110++;
+					indiceList110.push(triangleIndices);
+				}
+			} else {
+				if (triangleMidPoint.z > middle.midZ) {
+					tri_101++;
+					indiceList101.push(triangleIndices);
+				} else {
+					tri_100++;
+					indiceList100.push(triangleIndices);
+				}
+			}
+		} else {
+			if (triangleMidPoint.y > middle.midY) {
+				if (triangleMidPoint.z > middle.midZ) {
+					tri_011++;
+					indiceList011.push(triangleIndices);
+				} else {
+					tri_010++;
+					indiceList010.push(triangleIndices);
+				}
+			} else {
+				if (triangleMidPoint.z > middle.midZ) {
+					tri_001++;
+					indiceList001.push(triangleIndices);
+				} else {
+					tri_000++;
+					indiceList000.push(triangleIndices);
+				}
+			}
 		}
 	}
-
+	let Level = level + 1;
 	Tiles.push({
+		level: Level,
 		boundingVolume: {
 			minX: boundingVolume.minX,
 			minY: boundingVolume.minY,
@@ -499,6 +500,7 @@ function calculateBasedOnIndiceList(
 	});
 
 	Tiles.push({
+		level: Level,
 		boundingVolume: {
 			minX: boundingVolume.minX,
 			minY: boundingVolume.minY,
@@ -512,6 +514,7 @@ function calculateBasedOnIndiceList(
 	});
 
 	Tiles.push({
+		level: Level,
 		boundingVolume: {
 			minX: boundingVolume.minX,
 			minY: middle.midY,
@@ -525,6 +528,7 @@ function calculateBasedOnIndiceList(
 	});
 
 	Tiles.push({
+		level: Level,
 		boundingVolume: {
 			minX: boundingVolume.minX,
 			minY: middle.midY,
@@ -538,6 +542,7 @@ function calculateBasedOnIndiceList(
 	});
 
 	Tiles.push({
+		level: Level,
 		boundingVolume: {
 			minX: middle.midX,
 			minY: boundingVolume.minY,
@@ -551,6 +556,7 @@ function calculateBasedOnIndiceList(
 	});
 
 	Tiles.push({
+		level: Level,
 		boundingVolume: {
 			minX: middle.midX,
 			minY: boundingVolume.minY,
@@ -564,6 +570,7 @@ function calculateBasedOnIndiceList(
 	});
 
 	Tiles.push({
+		level: Level,
 		boundingVolume: {
 			minX: middle.midX,
 			minY: middle.midY,
@@ -577,6 +584,7 @@ function calculateBasedOnIndiceList(
 	});
 
 	Tiles.push({
+		level: Level,
 		boundingVolume: {
 			minX: middle.midX,
 			minY: middle.midY,
@@ -592,13 +600,28 @@ function calculateBasedOnIndiceList(
 
 const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
 let boundingVolume = calculateBoundingVolume(gltfFilePath);
-const result = calculateTriangles(gltfFilePath, boundingVolume, 6000);
+const result = calculateTriangles(gltfFilePath, boundingVolume, 1000);
+let numeTri = 0;
+// for (let i = 0; i < result.length; i++) {
+// 	if (result[i].NumberOfTriangles === 0) {
+// 		result.splice(i, 1); // Remove the element at index i
+// 		i--;
+// 	}
+// }
 
 for (let i = 0; i < result.length; i++) {
-	if (result[i].NumberOfTriangles === 0) {
-		result.splice(i, 1); // Remove the element at index i
-		i--;
-	}
+	numeTri += result[i].NumberOfTriangles;
 }
 console.log(result);
 console.log("Number of Tiles: " + result.length);
+for (let i = 0; i < result.length; i++) {
+	console.log(
+		"Tile:",
+		i,
+		"; level:",
+		result[i].level,
+		"; number of triangles in tile",
+		result[i].NumberOfTriangles,
+	);
+}
+console.log("Total number of triangles: " + numeTri);
