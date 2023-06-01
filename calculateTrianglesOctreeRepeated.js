@@ -117,18 +117,6 @@ function CalculateMidTriangle(triangleIndices, indicesBufferData, byteStride) {
 	const vertex2Offset = vertex2Index * byteStride;
 	const vertex3Offset = vertex3Index * byteStride;
 
-	// const vertex1X = indicesBufferData.readFloatLE(vertex1Offset);
-	// const vertex1Y = indicesBufferData.readFloatLE(vertex1Offset + 4);
-	// const vertex1Z = indicesBufferData.readFloatLE(vertex1Offset + 8);
-
-	// const vertex2X = indicesBufferData.readFloatLE(vertex2Offset);
-	// const vertex2Y = indicesBufferData.readFloatLE(vertex2Offset + 4);
-	// const vertex2Z = indicesBufferData.readFloatLE(vertex2Offset + 8);
-
-	// const vertex3X = indicesBufferData.readFloatLE(vertex3Offset);
-	// const vertex3Y = indicesBufferData.readFloatLE(vertex3Offset + 4);
-	// const vertex3Z = indicesBufferData.readFloatLE(vertex3Offset + 8);
-
 	vertex1X = indicesBufferData.readUInt16LE(vertex1Offset) / 65535;
 	vertex1Y = indicesBufferData.readUInt16LE(vertex1Offset + 2) / 65535;
 	vertex1Z = indicesBufferData.readUInt16LE(vertex1Offset + 4) / 65535;
@@ -380,10 +368,10 @@ function repeated(tiles, maxTrianglesPerTile, indicesBufferData, byteStride) {
 			let tile = tiles[i];
 			tiles.splice(i, 1); // Remove the element at index i
 
-			console.log(
-				"Processing tile with more triangles than the threshold:",
-				tile,
-			);
+			// console.log(
+			// 	"Processing tile with more triangles than the threshold:",
+			// 	tile,
+			// );
 
 			//let tile = tiles.shift();
 			//calculateTriangles(gltfFilePath, tile.boundingVolume);
@@ -600,7 +588,7 @@ function calculateBasedOnIndiceList(
 
 const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
 let boundingVolume = calculateBoundingVolume(gltfFilePath);
-const result = calculateTriangles(gltfFilePath, boundingVolume, 1000);
+const result = calculateTriangles(gltfFilePath, boundingVolume, 5000);
 let numeTri = 0;
 // for (let i = 0; i < result.length; i++) {
 // 	if (result[i].NumberOfTriangles === 0) {
@@ -612,16 +600,21 @@ let numeTri = 0;
 for (let i = 0; i < result.length; i++) {
 	numeTri += result[i].NumberOfTriangles;
 }
-console.log(result);
+//console.log(result);
+//console.log("Number of Tiles: " + result.length);
+
+// for (let i = 0; i < result.length; i++) {
+// 	console.log(
+// 		"Tile:",
+// 		i,
+// 		"; level:",
+// 		result[i].level,
+// 		"; Bounding Volume of Tile: ",
+// 		result[i].boundingVolume,
+// 		"; number of triangles in tile",
+// 		result[i].NumberOfTriangles,
+// 	);
+// }
 console.log("Number of Tiles: " + result.length);
-for (let i = 0; i < result.length; i++) {
-	console.log(
-		"Tile:",
-		i,
-		"; level:",
-		result[i].level,
-		"; number of triangles in tile",
-		result[i].NumberOfTriangles,
-	);
-}
 console.log("Total number of triangles: " + numeTri);
+console.log(result[0]);

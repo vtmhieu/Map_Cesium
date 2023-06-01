@@ -172,6 +172,8 @@ function calculateTriangles(gltfPath) {
 						indicesBufferData,
 						byteStride,
 					);
+
+					//check if the number of triangles in bounding volume is == the total number in file
 					if (
 						triangleMidPoint.x >= boundingVolume.minX &&
 						triangleMidPoint.x <= boundingVolume.maxX &&
