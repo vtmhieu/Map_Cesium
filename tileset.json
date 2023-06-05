@@ -1,0 +1,23 @@
+{
+  "asset": {
+    "version": "1.0"
+  },
+  "geometricError": 10000,
+  "root": {
+    "boundingVolume": {
+      "region": [
+        -9.07080364227295,
+        -1.965808391571045,
+        9.070802688598633,
+        1.965808391571045,
+        -9.070802688598633,
+        9.07080364227295
+      ]
+    },
+    "geometricError": 10000,
+    "refine": "ADD",
+    "content": {
+      "uri": "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.b3dm"
+    }
+  }
+}

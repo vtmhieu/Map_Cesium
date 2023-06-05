@@ -121,6 +121,15 @@ function readIndices(
 	}
 	return indicesList;
 }
+function convertIndicesIntoFlat(indicesList) {
+	let indicesArrayFlatten = [];
+	for (const vertex of indicesList) {
+		for (let i = 0; i < vertex.length; i++) {
+			indicesArrayFlatten.push(vertex[i]);
+		}
+	}
+	return indicesArrayFlatten;
+}
 
 function readPosition(
 	positionOffset,
@@ -153,6 +162,30 @@ function readPosition(
 	return positionVertexIndices;
 }
 
+function readPositionFlatten(
+	positionOffset,
+	positionByteStride,
+	positionBufferData,
+	indicesArrayFlatten,
+) {
+	let positionFlatten = [];
+	for (const index of indicesArrayFlatten) {
+		const vertexIndexX = positionBufferData.readFloatLE(
+			positionOffset + index * positionByteStride,
+		);
+		positionFlatten.push(vertexIndexX);
+		const vertexIndexY = positionBufferData.readFloatLE(
+			positionOffset + index * positionByteStride + 4,
+		);
+		positionFlatten.push(vertexIndexY);
+		const vertexIndexZ = positionBufferData.readFloatLE(
+			positionOffset + index * positionByteStride + 8,
+		);
+		positionFlatten.push(vertexIndexZ);
+	}
+	return positionFlatten;
+}
+
 function readNormal(
 	normalOffset,
 	normalByteStride,
@@ -163,22 +196,48 @@ function readNormal(
 	for (const vertexIndice of indicesList) {
 		const vertexNormal = [];
 		for (const vertexIndex of vertexIndice) {
+			const vertexNormalIndex = [];
 			const vertexNormalX = normalBufferData.readFloatLE(
 				normalOffset + vertexIndex * normalByteStride,
 			);
-			vertexNormal.push(vertexNormalX);
+			vertexNormalIndex.push(vertexNormalX);
 			const vertexNormalY = normalBufferData.readFloatLE(
 				normalOffset + vertexIndex * normalByteStride + 4,
 			);
-			vertexNormal.push(vertexNormalY);
+			vertexNormalIndex.push(vertexNormalY);
 			const vertexNormalZ = normalBufferData.readFloatLE(
 				normalOffset + vertexIndex * normalByteStride + 8,
 			);
-			vertexNormal.push(vertexNormalZ);
+			vertexNormalIndex.push(vertexNormalZ);
+			vertexNormal.push(vertexNormalIndex);
 		}
 		normalVertexIndices.push(vertexNormal);
 	}
 	return normalVertexIndices;
+}
+
+function readNormalFlatten(
+	normalOffset,
+	normalByteStride,
+	normalBufferData,
+	indicesArrayFlatten,
+) {
+	const normalFlatten = [];
+	for (const index of indicesArrayFlatten) {
+		const vertexNormalX = normalBufferData.readFloatLE(
+			normalOffset + index * normalByteStride,
+		);
+		normalFlatten.push(vertexNormalX);
+		const vertexNormalY = normalBufferData.readFloatLE(
+			normalOffset + index * normalByteStride + 4,
+		);
+		normalFlatten.push(vertexNormalY);
+		const vertexNormalZ = normalBufferData.readFloatLE(
+			normalOffset + index * normalByteStride + 8,
+		);
+		normalFlatten.push(vertexNormalZ);
+	}
+	return normalFlatten;
 }
 
 function readTexCoord(
@@ -203,6 +262,26 @@ function readTexCoord(
 		texCoord.push(vertexTexCoord);
 	}
 	return texCoord;
+}
+
+function readTexCoordFlatten(
+	texcoorOffset,
+	texcoorByteStride,
+	texcoorBufferData,
+	indicesArrayFlatten,
+) {
+	const texCoordArray = [];
+	for (const index of indicesArrayFlatten) {
+		const TexU = texcoorBufferData.readFloatLE(
+			texcoorOffset + index * texcoorByteStride,
+		);
+		texCoordArray.push(TexU);
+		const TexV = texcoorBufferData.readFloatLE(
+			texcoorOffset + index * texcoorByteStride + 4,
+		);
+		texCoordArray.push(TexV);
+	}
+	return texCoordArray;
 }
 
 function calculateTrianglesInBoundingVolume(
@@ -232,9 +311,123 @@ function calculateTrianglesInBoundingVolume(
 	}
 	return count;
 }
+function writeUInt32LE(value, buffer, offset) {
+	buffer.writeUInt32LE(value, offset);
+}
+
+function writeUInt16LE(value, buffer, offset) {
+	buffer.writeUInt16LE(value, offset);
+}
+
+function writeFloatLE(value, buffer, offset) {
+	buffer.writeFloatLE(value, offset);
+}
+
+function writeB3dmFile(
+	indicesArrayFlatten,
+	positionFlatten,
+	normalFlatten,
+	texcoordFlatten,
+	outputPath,
+) {
+	const featureTableJSON = {
+		BATCH_LENGTH: indicesArrayFlatten.length,
+	};
+
+	const featureTableJSONBuffer = Buffer.from(JSON.stringify(featureTableJSON));
+
+	const featureTableBinary = Buffer.alloc(4);
+
+	const batchTableJSON = {};
+
+	const batchTableJSONBuffer = Buffer.from(JSON.stringify(batchTableJSON));
+
+	const batchTableBinary = Buffer.alloc(0);
+
+	const glbHeader = Buffer.alloc(20);
+	writeUInt32LE(0x46546c67, glbHeader, 0); // magic
+	writeUInt32LE(2, glbHeader, 4); // version
+	writeUInt32LE(
+		28 +
+			8 +
+			indicesArrayFlatten.length * 2 +
+			positionFlatten.length * 4 +
+			normalFlatten.length * 4 +
+			texcoordFlatten.length * 4,
+		glbHeader,
+		8,
+	); // total length
+
+	const b3dmHeader = Buffer.alloc(28);
+	writeUInt32LE(0x6d643362, b3dmHeader, 0); // magic
+	writeUInt32LE(1, b3dmHeader, 4); // version
+	writeUInt32LE(
+		28 +
+			8 +
+			indicesArrayFlatten.length * 2 +
+			positionFlatten.length * 4 +
+			normalFlatten.length * 4 +
+			texcoordFlatten.length * 4,
+		b3dmHeader,
+		8,
+	); // total length
+	writeUInt32LE(0, b3dmHeader, 12); // feature table JSON byte length
+	writeUInt32LE(4, b3dmHeader, 16); // feature table binary byte length
+	writeUInt32LE(0, b3dmHeader, 20); // batch table JSON byte length
+	writeUInt32LE(0, b3dmHeader, 24); // batch table binary byte length
+
+	const indicesBuffer = Buffer.alloc(indicesArrayFlatten.length * 2);
+	for (let i = 0; i < indicesArrayFlatten.length; i++) {
+		writeUInt16LE(indicesArrayFlatten[i], indicesBuffer, i * 2);
+	}
+
+	const positionsBuffer = Buffer.alloc(positionFlatten.length * 4);
+	for (let i = 0; i < positionFlatten.length; i++) {
+		writeFloatLE(positionFlatten[i], positionsBuffer, i * 4);
+	}
+
+	const normalsBuffer = Buffer.alloc(normalFlatten.length * 4);
+	for (let i = 0; i < normalFlatten.length; i++) {
+		writeFloatLE(normalFlatten[i], normalsBuffer, i * 4);
+	}
+
+	const texCoordsBuffer = Buffer.alloc(texcoordFlatten.length * 4);
+	for (let i = 0; i < texcoordFlatten.length; i++) {
+		writeFloatLE(texcoordFlatten[i], texCoordsBuffer, i * 4);
+	}
+
+	const b3dmBuffer = Buffer.concat([
+		b3dmHeader,
+		featureTableJSONBuffer,
+		featureTableBinary,
+		batchTableJSONBuffer,
+		batchTableBinary,
+		indicesBuffer,
+		positionsBuffer,
+		normalsBuffer,
+		texCoordsBuffer,
+	]);
+
+	const glbBuffer = Buffer.concat([glbHeader, b3dmBuffer]);
+
+	fs.writeFileSync(outputPath, glbBuffer);
+}
+
+// // Example usage
+// const indices = [0, 1, 2, 3]; // Replace with your actual indices
+// const positions = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3]; // Replace with your actual positions
+// const normals = [0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1]; // Replace with your actual normals
+// const texCoords = [0, 0, 0, 1, 1, 1, 1, 0]; // Replace with your actual texture coordinates
+// const outputPath = "output.b3dm"; // Replace with your desired output path
+
+// writeB3dmFile(indices, positions, normals, texCoords, outputPath);
+
+// need to change everything into flattened format
+const outputPath = "output.b3dm";
 const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
 const gltf = ParseGLTF(gltfFilePath);
 const boundingVolume = calculateBoundingVolume(gltfFilePath);
+console.log(boundingVolume);
 for (const mesh of gltf.meshes) {
 	for (const primitive of mesh.primitives) {
 		if (primitive.mode === 4) {
@@ -278,31 +471,37 @@ for (const mesh of gltf.meshes) {
 				indicesBufferData,
 				indicesAccessor,
 			);
-			const positionAccessorList = readPosition(
+			const indicesArrayFlatten = convertIndicesIntoFlat(indicesList);
+			const positionFlatten = readPositionFlatten(
 				positionOffset,
 				positionByteStride,
 				positionBufferData,
-				indicesList,
+				indicesArrayFlatten,
 			);
-			const normalVertexIndices = readNormal(
+			const normalFlatten = readNormalFlatten(
 				normalOffset,
 				normalByteStride,
 				normalBufferData,
-				indicesList,
+				indicesArrayFlatten,
 			);
-			const texCoord = readTexCoord(
+			const texcoordFlatten = readTexCoordFlatten(
 				texcoorOffset,
 				texcoorByteStride,
 				texcoorBufferData,
-				indicesList,
+				indicesArrayFlatten,
 			);
+			// console.log(indicesArrayFlatten);
+			// console.log(positionFlatten);
+			// console.log(normalFlatten);
+			// console.log(texcoordFlatten);
 
-			//console.log(positionAccessorList);
-			let numberOfTri = calculateTrianglesInBoundingVolume(
-				positionAccessorList,
-				boundingVolume,
-			);
-			console.log(numberOfTri);
+			// writeB3dmFile(
+			// 	indicesArrayFlatten,
+			// 	positionFlatten,
+			// 	normalFlatten,
+			// 	texcoordFlatten,
+			// 	outputPath,
+			// );
 		}
 	}
 }

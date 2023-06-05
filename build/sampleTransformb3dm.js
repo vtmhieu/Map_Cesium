@@ -154,11 +154,11 @@ function generateB3dmFile(gltf) {
 	}
 
 	// Step 11: Save the b3dm buffer to a file
-	writeBinFile("path/to/output.b3dm", b3dmBuffer);
+	writeBinFile("output1.b3dm", b3dmBuffer);
 }
 
 // Load the glTF file
-const gltfFilePath = "path/to/input.gltf";
+const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
 const gltfData = fs.readFileSync(gltfFilePath, "utf8");
 const gltf = JSON.parse(gltfData);
 
