@@ -1,5 +1,5 @@
 const fs = require("fs");
-
+const Cesium = require("cesium");
 function ParseGLTF(gltfPath) {
 	const gltfData = fs.readFileSync(gltfPath);
 	const gltf = JSON.parse(gltfData);
@@ -77,10 +77,10 @@ function createTileset(tilesetName, contentUri, boundingVolume) {
 	const region = [
 		boundingVolume.minX,
 		boundingVolume.minY,
+		boundingVolume.minZ,
 		boundingVolume.maxX,
 		boundingVolume.maxY,
-		-boundingVolume.maxZ,
-		-boundingVolume.minZ,
+		boundingVolume.maxZ,
 	];
 	const tileset = {
 		asset: {

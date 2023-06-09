@@ -8,13 +8,13 @@ window.startup = async function (Cesium) {
 	});
 
 	// const viewer = new Cesium.Viewer("cesiumContainer", {
-	//   baseLayer: Cesium.ImageryLayer.fromProviderAsync(
-	//     Cesium.TileMapServiceImageryProvider.fromUrl(
-	//       Cesium.buildModuleUrl("/cesium/Source/Assets/Textures/NaturalEarthII")
-	//     )
-	//   ),
-	//   baseLayerPicker: false,
-	//   geocoder: false,
+	// 	baseLayer: Cesium.ImageryLayer.fromProviderAsync(
+	// 		Cesium.TileMapServiceImageryProvider.fromUrl(
+	// 			Cesium.buildModuleUrl("/cesium/Source/Assets/Textures/NaturalEarthII"),
+	// 		),
+	// 	),
+	// 	//baseLayerPicker: false,
+	// 	geocoder: false,
 	// });
 
 	const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
@@ -41,11 +41,12 @@ window.startup = async function (Cesium) {
 			//"./cdb-to-3dtiles/Tests/Data/ElevationMoreLODPositiveImagery/VerifiedTileset.json",
 
 			//"../cesium/Specs/Data/Cesium3DTiles/Tilesets/TilesetWithViewerRequestVolume/tileset.json",
-			"../tileset.json",
+			//"../tileset.json",
+			"../15302/tileset.json",
 			{ enableDebugWireframe: true },
 		);
 		viewer.scene.primitives.add(osmBuildingsTileset);
-		osmBuildingsTileset.maximumScreenSpaceError = 10;
+		//osmBuildingsTileset.maximumScreenSpaceError = 10;
 
 		viewer.zoomTo(osmBuildingsTileset);
 	} catch (error) {
