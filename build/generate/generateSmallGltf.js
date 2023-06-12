@@ -119,7 +119,7 @@ for (const index of listOfPrimitives[0]) {
 const gltfString = JSON.stringify(newGltf, null, 2);
 
 // Write the glTF string to a file
-fs.writeFile("output.gltf", gltfString, "utf8", (err) => {
+fs.writeFile("./output/gltf/output.gltf", gltfString, "utf8", (err) => {
 	if (err) {
 		console.error("Error writing glTF file:", err);
 	} else {
