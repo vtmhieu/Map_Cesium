@@ -68,3 +68,39 @@ const gltfFilePath = "/home/hieuvu/DATN/Map_Cesium/gltf/Gear2.gltf";
 
 const boundingVolume = calculateBoundingVolume(gltfFilePath);
 console.log(boundingVolume);
+
+// //let count = 0;
+// let minX = Infinity;
+// let minY = Infinity;
+// let minZ = Infinity;
+// let maxX = -Infinity;
+// let maxY = -Infinity;
+// let maxZ = -Infinity;
+
+// //calculate the best bounding volume
+// for (const mesh of gltf.meshes) {
+// 	for (const primitive of mesh.primitives) {
+// 		if (primitive.mode === 4) {
+// 			let accessor = gltf.accessors[primitive.attributes.POSITION];
+
+// 			minX = Math.min(minX, accessor.min[0]);
+// 			minY = Math.min(minY, accessor.min[1]);
+// 			minZ = Math.min(minZ, accessor.min[2]);
+// 			maxX = Math.max(maxX, accessor.max[0]);
+// 			maxY = Math.max(maxY, accessor.max[1]);
+// 			maxZ = Math.max(maxZ, accessor.max[2]);
+// 		} else {
+// 			continue;
+// 		}
+// 	}
+// }
+// const boundingVolume = {
+// 	minX: minX,
+// 	minY: minY,
+// 	minZ: minZ,
+// 	maxX: maxX,
+// 	maxY: maxY,
+// 	maxZ: maxZ,
+// };
+
+//console.log(boundingVolume);

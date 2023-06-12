@@ -30,6 +30,6 @@ async function convertGLBtoB3DM(inputFile, outputFile) {
 }
 
 // Run the conversion
-const inputFile = "/home/hieuvu/DATN/Map_Cesium/output/glb/output.glb";
-const outputFile = "./output/b3dm/output.b3dm";
+const inputFile = "/home/hieuvu/DATN/Map_Cesium/output/glb/output1.glb";
+const outputFile = "./output/b3dm/output1.b3dm";
 convertGLBtoB3DM(inputFile, outputFile);

@@ -30,6 +30,6 @@ async function convertGLTFtoGLB(inputFile, outputFile) {
 }
 
 // Run the conversion
-const inputFile = "/home/hieuvu/DATN/Map_Cesium/gltf/Box.gltf";
-const outputFile = "./output/glb/output.glb";
+const inputFile = "/home/hieuvu/DATN/Map_Cesium/output.gltf";
+const outputFile = "./output/glb/output1.glb";
 convertGLTFtoGLB(inputFile, outputFile);
