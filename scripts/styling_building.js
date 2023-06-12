@@ -29,7 +29,7 @@ window.startup = async function (Cesium) {
 	try {
 		const osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
 			//demo 1
-			//"../tileset_data/demo_dhbkhn_1/tileset.json",
+			"../tileset_data/demo_dhbkhn_1/tileset.json",
 
 			//demo 2 combine
 			//"../tileset_data/demo_dhbkhn_2_combine/11788/tileset.json",
@@ -42,7 +42,7 @@ window.startup = async function (Cesium) {
 
 			//"../cesium/Specs/Data/Cesium3DTiles/Tilesets/TilesetWithViewerRequestVolume/tileset.json",
 			//"../tileset.json",
-			"../15302/tileset.json",
+			//"../1530/tileset.json",
 			{ enableDebugWireframe: true },
 		);
 		viewer.scene.primitives.add(osmBuildingsTileset);
