@@ -43,7 +43,8 @@ window.startup = async function (Cesium) {
 			//"../cesium/Specs/Data/Cesium3DTiles/Tilesets/TilesetWithViewerRequestVolume/tileset.json",
 			//"../tileset.json",
 			//"../1530/tileset.json",
-			"../cotdien/tileset.json",
+			//"../cotdien/tileset.json",
+			"../output/tileset/00.json",
 			{ enableDebugWireframe: true },
 		);
 		viewer.scene.primitives.add(osmBuildingsTileset);

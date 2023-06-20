@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "3d-tiles-tools": "latest",
+    "3d-tiles-validator": "^0.4.1",
     "express": "^4.16.4",
     "gltf-pipeline": "^4.1.0",
     "node-fetch": "^2.6.11",

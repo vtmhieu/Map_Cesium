@@ -68,7 +68,7 @@
                                     ]
                                 },
                                 "content": {
-                                    "uri": "../output/b3dm/output.b3dm"
+                                    "uri": "./0composite0.b3dm"
                                 },
                                 "geometricError": 0
                             }
