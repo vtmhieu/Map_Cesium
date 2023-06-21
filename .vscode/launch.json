@@ -12,7 +12,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}//build/seperate_tile_box/build/test.js"
+            "program": "${workspaceFolder}//build/seperate_dhbk/build/main.js"
         }
     ]
 }

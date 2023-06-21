@@ -1,21 +1,21 @@
 window.startup = async function (Cesium) {
 	"use strict";
 
-	Cesium.Ion.defaultAccessToken =
-		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkOGIyNzkyOS0yOGYwLTRkNWQtYjViNi0xZmIyZmFkNmZlNjciLCJpZCI6MTMwNTkxLCJpYXQiOjE2ODE1NTE5NDV9.eFwl27eq0qznhWe1gBK71xqKF_WbLDwXbHgjiV6Uh-M";
-	const viewer = new Cesium.Viewer("cesiumContainer", {
-		terrant: Cesium.Terrain.fromWorldTerrain(),
-	});
-
+	// Cesium.Ion.defaultAccessToken =
+	// 	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkOGIyNzkyOS0yOGYwLTRkNWQtYjViNi0xZmIyZmFkNmZlNjciLCJpZCI6MTMwNTkxLCJpYXQiOjE2ODE1NTE5NDV9.eFwl27eq0qznhWe1gBK71xqKF_WbLDwXbHgjiV6Uh-M";
 	// const viewer = new Cesium.Viewer("cesiumContainer", {
-	// 	baseLayer: Cesium.ImageryLayer.fromProviderAsync(
-	// 		Cesium.TileMapServiceImageryProvider.fromUrl(
-	// 			Cesium.buildModuleUrl("/cesium/Source/Assets/Textures/NaturalEarthII"),
-	// 		),
-	// 	),
-	// 	//baseLayerPicker: false,
-	// 	geocoder: false,
+	// 	terrant: Cesium.Terrain.fromWorldTerrain(),
 	// });
+
+	const viewer = new Cesium.Viewer("cesiumContainer", {
+		baseLayer: Cesium.ImageryLayer.fromProviderAsync(
+			Cesium.TileMapServiceImageryProvider.fromUrl(
+				Cesium.buildModuleUrl("/cesium/Source/Assets/Textures/NaturalEarthII"),
+			),
+		),
+		//baseLayerPicker: false,
+		geocoder: false,
+	});
 
 	const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
 	// add Cesium OSM building to scene as our example 3D tileset
@@ -43,8 +43,8 @@ window.startup = async function (Cesium) {
 			//"../cesium/Specs/Data/Cesium3DTiles/Tilesets/TilesetWithViewerRequestVolume/tileset.json",
 			//"../tileset.json",
 			//"../1530/tileset.json",
-			//"../cotdien/tileset.json",
-			"../output/tileset/00.json",
+			"../cotdien/tileset.json",
+			//"../output/tileset/00.json",
 			{ enableDebugWireframe: true },
 		);
 		viewer.scene.primitives.add(osmBuildingsTileset);
