@@ -85,7 +85,17 @@ function ByteStride(Accessor) {
 }
 
 function calculateOffset(BufferView, Accessor) {
-	const offset = BufferView.byteOffset + Accessor.byteOffset;
+	let offset = 0;
+	if (BufferView.byteOffset == null) {
+		if (Accessor.byteOffset == null) {
+			offset = 0;
+		} else {
+			offset = Accessor.byteOffset;
+		}
+	} else {
+		offset = BufferView.byteOffset + Accessor.byteOffset;
+	}
+
 	return offset;
 }
 

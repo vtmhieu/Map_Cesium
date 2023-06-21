@@ -66,8 +66,10 @@ function generateTileset(gltfPath) {
 			}
 		}
 	}
+	const boundingVolume = calculate.boundingVolume(gltf);
 	console.log(positionList);
 	console.log(normalList);
+	console.log(boundingVolume);
 }
 
 generateTileset(gltfPath);
