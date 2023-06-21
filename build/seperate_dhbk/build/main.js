@@ -8,6 +8,7 @@ function generateTileset(gltfPath) {
 	const gltf = readData.ParseGLTF(gltfPath);
 	let positionList = [];
 	let normalList = [];
+	let indicesList = [];
 	for (mesh of gltf.meshes) {
 		for (primitive of mesh.primitives) {
 			if (primitive.mode === 4) {
@@ -66,10 +67,25 @@ function generateTileset(gltfPath) {
 			}
 		}
 	}
-	const boundingVolume = calculate.boundingVolume(gltf);
-	console.log(positionList);
-	console.log(normalList);
-	console.log(boundingVolume);
+	const rootBoundingVolume = calculate.boundingVolume(gltf);
+	// console.log(positionList);
+	// console.log(normalList);
+	// console.log(boundingVolume);
+
+	for (let i = 0; i < positionList.length / 3; i++) {
+		let indicesSmallList = [];
+		indicesSmallList.push(i * 3);
+		indicesSmallList.push(i * 3 + 1);
+		indicesSmallList.push(i * 3 + 2);
+		indicesList.push(indicesSmallList);
+	}
+	const newTiles = calculate.repeatedTiling(
+		indicesList,
+		rootBoundingVolume,
+		positionList,
+		1000,
+	);
+	console.log(newTiles);
 }
 
 generateTileset(gltfPath);

@@ -88,7 +88,7 @@ function readIndice(gltfPath) {
 				);
 				//console.log(normalList);
 
-				//divide tile in x and z direction
+				//divide tile in x and y direction
 				const newTiles = calculate.divideTile(
 					indicesList,
 					boundingVolume,

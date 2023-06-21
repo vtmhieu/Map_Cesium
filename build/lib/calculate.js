@@ -144,6 +144,27 @@ function calculateMidPointTriangle(
 	return { x: mid_x, y: mid_y, z: mid_z };
 }
 
+function calculateMidpointTriangleTotal(indices, positionList) {
+	const vertex1 = positionList[indices[0]];
+	const vertex2 = positionList[indices[1]];
+	const vertex3 = positionList[indices[2]];
+	const vertex1_x = vertex1[0];
+	const vertex1_y = vertex1[1];
+	const vertex1_z = vertex1[2];
+	const vertex2_x = vertex2[0];
+	const vertex2_y = vertex2[1];
+	const vertex2_z = vertex2[2];
+	const vertex3_x = vertex3[0];
+	const vertex3_y = vertex3[1];
+	const vertex3_z = vertex3[2];
+
+	const mid_x = (vertex1_x + vertex2_x + vertex3_x) / 3;
+	const mid_y = (vertex1_y + vertex2_y + vertex3_y) / 3;
+	const mid_z = (vertex1_z + vertex2_z + vertex3_z) / 3;
+
+	return { x: mid_x, y: mid_y, z: mid_z };
+}
+
 function calculateMidPoint_in_X_Y(boundingVolume) {
 	let midVol_x = (boundingVolume.minX + boundingVolume.maxX) / 2;
 	let midVol_y = (boundingVolume.minY + boundingVolume.maxY) / 2;
@@ -154,7 +175,17 @@ function calculateMidPoint_in_X_Y(boundingVolume) {
 	return midVol;
 }
 
-function divideTile(
+function calculateMidPoint_in_X_Z(boundingVolume) {
+	let midVol_x = (boundingVolume.minX + boundingVolume.maxX) / 2;
+	let midVol_z = (boundingVolume.minZ + boundingVolume.maxZ) / 2;
+	const midVol = {
+		x: midVol_x,
+		z: midVol_z,
+	};
+	return midVol;
+}
+
+function divideTile_in_X_Y(
 	indiceList,
 	boundingVolume,
 	positionBufferData,
@@ -196,6 +227,191 @@ function divideTile(
 	return Tiles;
 }
 
+//using for one small object
+function divideTile_in_X_Z(
+	indiceList,
+	boundingVolume,
+	positionBufferData,
+	positionByteStride,
+	positionOffset,
+) {
+	let midVol = calculateMidPoint_in_X_Z(boundingVolume);
+	let indiceList_00 = [];
+	let indiceList_01 = [];
+	let indiceList_10 = [];
+	let indiceList_11 = [];
+	for (const triangleIndices of indiceList) {
+		let midPoint = calculateMidPointTriangle(
+			triangleIndices,
+			positionBufferData,
+			positionByteStride,
+			positionOffset,
+		);
+		if (midPoint.x > midVol.x) {
+			if (midPoint.z > midVol.z) {
+				indiceList_11.push(triangleIndices);
+			} else {
+				indiceList_10.push(triangleIndices);
+			}
+		} else {
+			if (midPoint.z > midVol.z) {
+				indiceList_01.push(triangleIndices);
+			} else {
+				indiceList_00.push(triangleIndices);
+			}
+		}
+	}
+	const Tiles = {
+		Tiles_00: indiceList_00,
+		Tiles_01: indiceList_01,
+		Tiles_10: indiceList_10,
+		Tiles_11: indiceList_11,
+	};
+	return Tiles;
+}
+
+class Tile {
+	constructor(level, indiceList, size, boundingVolume) {
+		this.level = level;
+		this.indiceList = indiceList;
+		this.size = size;
+		this.boundingVolume = boundingVolume;
+	}
+}
+
+function calculateBoundingVolume(indiceList, positionList) {
+	let minX = Infinity;
+	let minY = Infinity;
+	let minZ = Infinity;
+	let maxX = -Infinity;
+	let maxY = -Infinity;
+	let maxZ = -Infinity;
+
+	for (const indices of indiceList) {
+		for (const index of indices) {
+			let position = positionList[index];
+			minX = Math.min(minX, position[0]);
+			minY = Math.min(minY, position[1]);
+			minZ = Math.min(minZ, position[2]);
+			maxX = Math.max(maxX, position[0]);
+			maxY = Math.max(maxY, position[1]);
+			maxZ = Math.max(maxZ, position[2]);
+		}
+	}
+	const boundingVolume = {
+		minX: minX,
+		minY: minY,
+		minZ: minZ,
+		maxX: maxX,
+		maxY: maxY,
+		maxZ: maxZ,
+	};
+	return boundingVolume;
+}
+//use for tiling the whole big gltf
+function divideTileTotal_in_X_Z(
+	indicesList,
+	boundingVolume,
+	positionList,
+	TileList,
+	level,
+) {
+	let midVol = calculateMidPoint_in_X_Z(boundingVolume);
+	let indiceList_00 = [];
+	let indiceList_01 = [];
+	let indiceList_10 = [];
+	let indiceList_11 = [];
+	for (const indices of indicesList) {
+		let midPoint = calculateMidpointTriangleTotal(indices, positionList);
+		if (midPoint.x > midVol.x) {
+			if (midPoint.z > midVol.z) {
+				indiceList_11.push(indices);
+			} else {
+				indiceList_10.push(indices);
+			}
+		} else {
+			if (midPoint.z > midVol.z) {
+				indiceList_01.push(indices);
+			} else {
+				indiceList_00.push(indices);
+			}
+		}
+	}
+	// const Tiles = {
+	// 	Tiles_00: indiceList_00,
+	// 	Tiles_01: indiceList_01,
+	// 	Tiles_10: indiceList_10,
+	// 	Tiles_11: indiceList_11,
+	// };
+	// return Tiles;
+	const volume_00 = calculateBoundingVolume(indiceList_00, positionList);
+	const volume_01 = calculateBoundingVolume(indiceList_01, positionList);
+	const volume_10 = calculateBoundingVolume(indiceList_10, positionList);
+	const volume_11 = calculateBoundingVolume(indiceList_11, positionList);
+	const tile_00 = new Tile(
+		level,
+		indiceList_00,
+		indiceList_00.length,
+		volume_00,
+	);
+	const tile_01 = new Tile(
+		level,
+		indiceList_01,
+		indiceList_01.length,
+		volume_01,
+	);
+	const tile_10 = new Tile(
+		level,
+		indiceList_10,
+		indiceList_10.length,
+		volume_10,
+	);
+	const tile_11 = new Tile(
+		level,
+		indiceList_11,
+		indiceList_11.length,
+		volume_11,
+	);
+	TileList.push(tile_00);
+	TileList.push(tile_01);
+	TileList.push(tile_10);
+	TileList.push(tile_11);
+	// return TileList;
+}
+
+function repeatedTiling(
+	indicesList,
+	boundingVolume,
+	positionList,
+	maxTriangle,
+) {
+	let TileList = [];
+	divideTileTotal_in_X_Z(
+		indicesList,
+		boundingVolume,
+		positionList,
+		TileList,
+		0,
+	);
+	for (let i = 0; i < TileList.length; i++) {
+		if (TileList[i].size > maxTriangle) {
+			const tile = TileList.splice(i, 1);
+			const level = tile[0].level + 1;
+			divideTileTotal_in_X_Z(
+				tile[0].indiceList,
+				tile[0].boundingVolume,
+				positionList,
+				TileList,
+				level,
+			);
+		} else if (TileList[i].size == 0) {
+			TileList.splice(i, 1);
+		} else {
+			continue;
+		}
+	}
+	return TileList;
+}
 function TranslationMatrix(boundingVolume) {
 	//Calculate translation vector
 	const translation = new Cesium.Cartesian3(
@@ -243,9 +459,12 @@ module.exports = {
 	boundingVolume,
 	ByteStride,
 	calculateOffset,
-	divideTile,
+	divideTile_in_X_Y,
+	divideTile_in_X_Z,
+	divideTileTotal_in_X_Z,
 	getComponentTypeSize,
 	calculateBoxTileset,
 	TranslationMatrix,
 	PositionMatrix,
+	repeatedTiling,
 };
