@@ -59,6 +59,15 @@ function generateTileset(gltfPath) {
 						normalData,
 						normalAccessor.count,
 					);
+
+					const indicesListNoIndex =
+						calculate.getIndicesList(postionListNoIndex);
+
+					indicesList = calculate.reIndexTotalIndices(
+						indicesList,
+						indicesListNoIndex,
+						positionList,
+					);
 					positionList = positionList.concat(postionListNoIndex);
 					normalList = normalList.concat(normalListNoIndex);
 				}
@@ -67,25 +76,33 @@ function generateTileset(gltfPath) {
 			}
 		}
 	}
-	const rootBoundingVolume = calculate.boundingVolume(gltf);
-	// console.log(positionList);
-	// console.log(normalList);
-	// console.log(boundingVolume);
 
-	for (let i = 0; i < positionList.length / 3; i++) {
-		let indicesSmallList = [];
-		indicesSmallList.push(i * 3);
-		indicesSmallList.push(i * 3 + 1);
-		indicesSmallList.push(i * 3 + 2);
-		indicesList.push(indicesSmallList);
-	}
-	const newTiles = calculate.repeatedTiling(
+	const rootBoundingVolume = calculate.boundingVolume(gltf);
+
+	// const newTiles = calculate.repeatedTilingQuadTree(
+	// 	indicesList,
+	// 	rootBoundingVolume,
+	// 	positionList,
+	// 	2000,
+	// );
+
+	let newTiles = calculate.repeatedTilingOcTree(
 		indicesList,
 		rootBoundingVolume,
 		positionList,
-		1000,
+		3000,
 	);
-	console.log(newTiles);
+	//
+	for (const Tile of newTiles) {
+		Tile.boundingVolume = calculate.calculateFinalBoundingVolume(
+			Tile.indiceList,
+			positionList,
+		);
+		write.simplifiedOctree(Tile.indiceList, positionList, normalList, Tile);
+
+		write.writeGLTF(Tile);
+	}
+	//console.log(newTiles);
 }
 
 generateTileset(gltfPath);

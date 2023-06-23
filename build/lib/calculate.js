@@ -185,6 +185,19 @@ function calculateMidPoint_in_X_Z(boundingVolume) {
 	return midVol;
 }
 
+function calculateMidPoint(boundingVolume) {
+	let midVol_x = (boundingVolume.minX + boundingVolume.maxX) / 2;
+	let midVol_y = (boundingVolume.minY + boundingVolume.maxY) / 2;
+	let midVol_z = (boundingVolume.minZ + boundingVolume.maxZ) / 2;
+	const midVol = {
+		x: midVol_x,
+		y: midVol_y,
+		z: midVol_z,
+	};
+
+	return midVol;
+}
+
 function divideTile_in_X_Y(
 	indiceList,
 	boundingVolume,
@@ -271,15 +284,27 @@ function divideTile_in_X_Z(
 }
 
 class Tile {
-	constructor(level, indiceList, size, boundingVolume) {
+	constructor(
+		level,
+		xyz,
+		indiceList,
+		positionList,
+		normalList,
+		size,
+		boundingVolume,
+	) {
 		this.level = level;
+		this.xyz = xyz;
 		this.indiceList = indiceList;
+		this.positionList = positionList;
+		this.normalList = normalList;
 		this.size = size;
 		this.boundingVolume = boundingVolume;
 	}
 }
 
-function calculateBoundingVolume(indiceList, positionList) {
+//final calculation
+function calculateFinalBoundingVolume(indiceList, positionList) {
 	let minX = Infinity;
 	let minY = Infinity;
 	let minZ = Infinity;
@@ -308,7 +333,278 @@ function calculateBoundingVolume(indiceList, positionList) {
 	};
 	return boundingVolume;
 }
+
+function calculateBoundingVolumeOcTree(boundingVolume, type) {
+	const midVol = calculateMidPoint(boundingVolume);
+	let finalboundingVolume = 0;
+	if (type == "111") {
+		finalboundingVolume = {
+			minX: midVol.x,
+			minY: midVol.y,
+			minZ: midVol.z,
+			maxX: boundingVolume.maxX,
+			maxY: boundingVolume.maxY,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if (type == "110") {
+		finalboundingVolume = {
+			minX: midVol.x,
+			minY: midVol.y,
+			minZ: boundingVolume.minZ,
+			maxX: boundingVolume.maxX,
+			maxY: boundingVolume.maxY,
+			maxZ: midVol.z,
+		};
+	} else if (type == "101") {
+		finalboundingVolume = {
+			minX: midVol.x,
+			minY: boundingVolume.minY,
+			minZ: midVol.z,
+			maxX: boundingVolume.maxX,
+			maxY: midVol.y,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if (type == "100") {
+		finalboundingVolume = {
+			minX: midVol.x,
+			minY: boundingVolume.minY,
+			minZ: boundingVolume.minZ,
+			maxX: boundingVolume.maxX,
+			maxY: midVol.y,
+			maxZ: midVol.z,
+		};
+	} else if (type == "011") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: midVol.y,
+			minZ: midVol.z,
+			maxX: midVol.x,
+			maxY: boundingVolume.maxY,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if (type == "010") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: midVol.y,
+			minZ: boundingVolume.minZ,
+			maxX: midVol.x,
+			maxY: boundingVolume.maxY,
+			maxZ: midVol.z,
+		};
+	} else if (type == "001") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: boundingVolume.minY,
+			minZ: midVol.z,
+			maxX: midVol.x,
+			maxY: midVol.y,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if (type == "000") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: boundingVolume.minY,
+			minZ: boundingVolume.minZ,
+			maxX: midVol.x,
+			maxY: midVol.y,
+			maxZ: midVol.z,
+		};
+	}
+
+	return finalboundingVolume;
+}
+
+function calculateBoundingVolumeQuadTree(boundingVolume, type) {
+	const midVol = calculateMidPoint_in_X_Z(boundingVolume);
+	let finalboundingVolume = 0;
+	if (type == "11") {
+		finalboundingVolume = {
+			minX: midVol.x,
+			minY: boundingVolume.minY,
+			minZ: midVol.z,
+			maxX: boundingVolume.maxX,
+			maxY: boundingVolume.maxY,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if ((type = "10")) {
+		finalboundingVolume = {
+			minX: midVol.x,
+			minY: boundingVolume.minY,
+			minZ: boundingVolume.minZ,
+			maxX: boundingVolume.maxX,
+			maxY: boundingVolume.maxY,
+			maxZ: midVol.z,
+		};
+	} else if (type == "01") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: boundingVolume.minY,
+			minZ: midVol.z,
+			maxX: midVol.x,
+			maxY: boundingVolume.maxY,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if (type == "00") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: boundingVolume.minY,
+			minZ: boundingVolume.minZ,
+			maxX: midVol.x,
+			maxY: boundingVolume.maxY,
+			maxZ: midVol.z,
+		};
+	}
+
+	return finalboundingVolume;
+}
+
+function divideOctree(
+	indicesList,
+	boundingVolume,
+	positionList,
+	TileList,
+	level,
+) {
+	let midVol = calculateMidPoint(boundingVolume);
+	let indiceList_000 = [];
+	let indiceList_001 = [];
+	let indiceList_010 = [];
+	let indiceList_011 = [];
+	let indiceList_100 = [];
+	let indiceList_101 = [];
+	let indiceList_110 = [];
+	let indiceList_111 = [];
+	try {
+		for (const indices of indicesList) {
+			let midPoint = calculateMidpointTriangleTotal(indices, positionList);
+			if (midPoint.x > midVol.x && midPoint.x <= boundingVolume.maxX) {
+				if (midPoint.y > midVol.y && midPoint.y <= boundingVolume.maxY) {
+					if (midPoint.z > midVol.z && midPoint.z <= boundingVolume.maxZ) {
+						indiceList_111.push(indices);
+					} else {
+						indiceList_110.push(indices);
+					}
+				} else {
+					if (midPoint.z > midVol.z && midPoint.z <= boundingVolume.maxZ) {
+						indiceList_101.push(indices);
+					} else {
+						indiceList_100.push(indices);
+					}
+				}
+			} else {
+				if (midPoint.y > midVol.y && midPoint.y <= boundingVolume.maxY) {
+					if (midPoint.z > midVol.z && midPoint.z <= boundingVolume.maxZ) {
+						indiceList_011.push(indices);
+					} else {
+						indiceList_010.push(indices);
+					}
+				} else {
+					if (midPoint.z > midVol.z && midPoint.z <= boundingVolume.maxZ) {
+						indiceList_001.push(indices);
+					} else {
+						indiceList_000.push(indices);
+					}
+				}
+			}
+		}
+
+		const volume_000 = calculateBoundingVolumeOcTree(boundingVolume, "000");
+		const volume_001 = calculateBoundingVolumeOcTree(boundingVolume, "001");
+		const volume_010 = calculateBoundingVolumeOcTree(boundingVolume, "010");
+		const volume_011 = calculateBoundingVolumeOcTree(boundingVolume, "011");
+		const volume_100 = calculateBoundingVolumeOcTree(boundingVolume, "100");
+		const volume_101 = calculateBoundingVolumeOcTree(boundingVolume, "101");
+		const volume_110 = calculateBoundingVolumeOcTree(boundingVolume, "110");
+		const volume_111 = calculateBoundingVolumeOcTree(boundingVolume, "111");
+
+		const tile_000 = new Tile(
+			level,
+			"000",
+			indiceList_000,
+			0,
+			0,
+			indiceList_000.length,
+			volume_000,
+		);
+		const tile_001 = new Tile(
+			level,
+			"001",
+			indiceList_001,
+			0,
+			0,
+			indiceList_001.length,
+			volume_001,
+		);
+		const tile_010 = new Tile(
+			level,
+			"010",
+			indiceList_010,
+			0,
+			0,
+			indiceList_010.length,
+			volume_010,
+		);
+		const tile_011 = new Tile(
+			level,
+			"011",
+			indiceList_011,
+			0,
+			0,
+			indiceList_011.length,
+			volume_011,
+		);
+		const tile_100 = new Tile(
+			level,
+			"100",
+			indiceList_100,
+			0,
+			0,
+			indiceList_100.length,
+			volume_100,
+		);
+		const tile_101 = new Tile(
+			level,
+			"101",
+			indiceList_101,
+			0,
+			0,
+			indiceList_101.length,
+			volume_101,
+		);
+		const tile_110 = new Tile(
+			level,
+			"110",
+			indiceList_110,
+			0,
+			0,
+			indiceList_110.length,
+			volume_110,
+		);
+		const tile_111 = new Tile(
+			level,
+			"111",
+			indiceList_111,
+			0,
+			0,
+			indiceList_111.length,
+			volume_111,
+		);
+
+		TileList.push(tile_000);
+		TileList.push(tile_001);
+		TileList.push(tile_010);
+		TileList.push(tile_011);
+		TileList.push(tile_100);
+		TileList.push(tile_101);
+		TileList.push(tile_110);
+		TileList.push(tile_111);
+	} catch (error) {
+		return { error: error.message };
+	}
+}
+
 //use for tiling the whole big gltf
+//divide quadtree
 function divideTileTotal_in_X_Z(
 	indicesList,
 	boundingVolume,
@@ -321,65 +617,97 @@ function divideTileTotal_in_X_Z(
 	let indiceList_01 = [];
 	let indiceList_10 = [];
 	let indiceList_11 = [];
-	for (const indices of indicesList) {
-		let midPoint = calculateMidpointTriangleTotal(indices, positionList);
-		if (midPoint.x > midVol.x) {
-			if (midPoint.z > midVol.z) {
-				indiceList_11.push(indices);
+	try {
+		for (const indices of indicesList) {
+			let midPoint = calculateMidpointTriangleTotal(indices, positionList);
+			if (midPoint.x > midVol.x && midPoint.x <= boundingVolume.maxX) {
+				if (midPoint.z > midVol.z && midPoint.z <= boundingVolume.maxZ) {
+					indiceList_11.push(indices);
+				} else {
+					indiceList_10.push(indices);
+				}
 			} else {
-				indiceList_10.push(indices);
-			}
-		} else {
-			if (midPoint.z > midVol.z) {
-				indiceList_01.push(indices);
-			} else {
-				indiceList_00.push(indices);
+				if (midPoint.z > midVol.z && midPoint.z <= boundingVolume.maxZ) {
+					indiceList_01.push(indices);
+				} else {
+					indiceList_00.push(indices);
+				}
 			}
 		}
+		// const Tiles = {
+		// 	Tiles_00: indiceList_00,
+		// 	Tiles_01: indiceList_01,
+		// 	Tiles_10: indiceList_10,
+		// 	Tiles_11: indiceList_11,
+		// };
+		// return Tiles;
+		const volume_00 = calculateBoundingVolumeQuadTree(boundingVolume, "00");
+		const volume_01 = calculateBoundingVolumeQuadTree(boundingVolume, "01");
+		const volume_10 = calculateBoundingVolumeQuadTree(boundingVolume, "10");
+		const volume_11 = calculateBoundingVolumeQuadTree(boundingVolume, "11");
+		const tile_00 = new Tile(
+			level,
+			indiceList_00,
+			indiceList_00.length,
+			volume_00,
+		);
+		const tile_01 = new Tile(
+			level,
+			indiceList_01,
+			indiceList_01.length,
+			volume_01,
+		);
+		const tile_10 = new Tile(
+			level,
+			indiceList_10,
+			indiceList_10.length,
+			volume_10,
+		);
+		const tile_11 = new Tile(
+			level,
+			indiceList_11,
+			indiceList_11.length,
+			volume_11,
+		);
+		TileList.push(tile_00);
+		TileList.push(tile_01);
+		TileList.push(tile_10);
+		TileList.push(tile_11);
+	} catch (error) {
+		return { error: error.message };
 	}
-	// const Tiles = {
-	// 	Tiles_00: indiceList_00,
-	// 	Tiles_01: indiceList_01,
-	// 	Tiles_10: indiceList_10,
-	// 	Tiles_11: indiceList_11,
-	// };
-	// return Tiles;
-	const volume_00 = calculateBoundingVolume(indiceList_00, positionList);
-	const volume_01 = calculateBoundingVolume(indiceList_01, positionList);
-	const volume_10 = calculateBoundingVolume(indiceList_10, positionList);
-	const volume_11 = calculateBoundingVolume(indiceList_11, positionList);
-	const tile_00 = new Tile(
-		level,
-		indiceList_00,
-		indiceList_00.length,
-		volume_00,
-	);
-	const tile_01 = new Tile(
-		level,
-		indiceList_01,
-		indiceList_01.length,
-		volume_01,
-	);
-	const tile_10 = new Tile(
-		level,
-		indiceList_10,
-		indiceList_10.length,
-		volume_10,
-	);
-	const tile_11 = new Tile(
-		level,
-		indiceList_11,
-		indiceList_11.length,
-		volume_11,
-	);
-	TileList.push(tile_00);
-	TileList.push(tile_01);
-	TileList.push(tile_10);
-	TileList.push(tile_11);
 	// return TileList;
 }
 
-function repeatedTiling(
+function repeatedTilingOcTree(
+	indicesList,
+	boundingVolume,
+	positionList,
+	maxTriangle,
+) {
+	let TileList = [];
+	divideOctree(indicesList, boundingVolume, positionList, TileList, 0);
+	let i = 0;
+	while (i < TileList.length) {
+		if (TileList[i].size > maxTriangle) {
+			const tile = TileList.splice(i, 1);
+			const level = tile[0].level + 1;
+			divideOctree(
+				tile[0].indiceList,
+				tile[0].boundingVolume,
+				positionList,
+				TileList,
+				level,
+			);
+		} else if (TileList[i].size === 0) {
+			TileList.splice(i, 1);
+		} else {
+			i++;
+		}
+	}
+	return TileList;
+}
+function repeatedTilingQuadTree(
 	indicesList,
 	boundingVolume,
 	positionList,
@@ -393,7 +721,8 @@ function repeatedTiling(
 		TileList,
 		0,
 	);
-	for (let i = 0; i < TileList.length; i++) {
+	let i = 0;
+	while (i < TileList.length) {
 		if (TileList[i].size > maxTriangle) {
 			const tile = TileList.splice(i, 1);
 			const level = tile[0].level + 1;
@@ -404,10 +733,10 @@ function repeatedTiling(
 				TileList,
 				level,
 			);
-		} else if (TileList[i].size == 0) {
+		} else if (TileList[i].size === 0) {
 			TileList.splice(i, 1);
 		} else {
-			continue;
+			i++;
 		}
 	}
 	return TileList;
@@ -455,6 +784,28 @@ function PositionMatrix(longitude, latitude, height) {
 	Cesium.Matrix4.toArray(transformMatrix, modelMatrixArray);
 	return modelMatrixArray;
 }
+
+function getIndicesList(positionList) {
+	let indicesList = [];
+	for (let i = 0; i < positionList.length - 2; i++) {
+		let smallList = [i, i + 1, i + 2];
+		indicesList.push(smallList);
+	}
+	return indicesList;
+}
+
+function reIndexTotalIndices(indiceList, indicesListNoIndex, positionList) {
+	for (let i = 0; i < indicesListNoIndex.length; i++) {
+		let index = indicesListNoIndex[i];
+		for (let j = 0; j < index.length; j++) {
+			index[j] += positionList.length;
+		}
+	}
+
+	indiceList = indiceList.concat(indicesListNoIndex);
+	return indiceList;
+}
+
 module.exports = {
 	boundingVolume,
 	ByteStride,
@@ -466,5 +817,9 @@ module.exports = {
 	calculateBoxTileset,
 	TranslationMatrix,
 	PositionMatrix,
-	repeatedTiling,
+	repeatedTilingQuadTree,
+	repeatedTilingOcTree,
+	getIndicesList,
+	reIndexTotalIndices,
+	calculateFinalBoundingVolume,
 };

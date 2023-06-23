@@ -37,6 +37,34 @@ function simplified(NormalList, PositionList, IndicesList) {
 	//console.log(IVN);
 	return IVN;
 }
+function simplifiedOctree(indicesList, positionList, normalList, Tile) {
+	const newIndices = [];
+	const newPositions = [];
+	const newNormals = [];
+	const vertexMapping = {};
+
+	indicesList.forEach((triangle) => {
+		const newTriangle = [];
+
+		triangle.forEach((vertexIndex) => {
+			if (!(vertexIndex in vertexMapping)) {
+				const newIndex = newPositions.length;
+				vertexMapping[vertexIndex] = newIndex;
+				newPositions.push(positionList[vertexIndex]);
+			}
+			newTriangle.push(vertexMapping[vertexIndex]);
+		});
+		newIndices.push(newTriangle);
+	});
+	normalList.forEach((normal, index) => {
+		if (index in vertexMapping) {
+			newNormals.push(normalList[index]);
+		}
+	});
+	Tile.indiceList = newIndices;
+	Tile.positionList = newPositions;
+	Tile.normalList = newNormals;
+}
 
 async function write(IVN, name) {
 	try {
@@ -49,7 +77,7 @@ async function write(IVN, name) {
 	}
 }
 
-async function writeGLTF(IVN, name) {
+async function writeGLTF(Tile) {
 	const glTFData = {
 		asset: { version: "2.0", generator: "COLLADA2GLTF" },
 		accessors: [],
@@ -60,9 +88,15 @@ async function writeGLTF(IVN, name) {
 		scenes: [{ nodes: [0] }],
 		scene: 0,
 	};
-
+	let indiceList = Tile.indiceList.flat();
+	let positionList = Tile.positionList.flat();
+	let normalList = Tile.normalList.flat();
+	let max = 0;
+	for (const index of indiceList) {
+		max = Math.max(max, index);
+	}
 	//Encode indices
-	const indicesBuffer = new Uint16Array(IVN.indices);
+	const indicesBuffer = new Uint16Array(indiceList);
 	const indicesDataURI = encodeToDataURI(indicesBuffer.buffer);
 	const indicesBufferView = createBufferView(indicesBuffer, 0);
 	const indicesAccessor = createIndicesAccessor(
@@ -70,10 +104,11 @@ async function writeGLTF(IVN, name) {
 		0,
 		"SCALAR",
 		5123,
+		max,
 	);
 
 	//Encode positions
-	const positionsBuffer = new Float32Array(IVN.positions);
+	const positionsBuffer = new Float32Array(positionList);
 	const positionsDataURI = encodeToDataURI(positionsBuffer.buffer);
 	const positionsBufferView = createBufferView(positionsBuffer, 1);
 	const positionsAccessor = createPositionAccessor(
@@ -81,11 +116,11 @@ async function writeGLTF(IVN, name) {
 		1,
 		"VEC3",
 		5126,
-		IVN.positions,
+		positionList,
 	);
 
 	//Encode normals
-	const normalsBuffer = new Float32Array(IVN.normals);
+	const normalsBuffer = new Float32Array(normalList);
 	const normalsDataURI = encodeToDataURI(normalsBuffer.buffer);
 	const normalsBufferView = createBufferView(normalsBuffer, 2);
 	const normalsAccessor = createNormalAccessor(
@@ -93,7 +128,7 @@ async function writeGLTF(IVN, name) {
 		2,
 		"VEC3",
 		5126,
-		IVN.normals,
+		normalList,
 	);
 
 	//Create mesh and primitives
@@ -136,13 +171,18 @@ async function writeGLTF(IVN, name) {
 	);
 
 	const gltf = JSON.stringify(glTFData, null, 2);
-	fs.writeFile("./output/gltf/" + name + ".gltf", gltf, "utf8", (err) => {
-		if (err) {
-			console.error("Error writing glTF file:", err);
-		} else {
-			console.log("glTF file written successfully!");
-		}
-	});
+	fs.writeFile(
+		"./output/gltf/level_" + Tile.level + "_" + Tile.xyz + ".gltf",
+		gltf,
+		"utf8",
+		(err) => {
+			if (err) {
+				console.error("Error writing glTF file:", err);
+			} else {
+				console.log("glTF file written successfully!");
+			}
+		},
+	);
 }
 
 function createBufferView(buffer, index, byteOffset = 0) {
@@ -154,14 +194,14 @@ function createBufferView(buffer, index, byteOffset = 0) {
 	};
 }
 
-function createIndicesAccessor(bufferView, index, type, componentType) {
+function createIndicesAccessor(bufferView, index, type, componentType, max) {
 	return {
 		bufferView: index,
 		byteOffset: 0,
 		componentType: componentType,
 		count: bufferView.byteLength / ByteStride(componentType, type),
 		min: [0],
-		max: [bufferView.byteLength / ByteStride(componentType, type) - 1],
+		max: [max],
 		type: type,
 	};
 }
@@ -339,6 +379,7 @@ async function writeTileset(name) {
 
 module.exports = {
 	simplified,
+	simplifiedOctree,
 	writeGLTF,
 	write,
 };
