@@ -1,0 +1,118 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 81,
+      "min": [
+        0
+      ],
+      "max": [
+        71
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 72,
+      "max": [
+        153.0030059814453,
+        7.5,
+        15.418000221252441
+      ],
+      "min": [
+        27.985998153686523,
+        0,
+        -67.83799743652344
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 72,
+      "max": [
+        1,
+        0,
+        1
+      ],
+      "min": [
+        -0.9999997019767761,
+        0,
+        -0.9999998807907104
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 162,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAgADAAQABQAGAAcABwAIAAkACgALAAwADQAOAA8ADwAQABEAEgATABQAFAAVABYAFwAYABkAGgAbABwAHAAdAB4AHwAgACEAIQAiACMAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMgAzADQANQA2ADcANwA4ADkAOgA7ADwAPQA+AD8AQABBAEIAQwBEAEUARQBGAEcA"
+    },
+    {
+      "byteLength": 864,
+      "uri": "data:application/octet-stream;base64,ybb0QgAA8EDsUWXCybb0QgAAAADsUWXCybb0QgAAAADsUWXCSsz0QgAAAACY7gzCSsz0QgAA8ECY7gzCSsz0QgAA8ECY7gzCSsz0QgAAAACY7gzCSsz0QgAAAACY7gzCxQAZQwAAAADpJg3CxQAZQwAA8EDpJg3CpvsYQwAAAADppkHCaBELQwAAAAAfhUHCaBELQwAA8EAfhUHCaBELQwAA8EAfhUHCaBELQwAAAAAfhUHCaBELQwAAAAAfhUHCmA4LQwAAAABzaGXCmA4LQwAA8EBzaGXCmA4LQwAA8EBzaGXCmA4LQwAAAABzaGXCmA4LQwAAAABzaGXCybb0QgAAAADsUWXCybb0QgAA8EDsUWXCF9lNQgAAAAAv3YTA2Q7WQgAAAAD8qYHA2Q7WQgAA8ED8qYHA2Q7WQgAA8ED8qYHA2Q7WQgAAAAD8qYHA2Q7WQgAAAAD8qYHAFxnWQgAAAAAGgYDBFxnWQgAA8EAGgYDBFxnWQgAA8EAGgYDBFxnWQgAAAAAGgYDBFxnWQgAAAAAGgYDBmO5NQgAAAADfT4HBmO5NQgAA8EDfT4HBkS3YQgAA8EA9Ctc/kS3YQgAAAAA9Ctc/U+PfQQAAAAAnMeg/9D3YQgAAAAAesHZBFC7YQgAAAADvKtc/FC7YQgAA8EDvKtc/kS3YQgAA8EACK9c/kS3YQgAAAAACK9c/VOPfQQAAAADsUeg/cT3YQgAAAAAhsHZBkS3YQgAAAAACK9c/kS3YQgAA8EACK9c/N0m8QgAA8EDVeNnBN0m8QgAAAADVeNnBN0m8QgAAAADVeNnBN0m8QgAAAADNzCbCN0m8QgAA8EDNzCbCtEi8QgAA8EDVeNnBtEi8QgAAAADVeNnBtEi8QgAAAADVeNnBtEi8QgAAAADNzCbCtEi8QgAA8EDNzCbClkNfQgAAAAAOrYfCsh2aQgAAAAAOrYfCsh2aQgAA8EAOrYfCsh2aQgAA8EAOrYfCsh2aQgAAAAAOrYfCsh2aQgAAAAAOrYfCJ7EYQwAAAADZznc/xwv+QgAAAABI4Xo/xwv+QgAA8EBI4Xo/xwv+QgAA8EBI4Xo/xwv+QgAAAABI4Xo/xwv+QgAAAABI4Xo/5RD+QgAAAACBlWVB5RD+QgAA8ECBlWVB"
+    },
+    {
+      "byteLength": 864,
+      "uri": "data:application/octet-stream;base64,4v9/vwAAAAAlIfk64v9/vwAAAAAlIfk64v9/vwAAAIAlIfk64v9/vwAAAIAlIfk64v9/vwAAAIAlIfk6Ro7rOgAAAADl/38/Ro7rOgAAAADl/38/Ro7rOgAAAADl/38/Ro7rOgAAAADl/38/Ro7rOgAAAADl/38/wWsbuwAAAADR/3+/wWsbuwAAAADR/3+/wWsbuwAAAADR/3+/8/9/PwAAAIDusqC68/9/PwAAAIDusqC68/9/PwAAAADusqC68/9/PwAAAADusqC68/9/PwAAAADusqC6aKusugAAAADx/3+/aKusugAAAADx/3+/aKusugAAAADx/3+/aKusugAAAADx/3+/aKusugAAAADx/3+/ceHrugAAAIDl/38/ceHrugAAAIDl/38/ceHrugAAAIDl/38/6f9/PwAAAADCQNo66f9/PwAAAADCQNo66f9/PwAAAADCQNo66f9/PwAAAADCQNo66f9/PwAAAADCQNo6ZD7uOgAAAIDk/3+/ZD7uOgAAAIDk/3+/ZD7uOgAAAADk/3+/ZD7uOgAAAADk/3+/ZD7uOgAAAADk/3+/U0PbugAAAADp/3+/U0PbugAAAADp/3+/U0PbugAAAADp/3+/1f9/PwAAAACy5BO71f9/PwAAAACy5BO71f9/PwAAAACy5BO7U0PbugAAAADp/3+/U0PbugAAAADp/3+/U0PbugAAAADp/3+/1f9/PwAAAACy5BO71f9/PwAAAACy5BO71f9/PwAAAACy5BO7AACAPwAAAIAAAACAAACAPwAAAIAAAACAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAIAAAACAAACAPwAAAIAAAACAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/7eF/PwAAAIA0Jfi87eF/PwAAAIA0Jfi87eF/PwAAAAA0Jfi8bxn1uQAAAAD+/3+/bxn1uQAAAAD+/3+/bxn1uQAAAAD+/3+/+/9/vwAAAABbFUQ6+/9/vwAAAABbFUQ6+/9/vwAAAIBbFUQ6+/9/vwAAAIBbFUQ6+/9/vwAAAIBbFUQ6"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 162
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 864
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 864
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

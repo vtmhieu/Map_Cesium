@@ -37,7 +37,7 @@ function simplified(NormalList, PositionList, IndicesList) {
 	//console.log(IVN);
 	return IVN;
 }
-function simplifiedOctree(indicesList, positionList, normalList, Tile) {
+async function simplifiedOctree(indicesList, positionList, normalList, Tile) {
 	const newIndices = [];
 	const newPositions = [];
 	const newNormals = [];
@@ -66,12 +66,12 @@ function simplifiedOctree(indicesList, positionList, normalList, Tile) {
 	Tile.normalList = newNormals;
 }
 
-async function write(IVN, name) {
+async function write(indiceList, positionList, normalList, Tile) {
 	try {
-		await writeGLTF(IVN, name);
-		await convertGLTFtoGLB(name);
-		await convertGLBtoB3DM(name);
-		await writeTileset(name);
+		await simplifiedOctree(indiceList, positionList, normalList, Tile);
+		await writeGLTF(Tile);
+		await convertGLTFtoGLB(Tile);
+		await convertGLBtoB3DM(Tile);
 	} catch (error) {
 		console.error("An error occurred:", error.message);
 	}
@@ -169,20 +169,14 @@ async function writeGLTF(Tile) {
 		positionsBufferView,
 		normalsBufferView,
 	);
-
 	const gltf = JSON.stringify(glTFData, null, 2);
-	fs.writeFile(
-		"./output/gltf/level_" + Tile.level + "_" + Tile.xyz + ".gltf",
-		gltf,
-		"utf8",
-		(err) => {
-			if (err) {
-				console.error("Error writing glTF file:", err);
-			} else {
-				console.log("glTF file written successfully!");
-			}
-		},
-	);
+	fs.writeFile("./output/gltf/" + Tile.uri + ".gltf", gltf, "utf8", (err) => {
+		if (err) {
+			console.error("Error writing glTF file:", err);
+		} else {
+			console.log("glTF file written successfully!");
+		}
+	});
 }
 
 function createBufferView(buffer, index, byteOffset = 0) {
@@ -308,13 +302,13 @@ function runCommand(command) {
 }
 
 // Example usage
-async function convertGLTFtoGLB(name) {
+async function convertGLTFtoGLB(Tile) {
 	// Run the conversion
 	const inputFile =
-		"/home/hieuvu/DATN/Map_Cesium/output/gltf/" + name + ".gltf";
-	const outputFile = "./output/glb/" + name + ".glb";
+		"/home/hieuvu/DATN/Map_Cesium/output/gltf/" + Tile.uri + ".gltf";
+	const outputFile = "./output/glb/" + Tile.uri + ".glb";
 	try {
-		const command = `gltf-pipeline -i ${inputFile} -o ${outputFile}`;
+		const command = `gltf-pipeline -f -i ${inputFile} -o ${outputFile}`;
 		const result = await runCommand(command);
 		console.log(result);
 	} catch (error) {
@@ -322,9 +316,10 @@ async function convertGLTFtoGLB(name) {
 	}
 }
 
-async function convertGLBtoB3DM(name) {
-	const inputFile = "/home/hieuvu/DATN/Map_Cesium/output/glb/" + name + ".glb";
-	const outputFile = "./output/b3dm/" + name + ".b3dm";
+async function convertGLBtoB3DM(Tile) {
+	const inputFile =
+		"/home/hieuvu/DATN/Map_Cesium/output/glb/" + Tile.uri + ".glb";
+	const outputFile = "./output/b3dm/" + Tile.uri + ".b3dm";
 	try {
 		const command = `npx 3d-tiles-tools glbToB3dm -f -i ${inputFile} -o ${outputFile}`;
 		const result = await runCommand(command);
@@ -377,9 +372,76 @@ async function writeTileset(name) {
 	fs.writeFileSync(tilesetName, JSON.stringify(tileset, null, 2));
 }
 
+// class Children {
+// 	constructor(boundingBox, uri, geometricError) {
+// 		this.boundingBox = boundingBox;
+// 		this.uri = uri;
+// 		this.geometricError = geometricError;
+// 	}
+// }
+function writeTilesetTotal(TileList, rootBoundingVolume) {
+	const geometricError = 100;
+	let positionMatrix = calculate.PositionMatrix(105, 22, -10);
+	let rootBox = calculate.rootBoundingBox(rootBoundingVolume);
+	let translationMatrix = calculate.TranslationMatrix(rootBoundingVolume);
+	let tileset = {
+		asset: {
+			version: "1.0",
+		},
+		geometricError: geometricError,
+		root: {
+			refine: "ADD",
+			transform: positionMatrix,
+			boundingVolume: {
+				box: rootBox,
+			},
+			geometricError: geometricError,
+			children: [
+				{
+					geometricError: geometricError,
+					transform: translationMatrix,
+					boundingVolume: {
+						box: rootBox,
+					},
+					children: [],
+				},
+			],
+		},
+	};
+	// let children = {
+	// 	boundingVolume: {
+	// 		box: [],
+	// 	},
+	// 	content: {
+	// 		uri: "",
+	// 	},
+	// 	geometricError: 0,
+	// };
+	for (const Tile of TileList) {
+		const newBox = calculate.calculateBoxTilesetYupZup(Tile.boundingVolume);
+		const newUri = "./output/b3dm/" + Tile.uri + ".b3dm";
+
+		tileset.root.children[0].children.push({
+			boundingVolume: {
+				box: newBox,
+			},
+			content: {
+				uri: newUri,
+			},
+			geometricError: 0,
+		});
+	}
+
+	const tilesetName = "tileset.json";
+	fs.writeFileSync(tilesetName, JSON.stringify(tileset, null, 2));
+}
+
 module.exports = {
 	simplified,
 	simplifiedOctree,
 	writeGLTF,
+	convertGLBtoB3DM,
+	convertGLTFtoGLB,
 	write,
+	writeTilesetTotal,
 };

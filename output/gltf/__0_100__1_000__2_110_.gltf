@@ -1,0 +1,118 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 9,
+      "min": [
+        0
+      ],
+      "max": [
+        7
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        149.65699768066406,
+        7.5,
+        -123.03099822998047
+      ],
+      "min": [
+        149.31399536132812,
+        0,
+        -131.32400512695312
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        0.9991457462310791,
+        0,
+        -0.04132485017180443
+      ],
+      "min": [
+        -0.04230661317706108,
+        0,
+        -0.9991046786308289
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 18,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAgADAAQABQAGAAcA"
+    },
+    {
+      "byteLength": 96,
+      "uri": "data:application/octet-stream;base64,MagVQwAA8EDfD/bCMagVQwAAAADfD/bCMagVQwAAAADfD/bCYlAVQwAAAADyUgPDYlAVQwAA8EDyUgPDYlAVQwAA8EDyUgPDYlAVQwAAAADyUgPDYlAVQwAAAADyUgPD"
+    },
+    {
+      "byteLength": 96,
+      "uri": "data:application/octet-stream;base64,BMh/PwAAAIA/RCm9BMh/PwAAAIA/RCm9BMh/PwAAAAA/RCm9BMh/PwAAAAA/RCm9BMh/PwAAAAA/RCm9s0ktvQAAAABTxX+/s0ktvQAAAABTxX+/s0ktvQAAAABTxX+/"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 18
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 96
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 96
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

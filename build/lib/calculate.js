@@ -36,6 +36,46 @@ function boundingVolume(gltf) {
 	return boundingVolume;
 }
 
+function calculateBoxTilesetYupZup(boundingVolume) {
+	let box = [];
+	box.push((boundingVolume.minX + boundingVolume.maxX) / 2);
+	box.push((boundingVolume.minZ + boundingVolume.maxZ) / 2);
+	box.push((boundingVolume.minY + boundingVolume.maxY) / 2);
+
+	box.push((boundingVolume.maxX - boundingVolume.minX) / 2);
+	box.push(0);
+	box.push(0);
+
+	box.push(0);
+	box.push((boundingVolume.maxZ - boundingVolume.minZ) / 2);
+	box.push(0);
+
+	box.push(0);
+	box.push(0);
+	box.push((boundingVolume.maxY - boundingVolume.minY) / 2);
+
+	return box;
+}
+function rootBoundingBox(boundingVolume) {
+	let box = [];
+	box.push(0);
+	box.push(0);
+	box.push((boundingVolume.minY + boundingVolume.maxY) / 2);
+
+	box.push((boundingVolume.maxX - boundingVolume.minX) / 2);
+	box.push(0);
+	box.push(0);
+
+	box.push(0);
+	box.push((boundingVolume.maxZ - boundingVolume.minZ) / 2);
+	box.push(0);
+
+	box.push(0);
+	box.push(0);
+	box.push((boundingVolume.maxY - boundingVolume.minY) / 2);
+	return box;
+}
+
 function calculateBoxTileset(boundingVolume) {
 	let box = [];
 	box.push((boundingVolume.minX + boundingVolume.maxX) / 2);
@@ -292,6 +332,7 @@ class Tile {
 		normalList,
 		size,
 		boundingVolume,
+		uri,
 	) {
 		this.level = level;
 		this.xyz = xyz;
@@ -300,6 +341,7 @@ class Tile {
 		this.normalList = normalList;
 		this.size = size;
 		this.boundingVolume = boundingVolume;
+		this.uri = uri;
 	}
 }
 
@@ -461,6 +503,7 @@ function calculateBoundingVolumeQuadTree(boundingVolume, type) {
 function divideOctree(
 	indicesList,
 	boundingVolume,
+	uri,
 	positionList,
 	TileList,
 	level,
@@ -517,6 +560,15 @@ function divideOctree(
 		const volume_110 = calculateBoundingVolumeOcTree(boundingVolume, "110");
 		const volume_111 = calculateBoundingVolumeOcTree(boundingVolume, "111");
 
+		const uri_000 = uri + "_" + level + "_000_";
+		const uri_001 = uri + "_" + level + "_001_";
+		const uri_010 = uri + "_" + level + "_010_";
+		const uri_011 = uri + "_" + level + "_011_";
+		const uri_100 = uri + "_" + level + "_100_";
+		const uri_101 = uri + "_" + level + "_101_";
+		const uri_110 = uri + "_" + level + "_110_";
+		const uri_111 = uri + "_" + level + "_111_";
+
 		const tile_000 = new Tile(
 			level,
 			"000",
@@ -525,6 +577,7 @@ function divideOctree(
 			0,
 			indiceList_000.length,
 			volume_000,
+			uri_000,
 		);
 		const tile_001 = new Tile(
 			level,
@@ -534,6 +587,7 @@ function divideOctree(
 			0,
 			indiceList_001.length,
 			volume_001,
+			uri_001,
 		);
 		const tile_010 = new Tile(
 			level,
@@ -543,6 +597,7 @@ function divideOctree(
 			0,
 			indiceList_010.length,
 			volume_010,
+			uri_010,
 		);
 		const tile_011 = new Tile(
 			level,
@@ -552,6 +607,7 @@ function divideOctree(
 			0,
 			indiceList_011.length,
 			volume_011,
+			uri_011,
 		);
 		const tile_100 = new Tile(
 			level,
@@ -561,6 +617,7 @@ function divideOctree(
 			0,
 			indiceList_100.length,
 			volume_100,
+			uri_100,
 		);
 		const tile_101 = new Tile(
 			level,
@@ -570,6 +627,7 @@ function divideOctree(
 			0,
 			indiceList_101.length,
 			volume_101,
+			uri_101,
 		);
 		const tile_110 = new Tile(
 			level,
@@ -579,6 +637,7 @@ function divideOctree(
 			0,
 			indiceList_110.length,
 			volume_110,
+			uri_110,
 		);
 		const tile_111 = new Tile(
 			level,
@@ -588,6 +647,7 @@ function divideOctree(
 			0,
 			indiceList_111.length,
 			volume_111,
+			uri_111,
 		);
 
 		TileList.push(tile_000);
@@ -686,7 +746,7 @@ function repeatedTilingOcTree(
 	maxTriangle,
 ) {
 	let TileList = [];
-	divideOctree(indicesList, boundingVolume, positionList, TileList, 0);
+	divideOctree(indicesList, boundingVolume, "_", positionList, TileList, 0);
 	let i = 0;
 	while (i < TileList.length) {
 		if (TileList[i].size > maxTriangle) {
@@ -695,6 +755,7 @@ function repeatedTilingOcTree(
 			divideOctree(
 				tile[0].indiceList,
 				tile[0].boundingVolume,
+				tile[0].uri,
 				positionList,
 				TileList,
 				level,
@@ -745,11 +806,11 @@ function TranslationMatrix(boundingVolume) {
 	//Calculate translation vector
 	const translation = new Cesium.Cartesian3(
 		(boundingVolume.maxX + boundingVolume.minX) / 2,
-		(boundingVolume.maxY + boundingVolume.minY) / 2,
-		(boundingVolume.maxZ - boundingVolume.minZ) / 2,
+		(boundingVolume.maxZ + boundingVolume.minZ) / 2,
+		0,
 	);
 	// Calculate scale vector
-	// const scale = new Cesium.Cartesian3(
+	// const scale = new Cesium.Cartessian3(
 	// 	boundingVolume.maxX - boundingVolume.minX,
 	// 	boundingVolume.maxY - boundingVolume.minY,
 	// 	boundingVolume.maxZ - boundingVolume.minZ,
@@ -822,4 +883,6 @@ module.exports = {
 	getIndicesList,
 	reIndexTotalIndices,
 	calculateFinalBoundingVolume,
+	rootBoundingBox,
+	calculateBoxTilesetYupZup,
 };

@@ -98,11 +98,15 @@ function generateTileset(gltfPath) {
 			Tile.indiceList,
 			positionList,
 		);
-		write.simplifiedOctree(Tile.indiceList, positionList, normalList, Tile);
-
-		write.writeGLTF(Tile);
+		write.write(Tile.indiceList, positionList, normalList, Tile);
+		// write.simplifiedOctree(Tile.indiceList, positionList, normalList, Tile);
+		// write.writeGLTF(Tile);
+		// write.convertGLTFtoGLB(Tile);
+		// write.convertGLBtoB3DM(Tile);
 	}
 	//console.log(newTiles);
+
+	write.writeTilesetTotal(newTiles, rootBoundingVolume);
 }
 
 generateTileset(gltfPath);
