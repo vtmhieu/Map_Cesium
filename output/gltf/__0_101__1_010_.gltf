@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 30,
+      "min": [
+        0
+      ],
+      "max": [
+        23
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        -33.920013427734375,
+        62.5,
+        798.4990234375
+      ],
+      "min": [
+        -75.24197387695312,
+        62.5,
+        755.8190307617188
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.9873175621032715,
+        1,
+        0.9954158663749695
+      ],
+      "min": [
+        -0.9758175015449524,
+        0,
+        -0.9895339012145996
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 24,
+      "max": [
+        0.999786376953125,
+        0.7875181436538696,
+        0.26330968737602234
+      ],
+      "min": [
+        0.6036774516105652,
+        0.00003051804378628731,
+        0
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 60,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAQACAAMAAgADAAQAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcA"
+    },
+    {
+      "byteLength": 288,
+      "uri": "data:application/octet-stream;base64,xeCEwgAAekJ79DxEZHuWwgAAekJMx0ZEgRUgwgAAekLfn0dExeCEwgAAekJ79DxEgRUgwgAAekLfn0dEG68HwgAAekL4Iz5EZHuWwgAAekJMx0ZEgRUgwgAAekLfn0dEZHuWwgAAekJMx0ZEgRUgwgAAekLfn0dEG68HwgAAekL4Iz5EgRUgwgAAekLfn0dEG68HwgAAekL4Iz5ExeCEwgAAekJ79DxEG68HwgAAekL4Iz5E5HuWwgAAekJIx0ZEmhUgwgAAekLwn0dEcXuWwgAAekJcx0ZEmhUgwgAAekLwn0dEGK4HwgAAekL6Iz5EfhQgwgAAekLin0dEGK4HwgAAekL6Iz5EsuCEwgAAekJr9DxE9a4HwgAAekLoIz5E"
+    },
+    {
+      "byteLength": 288,
+      "uri": "data:application/octet-stream;base64,AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACALc95vwAAAAAx1V++md/DvQAAAACT034/md/DvQAAAACT034/md/DvQAAAICT034/2MB8PwAAAABqkSI+2MB8PwAAAABqkSI+2MB8PwAAAABqkSI+j8MTPgAAAIAYUn2/j8MTPgAAAIAYUn2/Lc95vwAAAAAx1V++md/DvQAAAACT034/md/DvQAAAACT034/md/DvQAAAICT034/2MB8PwAAAABqkSI+2MB8PwAAAABqkSI+2MB8PwAAAABqkSI+j8MTPgAAAIAYUn2/j8MTPgAAAIAYUn2/"
+    },
+    {
+      "byteLength": 288,
+      "uri": "data:application/octet-stream;base64,m4oaP4AAADgAAAAAm4oaP4AAADgAAAAAm4oaP4AAADgAAAAAm4oaP4AAADgAAAAAm4oaP4AAADgAAAAAm4oaP4AAADgAAAAAAPJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 60
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 288
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 288
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 288
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

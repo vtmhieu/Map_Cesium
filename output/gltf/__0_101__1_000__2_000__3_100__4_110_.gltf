@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 60,
+      "min": [
+        0
+      ],
+      "max": [
+        35
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [
+        2.7639999389648438,
+        7.5,
+        400.53399658203125
+      ],
+      "min": [
+        -107.75900268554688,
+        0,
+        337.25
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [
+        0.8094435334205627,
+        0,
+        0.8096601366996765
+      ],
+      "min": [
+        -0.7724740505218506,
+        0,
+        -0.8098224401473999
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [
+        0.999786376953125,
+        0.7875181436538696,
+        0.26330968737602234
+      ],
+      "min": [
+        0.999786376953125,
+        0.7875181436538696,
+        0.26330968737602234
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 120,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAwAEAAUABAAFAAYABgAHAAgABwAIAAkACQAKAAsACgALAAwADAANAA4ADQAOAA8ADwAQABEAEAARABIAEgATABQAEwAUABUAFQAWABcAGAAZABoAGQAaABsAGwAcAB0AHAAdAB4AHwAgACEAIQAiACMA"
+    },
+    {
+      "byteLength": 432,
+      "uri": "data:application/octet-stream;base64,vHTrwAAA8EBS+KtD7nxXwAAA8ED4U6pD7nxXwAAAAAD4U6pD7nxXwAAAAAD4U6pDvHTrwAAAAABS+KtDvHTrwAAA8EBS+KtDke2cvwAA8EASs69DvHTrwAAA8EBS+KtDvHTrwAAAAABS+KtDvHTrwAAAAABS+KtDke2cvwAAAAASs69Dke2cvwAA8EASs69DYOUwQAAA8EC4Dq5Dke2cvwAA8EASs69Dke2cvwAAAAASs69Dke2cvwAAAAASs69DYOUwQAAAAAC4Dq5DYOUwQAAA8EC4Dq5D7nxXwAAA8ED4U6pDYOUwQAAA8EC4Dq5DYOUwQAAAAAC4Dq5DYOUwQAAAAAC4Dq5D7nxXwAAAAAD4U6pD7nxXwAAA8ED4U6pDL93IwgAAAABaRMhD+FPYwQAAAADhqq1D+FPYwQAA8EDhqq1DkW0JwgAA8EAAoKhD+FPYwQAA8EDhqq1D+FPYwQAAAADhqq1D+FPYwQAAAADhqq1DkW0JwgAAAAAAoKhDkW0JwgAA8EAAoKhDnITXwgAA8ECHNsNDkW0JwgAA8EAAoKhDkW0JwgAAAAAAoKhD"
+    },
+    {
+      "byteLength": 432,
+      "uri": "data:application/octet-stream;base64,Q6kivwAAAAAOrkW/Q6kivwAAAAAOrkW/Q6kivwAAAAAOrkW/Q6kivwAAAAAOrkW/Q6kivwAAAAAOrkW/Q6kivwAAAAAOrkW/3MBFvwAAAABmkiI/3MBFvwAAAABmkiI/3MBFvwAAAABmkiI/3MBFvwAAAIBmkiI/3MBFvwAAAIBmkiI/3MBFvwAAAIBmkiI/fK8iPwAAAADvqEU/fK8iPwAAAADvqEU/fK8iPwAAAADvqEU/fK8iPwAAAADvqEU/fK8iPwAAAADvqEU/fK8iPwAAAADvqEU/MMRFPwAAAIBZjiK/MMRFPwAAAIBZjiK/MMRFPwAAAIBZjiK/MMRFPwAAAABZjiK/MMRFPwAAAABZjiK/MMRFPwAAAABZjiK/BD8WPwAAAADjRU8/BD8WPwAAAADjRU8/BD8WPwAAAADjRU8/sTdPPwAAAICXUha/sTdPPwAAAICXUha/sTdPPwAAAICXUha/sTdPPwAAAACXUha/sTdPPwAAAACXUha/sTdPPwAAAACXUha/VTAWvwAAAACGUE+/VTAWvwAAAACGUE+/VTAWvwAAAACGUE+/"
+    },
+    {
+      "byteLength": 432,
+      "uri": "data:application/octet-stream;base64,APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 120
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 432
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 432
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 432
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

@@ -37,10 +37,17 @@ function simplified(NormalList, PositionList, IndicesList) {
 	//console.log(IVN);
 	return IVN;
 }
-async function simplifiedOctree(indicesList, positionList, normalList, Tile) {
+async function simplifiedOctree(
+	indicesList,
+	positionList,
+	normalList,
+	colorList,
+	Tile,
+) {
 	const newIndices = [];
 	const newPositions = [];
 	const newNormals = [];
+	const newColors = [];
 	const vertexMapping = {};
 
 	indicesList.forEach((triangle) => {
@@ -61,14 +68,26 @@ async function simplifiedOctree(indicesList, positionList, normalList, Tile) {
 			newNormals.push(normalList[index]);
 		}
 	});
+	colorList.forEach((color, index) => {
+		if (index in vertexMapping) {
+			newColors.push(colorList[index]);
+		}
+	});
 	Tile.indiceList = newIndices;
 	Tile.positionList = newPositions;
 	Tile.normalList = newNormals;
+	Tile.colorList = newColors;
 }
 
-async function write(indiceList, positionList, normalList, Tile) {
+async function write(indiceList, positionList, normalList, colorList, Tile) {
 	try {
-		await simplifiedOctree(indiceList, positionList, normalList, Tile);
+		await simplifiedOctree(
+			indiceList,
+			positionList,
+			normalList,
+			colorList,
+			Tile,
+		);
 		await writeGLTF(Tile);
 		await convertGLTFtoGLB(Tile);
 		await convertGLBtoB3DM(Tile);
@@ -91,6 +110,7 @@ async function writeGLTF(Tile) {
 	let indiceList = Tile.indiceList.flat();
 	let positionList = Tile.positionList.flat();
 	let normalList = Tile.normalList.flat();
+	let colorList = Tile.colorList.flat();
 	let max = 0;
 	for (const index of indiceList) {
 		max = Math.max(max, index);
@@ -131,6 +151,17 @@ async function writeGLTF(Tile) {
 		normalList,
 	);
 
+	//Encode colors
+	const colorsBuffer = new Float32Array(colorList);
+	const colorsDataURI = encodeToDataURI(colorsBuffer.buffer);
+	const colorsBufferView = createBufferView(colorsBuffer, 3);
+	const colorsAccessor = createColorAccessor(
+		colorsBuffer,
+		3,
+		"VEC3",
+		5126,
+		colorList,
+	);
 	//Create mesh and primitives
 	const primitive = {
 		mode: 4,
@@ -138,6 +169,7 @@ async function writeGLTF(Tile) {
 		attributes: {
 			POSITION: 1,
 			NORMAL: 2,
+			COLOR_0: 3,
 		},
 	};
 
@@ -145,7 +177,12 @@ async function writeGLTF(Tile) {
 		primitives: [primitive],
 	};
 
-	glTFData.accessors.push(indicesAccessor, positionsAccessor, normalsAccessor);
+	glTFData.accessors.push(
+		indicesAccessor,
+		positionsAccessor,
+		normalsAccessor,
+		colorsAccessor,
+	);
 	glTFData.meshes.push(mesh);
 
 	glTFData.buffers.push(
@@ -161,6 +198,10 @@ async function writeGLTF(Tile) {
 			byteLength: normalsBuffer.byteLength,
 			uri: normalsDataURI,
 		},
+		{
+			byteLength: colorsBuffer.byteLength,
+			uri: colorsDataURI,
+		},
 	);
 
 	//push BufferViews
@@ -168,15 +209,21 @@ async function writeGLTF(Tile) {
 		indicesBufferView,
 		positionsBufferView,
 		normalsBufferView,
+		colorsBufferView,
 	);
 	const gltf = JSON.stringify(glTFData, null, 2);
-	fs.writeFile("./output/gltf/" + Tile.uri + ".gltf", gltf, "utf8", (err) => {
-		if (err) {
-			console.error("Error writing glTF file:", err);
-		} else {
-			console.log("glTF file written successfully!");
-		}
-	});
+	await fs.promises.writeFile(
+		"./output/gltf/" + Tile.uri + ".gltf",
+		gltf,
+		"utf8",
+		(err) => {
+			if (err) {
+				console.error("Error writing glTF file:", err);
+			} else {
+				console.log("glTF file written successfully!");
+			}
+		},
+	);
 }
 
 function createBufferView(buffer, index, byteOffset = 0) {
@@ -227,6 +274,24 @@ function createNormalAccessor(
 	normalList,
 ) {
 	const boundingBox = bounding(normalList);
+	return {
+		bufferView: index,
+		byteOffset: 0,
+		componentType: componentType,
+		count: bufferView.byteLength / ByteStride(componentType, type),
+		max: [boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ],
+		min: [boundingBox.minX, boundingBox.minY, boundingBox.minZ],
+		type: type,
+	};
+}
+function createColorAccessor(
+	bufferView,
+	index,
+	type,
+	componentType,
+	colorList,
+) {
+	const boundingBox = bounding(colorList);
 	return {
 		bufferView: index,
 		byteOffset: 0,

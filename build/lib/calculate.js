@@ -330,6 +330,7 @@ class Tile {
 		indiceList,
 		positionList,
 		normalList,
+		colorList,
 		size,
 		boundingVolume,
 		uri,
@@ -339,6 +340,7 @@ class Tile {
 		this.indiceList = indiceList;
 		this.positionList = positionList;
 		this.normalList = normalList;
+		this.colorList = colorList;
 		this.size = size;
 		this.boundingVolume = boundingVolume;
 		this.uri = uri;
@@ -575,6 +577,7 @@ function divideOctree(
 			indiceList_000,
 			0,
 			0,
+			0,
 			indiceList_000.length,
 			volume_000,
 			uri_000,
@@ -583,6 +586,7 @@ function divideOctree(
 			level,
 			"001",
 			indiceList_001,
+			0,
 			0,
 			0,
 			indiceList_001.length,
@@ -595,6 +599,7 @@ function divideOctree(
 			indiceList_010,
 			0,
 			0,
+			0,
 			indiceList_010.length,
 			volume_010,
 			uri_010,
@@ -603,6 +608,7 @@ function divideOctree(
 			level,
 			"011",
 			indiceList_011,
+			0,
 			0,
 			0,
 			indiceList_011.length,
@@ -615,6 +621,7 @@ function divideOctree(
 			indiceList_100,
 			0,
 			0,
+			0,
 			indiceList_100.length,
 			volume_100,
 			uri_100,
@@ -623,6 +630,7 @@ function divideOctree(
 			level,
 			"101",
 			indiceList_101,
+			0,
 			0,
 			0,
 			indiceList_101.length,
@@ -635,6 +643,7 @@ function divideOctree(
 			indiceList_110,
 			0,
 			0,
+			0,
 			indiceList_110.length,
 			volume_110,
 			uri_110,
@@ -643,6 +652,7 @@ function divideOctree(
 			level,
 			"111",
 			indiceList_111,
+			0,
 			0,
 			0,
 			indiceList_111.length,

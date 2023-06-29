@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 3,
+      "min": [
+        0
+      ],
+      "max": [
+        2
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 3,
+      "max": [
+        -306.4633483886719,
+        -0.20000000298023224,
+        695.5831909179688
+      ],
+      "min": [
+        -314.77667236328125,
+        -0.20000000298023224,
+        680.7755126953125
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 3,
+      "max": [
+        0,
+        -1,
+        0
+      ],
+      "min": [
+        0,
+        -1,
+        0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 3,
+      "max": [
+        0.21585412323474884,
+        0.21585412323474884,
+        0.21589989960193634
+      ],
+      "min": [
+        0.21585412323474884,
+        0.21585412323474884,
+        0.21589989960193634
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 6,
+      "uri": "data:application/octet-stream;base64,AAABAAIA"
+    },
+    {
+      "byteLength": 36,
+      "uri": "data:application/octet-stream;base64,TzuZw83MTL4yNixEamOdw83MTL5T5S1Esnucw83MTL6iMSpE"
+    },
+    {
+      "byteLength": 36,
+      "uri": "data:application/octet-stream;base64,AAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACA"
+    },
+    {
+      "byteLength": 36,
+      "uri": "data:application/octet-stream;base64,3QhdPt0IXT7dFF0+3QhdPt0IXT7dFF0+3QhdPt0IXT7dFF0+"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 6
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 36
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 36
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 36
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

@@ -189,6 +189,25 @@ function readNormalNoIndices(
 	}
 	return normalList;
 }
+
+function readColorNoIndices(colorOffset, colorByteStride, colorData, count) {
+	let colorList = [];
+	for (let index = 0; index < count; index++) {
+		const color = [];
+		const colorX = colorData.readFloatLE(colorOffset + index * colorByteStride);
+		color.push(colorX);
+		const colorY = colorData.readFloatLE(
+			colorOffset + index * colorByteStride + 4,
+		);
+		color.push(colorY);
+		const colorZ = colorData.readFloatLE(
+			colorOffset + index * colorByteStride + 8,
+		);
+		color.push(colorZ);
+		colorList.push(color);
+	}
+	return colorList;
+}
 module.exports = {
 	ParseGLTF,
 	parseDataFromURI,
@@ -198,4 +217,5 @@ module.exports = {
 	readPositionNoIndices,
 	readNormalNotIndex,
 	readNormalNoIndices,
+	readColorNoIndices,
 };
