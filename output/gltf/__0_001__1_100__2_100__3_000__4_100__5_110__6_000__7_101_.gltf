@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 60,
+      "min": [
+        0
+      ],
+      "max": [
+        35
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [
+        -3503.32177734375,
+        0,
+        1189.755615234375
+      ],
+      "min": [
+        -3629.1494140625,
+        0,
+        1080.7655029296875
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [
+        0.3314526081085205,
+        1,
+        0.9419149160385132
+      ],
+      "min": [
+        -0.3358515501022339,
+        0,
+        -0.9434718489646912
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [
+        0.999786376953125,
+        0.7875181436538696,
+        0.26330968737602234
+      ],
+      "min": [
+        0.07322804629802704,
+        0.07324330508708954,
+        0.07325856387615204
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 120,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAQACAAMAAgADAAQAAwAEAAUABAAFAAYABQAGAAcACAAJAAoACQAKAAsACgALAAwACwAMAA0ADgAPABAADwAQABEAEAARABIAEQASABMAFAAVABYAFQAWABcAGAAZABoAGwAcAB0AHgAfACAAIQAiACMA"
+    },
+    {
+      "byteLength": 432,
+      "uri": "data:application/octet-stream;base64,nMVhxQAAAABx8Y1ECKNhxQAAAAC6hY1ECKNhxQAAAAC6hY1EnMVhxQAAAABx8Y1EyV9hxQAAAABlzI5EnMVhxQAAAABx8Y1Eb5lhxQAAAAD9A49EyV9hxQAAAABlzI5E48xbxQAAAACg3YtElrBbxQAAAADSaotE8ZZixQAAAAA3i4dElrBbxQAAAADSaotEVbNixQAAAAB/GIdE8ZZixQAAAAA3i4dEhhtixQAAAACX3YtE9TRixQAAAAANU4xE/O5bxQAAAACZCJBE9TRixQAAAAANU4xELR1cxQAAAAAyYZBE/O5bxQAAAACZCJBEb5lhxQAAAAD9A49E9ZVfxQAAAAAuuJREyV9hxQAAAABlzI5Eb5lhxQAAAAD9A49EYtJixQAAAABomYpEYtJixQAAAABomYpEvLpbxQAAAAAxqI9EJ/VaxQAAAACiwY1EJ/VaxQAAAACiwY1EtoVixQAAAAD2cIhEZNJixQAAAABwmYpEZNJixQAAAABwmYpEvrpbxQAAAAA5qI9EJvVaxQAAAACawY1EJvVaxQAAAACawY1EtYVixQAAAADucIhE"
+    },
+    {
+      "byteLength": 432,
+      "uri": "data:application/octet-stream;base64,AAAAgAAAgD8AAACAAAAAgAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAgAAAgD8AAACAAAAAgAAAgD8AAACAAAAAgAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAgAAAgD8AAACAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAvPSrvgAAAABWIXE/vPSrvgAAAIBWIXE/vPSrvgAAAIBWIXE/KLSpPgAAAIBfh3G/KLSpPgAAAABfh3G/KLSpPgAAAABfh3G/vPSrvgAAAABWIXE/vPSrvgAAAIBWIXE/vPSrvgAAAIBWIXE/KLSpPgAAAIBfh3G/KLSpPgAAAABfh3G/KLSpPgAAAABfh3G/"
+    },
+    {
+      "byteLength": 432,
+      "uri": "data:application/octet-stream;base64,lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 120
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 432
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 432
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 432
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

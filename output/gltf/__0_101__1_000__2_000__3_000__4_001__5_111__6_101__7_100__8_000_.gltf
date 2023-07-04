@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 9,
+      "min": [
+        0
+      ],
+      "max": [
+        8
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 9,
+      "max": [
+        -1410,
+        0,
+        2049.5439453125
+      ],
+      "min": [
+        -1573.3702392578125,
+        0,
+        2033.7396240234375
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 9,
+      "max": [
+        0.9445236325263977,
+        1,
+        0.3284435570240021
+      ],
+      "min": [
+        0,
+        0,
+        0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 9,
+      "max": [
+        0.999786376953125,
+        1,
+        0.26330968737602234
+      ],
+      "min": [
+        0.000015259021893143654,
+        0.7875181436538696,
+        0.00004577706567943096
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 18,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAwAEAAUABgAHAAgA"
+    },
+    {
+      "byteLength": 108,
+      "uri": "data:application/octet-stream;base64,XC+9xAAAAAC0GABFXC+9xAAAAAC0GABFtJC8xAAAAAAnaf5E2avExAAAAACt2f5E4DzExAAAAAAAAP9EAECwxAAAAAAAAP9EW8e8xAAAAACrN/5E2avExAAAAACt2f5EAECwxAAAAAAAAP9E"
+    },
+    {
+      "byteLength": 108,
+      "uri": "data:application/octet-stream;base64,TcxxPwAAAADBKag+TcxxPwAAAADBKag+TcxxPwAAAADBKag+AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACA"
+    },
+    {
+      "byteLength": 108,
+      "uri": "data:application/octet-stream;base64,APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 18
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 108
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 108
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 108
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 183,
+      "min": [
+        0
+      ],
+      "max": [
+        69
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 70,
+      "max": [
+        5673.4677734375,
+        14.5,
+        8424.546875
+      ],
+      "min": [
+        5665.05029296875,
+        7,
+        8416.1298828125
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 70,
+      "max": [
+        0.7900832295417786,
+        -0.04440061375498772,
+        0.7900832295417786
+      ],
+      "min": [
+        -0.7900832295417786,
+        -0.3162277638912201,
+        -0.7900832295417786
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 70,
+      "max": [
+        0.4480048716068268,
+        0.4480048716068268,
+        0.4480659067630768
+      ],
+      "min": [
+        0.4480048716068268,
+        0.4480048716068268,
+        0.4480659067630768
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 366,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAQACAAMAAgADAAQAAwAEAAUABAAFAAYABQAGAAcABgAHAAgABwAIAAkACAAJAAoACQAKAAsACgALAAwACwAMAA0ADAANAA4ADQAOAA8ADgAPABAADwAQABEAEAARABIAEQASABMAEgATABQAEwAUABUAFAAVABYAFQAWABcAFgAXABgAFwAYABkAGAAZABoAGQAaABsAGgAbABwAGwAcAB0AHAAdAB4AHQAeAB8AHgAfACAAHwAgACEAIAAhACIAIQAiACMAIgAjACQAIwAkACUAJAAlACYAJQAmACcAJgAnACgAJwAoACkAKAApACoAKQAqACsAKgArACwAKwAsAC0ALAAtAC4ALQAuAC8ALgAvADAALwAwADEAMAAxADIAMgAzADQAMwA0ADUANAA1ADYANwA4ADkAOAA5ADoAOQA6ADsAPAA9AD4APQA+AD8APgA/AEAAQQBCAEMAQgBDAEQAQwBEAEUA"
+    },
+    {
+      "byteLength": 840,
+      "uri": "data:application/octet-stream;base64,vkuxRQAA4EA1jwNGfkqxRQAAGEFJjwNGvkuxRQAA4EA1jwNGNS6xRQAAGEGQoQNGvkuxRQAA4EA1jwNGXS6xRQAA4EAwogNGNS6xRQAAGEGQoQNGNS6xRQAAGEGQoQNGXS6xRQAA4EAwogNGpwmxRQAAGEFrkwNGXS6xRQAA4EAwogNGZwixRQAA4ECAkwNGpwmxRQAAGEFrkwNGpwmxRQAAGEFrkwNGZwixRQAA4ECAkwNG8CWxRQAAGEEkgQNGZwixRQAA4ECAkwNGxyWxRQAA4ECFgANG8CWxRQAAGEEkgQNG8CWxRQAAGEEkgQNGxyWxRQAA4ECFgANGfkqxRQAAGEFJjwNGxyWxRQAA4ECFgANGvkuxRQAA4EA1jwNGfkqxRQAAGEFJjwNGP0mxRQAAQEFdjwNGfkqxRQAAGEFJjwNGDC6xRQAAQEHwoANGfkqxRQAAGEFJjwNGNS6xRQAAGEGQoQNGDC6xRQAAQEHwoANGDC6xRQAAQEHwoANGNS6xRQAAGEGQoQNG5gqxRQAAQEFXkwNGNS6xRQAAGEGQoQNGpwmxRQAAGEFrkwNG5gqxRQAAQEFXkwNG5gqxRQAAQEFXkwNGpwmxRQAAGEFrkwNGGSaxRQAAQEHEgQNGpwmxRQAAGEFrkwNG8CWxRQAAGEEkgQNGGSaxRQAAQEHEgQNGGSaxRQAAQEHEgQNG8CWxRQAAGEEkgQNGP0mxRQAAQEFdjwNG8CWxRQAAGEEkgQNGfkqxRQAAGEFJjwNGP0mxRQAAQEFdjwNGAEixRQAAaEFyjwNGP0mxRQAAQEFdjwNG4y2xRQAAaEFRoANGP0mxRQAAQEFdjwNGDC6xRQAAQEHwoANG4y2xRQAAaEFRoANGDC6xRQAAQEHwoANGJQyxRQAAaEFDkwNGDC6xRQAAQEHwoANG5gqxRQAAQEFXkwNGJQyxRQAAaEFDkwNG5gqxRQAAQEFXkwNGQiaxRQAAaEFjggNG5gqxRQAAQEFXkwNGGSaxRQAAQEHEgQNGQiaxRQAAaEFjggNGGSaxRQAAQEHEgQNGAEixRQAAaEFyjwNGGSaxRQAAQEHEgQNGP0mxRQAAQEFdjwNGAEixRQAAaEFyjwNG"
+    },
+    {
+      "byteLength": 840,
+      "uri": "data:application/octet-stream;base64,YqEUv5voob5EEkA/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/5UJKv2vdNb0FhBy/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/BYQcP2vdNb3lQkq/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/5UJKP2vdNb0FhBw/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/BYQcv2vdNb3lQko/"
+    },
+    {
+      "byteLength": 840,
+      "uri": "data:application/octet-stream;base64,5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+5WDlPuVg5T7laOU+"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 366
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 840
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 840
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 840
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

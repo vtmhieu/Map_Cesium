@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 45,
+      "min": [
+        0
+      ],
+      "max": [
+        33
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 34,
+      "max": [
+        -3321.951416015625,
+        0,
+        1141.1761474609375
+      ],
+      "min": [
+        -3509.046630859375,
+        0,
+        1067.2294921875
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 34,
+      "max": [
+        0,
+        1,
+        0
+      ],
+      "min": [
+        0,
+        1,
+        0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 34,
+      "max": [
+        0.07322804629802704,
+        1,
+        0.07325856387615204
+      ],
+      "min": [
+        0.000015259021893143654,
+        0.05127031356096268,
+        0.00004577706567943096
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 90,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAQACAAMAAgADAAQAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEQASABMAFAAVABYAFwAYABkAGAAZABoAGwAcAB0AHgAfACAAHwAgACEA"
+    },
+    {
+      "byteLength": 408,
+      "uri": "data:application/octet-stream;base64,G4xVxQAAAAAwoopEfW5VxQAAAACODYpEfW5VxQAAAACODYpEG4xVxQAAAAAwoopEs5hQxQAAAAAK941EG4xVxQAAAAAwoopEBnZaxQAAAADkqoVEOZ9PxQAAAABdWo5EOZ9PxQAAAABdWo5E6o9axQAAAAB1BoZEfW5VxQAAAACODYpErktQxQAAAADwNY5E+/BPxQAAAAAAgI5ERd1PxQAAAAAAgI5EI4ZaxQAAAABN9YVEv1BbxQAAAABYZ4VEs5hQxQAAAAAK941ErktQxQAAAADwNY5ERd1PxQAAAAAAgI5EI4ZaxQAAAABN9YVEfW5VxQAAAACODYpEfW5VxQAAAACODYpEs5hQxQAAAAAK941ERd1PxQAAAAAAgI5ERd1PxQAAAAAAgI5EI4ZaxQAAAABN9YVEfW5VxQAAAACODYpEvsRQxQAAAAAAgI5EvsRQxQAAAAAAgI5Eya1axQAAAADjmoZEOZ9PxQAAAABdWo5EI4ZaxQAAAABN9YVETq5PxQAAAACjpY5EOZ9PxQAAAABdWo5E"
+    },
+    {
+      "byteLength": 408,
+      "uri": "data:application/octet-stream;base64,AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACA"
+    },
+    {
+      "byteLength": 408,
+      "uri": "data:application/octet-stream;base64,lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9lviVPZYAlj2WCJY9gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA4gACANwAAgD/AAEA40gBSPdIAUj3SEFI90gBSPdIAUj3SEFI90gBSPdIAUj3SEFI90gBSPdIAUj3SEFI9"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 90
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 408
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 408
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 408
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

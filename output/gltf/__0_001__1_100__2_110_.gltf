@@ -8,12 +8,12 @@
       "bufferView": 0,
       "byteOffset": 0,
       "componentType": 5123,
-      "count": 48,
+      "count": 12,
       "min": [
         0
       ],
       "max": [
-        39
+        9
       ],
       "type": "SCALAR"
     },
@@ -21,16 +21,16 @@
       "bufferView": 1,
       "byteOffset": 0,
       "componentType": 5126,
-      "count": 40,
+      "count": 10,
       "max": [
-        -466.4720458984375,
+        -623.4010620117188,
         52.5,
-        428.9429626464844
+        330.81695556640625
       ],
       "min": [
-        -525.887939453125,
+        -629.3150024414062,
         0,
-        392.3620300292969
+        308.3187561035156
       ],
       "type": "VEC3"
     },
@@ -38,16 +38,16 @@
       "bufferView": 2,
       "byteOffset": 0,
       "componentType": 5126,
-      "count": 40,
+      "count": 10,
       "max": [
-        0.967140793800354,
+        0.9671513438224792,
         0,
         0.967049241065979
       ],
       "min": [
-        -0.9670349955558777,
+        0.25458940863609314,
         0,
-        -0.9670609831809998
+        -0.2542012631893158
       ],
       "type": "VEC3"
     },
@@ -55,7 +55,7 @@
       "bufferView": 3,
       "byteOffset": 0,
       "componentType": 5126,
-      "count": 40,
+      "count": 10,
       "max": [
         0.999786376953125,
         0.7875181436538696,
@@ -71,42 +71,42 @@
   ],
   "buffers": [
     {
-      "byteLength": 96,
-      "uri": "data:application/octet-stream;base64,AAABAAIAAgADAAQABQAGAAcABwAIAAkACgALAAwADAANAA4ADwAQABEAEQASABMAFAAVABYAFgAXABgAGQAaABsAGwAcAB0AHgAfACAAIAAhACIAIwAkACUAJQAmACcA"
+      "byteLength": 24,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAgADAAQABQAGAAcABwAIAAkA"
     },
     {
-      "byteLength": 480,
-      "uri": "data:application/octet-stream;base64,1HgDxAAAUkL+OMtD1HgDxAAAAAD+OMtD1HgDxAAAAAD+OMtDsv0BxAAAAACceNZDsv0BxAAAUkKceNZDnv0BxAAAUkKzeNZDnv0BxAAAAACzeNZDnv0BxAAAAACzeNZDgzzpwwAAAAA0bs9DgzzpwwAAUkI0bs9DbDzpwwAAUkIMbs9DbDzpwwAAAAAMbs9DbDzpwwAAAAAMbs9DajHswwAAAABuLsRDajHswwAAUkJuLsRDkjHswwAAUkJXLsRDkjHswwAAAABXLsRDkjHswwAAAABXLsRDyXgDxAAAAADWOMtDyXgDxAAAUkLWOMtDxXgDxAAAUkL2OMtDxXgDxAAAAAD2OMtDxXgDxAAAAAD2OMtDov0BxAAAAACTeNZDov0BxAAAUkKTeNZDov0BxAAAUkKTeNZDov0BxAAAAACTeNZDov0BxAAAAACTeNZDizzpwwAAAAAUbs9DizzpwwAAUkIUbs9DizzpwwAAUkIUbs9DizzpwwAAAAAUbs9DizzpwwAAAAAUbs9DiTHswwAAAAB3LsRDiTHswwAAUkJ3LsRDiTHswwAAUkJ3LsRDiTHswwAAAAB3LsRDiTHswwAAAAB3LsRDxXgDxAAAAAD2OMtDxXgDxAAAUkL2OMtD"
+      "byteLength": 120,
+      "uri": "data:application/octet-stream;base64,utkbxAAAAABzaKVDutkbxAAAUkJzaKVDKVQdxAAAUkLVKJpDutkbxAAAUkJzaKVDutkbxAAAAABzaKVDttkbxAAAAACSaKVDttkbxAAAUkKSaKVDGVQdxAAAUkLNKJpDq9kbxAAAUkJqaKVDq9kbxAAAAABqaKVD"
     },
     {
-      "byteLength": 480,
-      "uri": "data:application/octet-stream;base64,m493vwAAAACjYII+m493vwAAAACjYII+m493vwAAAICjYII+m493vwAAAICjYII+m493vwAAAICjYII+i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/ipZ3PwAAAIDwK4K+ipZ3PwAAAIDwK4K+ipZ3PwAAAADwK4K+ipZ3PwAAAADwK4K+ipZ3PwAAAADwK4K+tlOCvgAAAABPkXe/tlOCvgAAAABPkXe/tlOCvgAAAABPkXe/tlOCvgAAAABPkXe/tlOCvgAAAABPkXe/m493vwAAAACjYII+m493vwAAAACjYII+m493vwAAAICjYII+m493vwAAAICjYII+m493vwAAAICjYII+i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/ipZ3PwAAAIDwK4K+ipZ3PwAAAIDwK4K+ipZ3PwAAAADwK4K+ipZ3PwAAAADwK4K+ipZ3PwAAAADwK4K+tlOCvgAAAABPkXe/tlOCvgAAAABPkXe/tlOCvgAAAABPkXe/tlOCvgAAAABPkXe/tlOCvgAAAABPkXe/"
+      "byteLength": 120,
+      "uri": "data:application/octet-stream;base64,i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/O5d3PwAAAICrJoK+O5d3PwAAAICrJoK+O5d3PwAAAICrJoK+i1mCPgAAAACKkHc/i1mCPgAAAACKkHc/O5d3PwAAAICrJoK+O5d3PwAAAICrJoK+O5d3PwAAAICrJoK+"
     },
     {
-      "byteLength": 480,
-      "uri": "data:application/octet-stream;base64,APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+"
+      "byteLength": 120,
+      "uri": "data:application/octet-stream;base64,APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+"
     }
   ],
   "bufferViews": [
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 96
+      "byteLength": 24
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 480
+      "byteLength": 120
     },
     {
       "buffer": 2,
       "byteOffset": 0,
-      "byteLength": 480
+      "byteLength": 120
     },
     {
       "buffer": 3,
       "byteOffset": 0,
-      "byteLength": 480
+      "byteLength": 120
     }
   ],
   "meshes": [

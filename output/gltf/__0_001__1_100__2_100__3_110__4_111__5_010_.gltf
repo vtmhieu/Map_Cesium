@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 12,
+      "min": [
+        0
+      ],
+      "max": [
+        7
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        -2725.4111328125,
+        24.06458854675293,
+        1805.0145263671875
+      ],
+      "min": [
+        -2737.443603515625,
+        0,
+        1792.982177734375
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        1,
+        0,
+        1
+      ],
+      "min": [
+        0,
+        0,
+        0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 8,
+      "max": [
+        0.00004577706567943096,
+        0.21403829753398895,
+        0
+      ],
+      "min": [
+        0.00004577706567943096,
+        0.21403829753398895,
+        0
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 24,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAwAEAAUABAAFAAYABQAGAAcA"
+    },
+    {
+      "byteLength": 96,
+      "uri": "data:application/octet-stream;base64,GRcrxUeEwEHz3+BEGRcrxQAAAADz3+BElFYqxUeEwEHz3+BElFYqxQAAAADz3+BElFYqxUeEwEHz3+BE1rYqxUeEwEF3oOFE1rYqxQAAAAB3oOFE1rYqxUeEwEFuH+BE"
+    },
+    {
+      "byteLength": 96,
+      "uri": "data:application/octet-stream;base64,AAAAAAAAAIAAAIA/AAAAAAAAAIAAAIA/AAAAAAAAAIAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACA"
+    },
+    {
+      "byteLength": 96,
+      "uri": "data:application/octet-stream;base64,wABAONssWz4AAAAAwABAONssWz4AAAAAwABAONssWz4AAAAAwABAONssWz4AAAAAwABAONssWz4AAAAAwABAONssWz4AAAAAwABAONssWz4AAAAAwABAONssWz4AAAAA"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 24
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 96
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 96
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 96
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

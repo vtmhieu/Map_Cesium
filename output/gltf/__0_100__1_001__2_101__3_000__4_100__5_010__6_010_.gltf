@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 12,
+      "min": [
+        0
+      ],
+      "max": [
+        9
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 10,
+      "max": [
+        1219.792724609375,
+        2.5,
+        -1172.7022705078125
+      ],
+      "min": [
+        1212.6610107421875,
+        0,
+        -1180.630615234375
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 10,
+      "max": [
+        0.74344801902771,
+        0,
+        0.7433255314826965
+      ],
+      "min": [
+        0.6689298748970032,
+        0,
+        -0.6687937378883362
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 10,
+      "max": [
+        0.999786376953125,
+        0.7875181436538696,
+        0.26330968737602234
+      ],
+      "min": [
+        0.999786376953125,
+        0.7875181436538696,
+        0.26330968737602234
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 24,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAgADAAQABQAGAAcABwAIAAkA"
+    },
+    {
+      "byteLength": 120,
+      "uri": "data:application/octet-stream;base64,WHmYRAAAAAB/lpLEWHmYRAAAIEB/lpLEJ5WXRAAAIEAplJPEWHmYRAAAIEB/lpLEWHmYRAAAAAB/lpLEXnmYRAAAAAB5lpLEXnmYRAAAIEB5lpLELZWXRAAAIEAulJPEXnmYRAAAIECElpLEXnmYRAAAAACElpLE"
+    },
+    {
+      "byteLength": 120,
+      "uri": "data:application/octet-stream;base64,/T4rPwAAAACVSj4//T4rPwAAAACVSj4/nFI+PwAAAIARNiu/nFI+PwAAAIARNiu/nFI+PwAAAIARNiu//T4rPwAAAACVSj4//T4rPwAAAACVSj4/nFI+PwAAAIARNiu/nFI+PwAAAIARNiu/nFI+PwAAAIARNiu/"
+    },
+    {
+      "byteLength": 120,
+      "uri": "data:application/octet-stream;base64,APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 24
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 120
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 120
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 120
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

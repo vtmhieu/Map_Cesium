@@ -184,6 +184,75 @@ function calculateMidPointTriangle(
 	return { x: mid_x, y: mid_y, z: mid_z };
 }
 
+function calculateMidPointList(indicesList, positionList) {
+	let midPointList = [];
+	for (const indices of indicesList) {
+		let midpoint = calculateMidpointTriangleTotal(indices, positionList);
+		midPointList.push(midpoint);
+	}
+	return midPointList;
+}
+
+function calculateDecisivePoint(midPointList) {
+	let x = sortAscending_X(midPointList);
+	let y = sortAscending_Y(midPointList);
+	let z = sortAscending_Z(midPointList);
+	const decisivePoint = {
+		x: x,
+		y: y,
+		z: z,
+	};
+	return decisivePoint;
+}
+
+function sortAscending_X(midPointList) {
+	const sortedList = [...midPointList];
+	for (let i = 0; i < sortedList.length; i++) {
+		for (let k = i + 1; k < sortedList.length; k++) {
+			if (sortedList[i].x > sortedList[k].x) {
+				let temp = sortedList[i];
+				sortedList[i] = sortedList[k];
+				sortedList[k] = temp;
+			}
+		}
+	}
+	let x = 0;
+	x = sortedList[Math.floor(sortedList.length / 2)].x;
+	return x;
+}
+
+function sortAscending_Y(midPointList) {
+	const sortedList = [...midPointList];
+	for (let i = 0; i < sortedList.length; i++) {
+		for (let k = i + 1; k < sortedList.length; k++) {
+			if (sortedList[i].y > sortedList[k].y) {
+				let temp = sortedList[i];
+				sortedList[i] = sortedList[k];
+				sortedList[k] = temp;
+			}
+		}
+	}
+	let y = 0;
+	y = sortedList[Math.floor(sortedList.length / 2)].y;
+	return y;
+}
+
+function sortAscending_Z(midPointList) {
+	const sortedList = [...midPointList];
+	for (let i = 0; i < sortedList.length; i++) {
+		for (let k = i + 1; k < sortedList.length; k++) {
+			if (sortedList[i].z > sortedList[k].z) {
+				let temp = sortedList[i];
+				sortedList[i] = sortedList[k];
+				sortedList[k] = temp;
+			}
+		}
+	}
+	let z = 0;
+	z = sortedList[Math.floor(sortedList.length / 2)].z;
+	return z;
+}
+
 function calculateMidpointTriangleTotal(indices, positionList) {
 	const vertex1 = positionList[indices[0]];
 	const vertex2 = positionList[indices[1]];
@@ -378,6 +447,85 @@ function calculateFinalBoundingVolume(indiceList, positionList) {
 	return boundingVolume;
 }
 
+function calculateBoundingVolumeDynamic(decisivePoint, boundingVolume, type) {
+	let finalboundingVolume = 0;
+	if (type == "111") {
+		finalboundingVolume = {
+			minX: decisivePoint.x,
+			minY: decisivePoint.y,
+			minZ: decisivePoint.z,
+			maxX: boundingVolume.maxX,
+			maxY: boundingVolume.maxY,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if (type == "110") {
+		finalboundingVolume = {
+			minX: decisivePoint.x,
+			minY: decisivePoint.y,
+			minZ: boundingVolume.minZ,
+			maxX: boundingVolume.maxX,
+			maxY: boundingVolume.maxY,
+			maxZ: decisivePoint.z,
+		};
+	} else if (type == "101") {
+		finalboundingVolume = {
+			minX: decisivePoint.x,
+			minY: boundingVolume.minY,
+			minZ: decisivePoint.z,
+			maxX: boundingVolume.maxX,
+			maxY: decisivePoint.y,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if (type == "100") {
+		finalboundingVolume = {
+			minX: decisivePoint.x,
+			minY: boundingVolume.minY,
+			minZ: boundingVolume.minZ,
+			maxX: boundingVolume.maxX,
+			maxY: decisivePoint.y,
+			maxZ: decisivePoint.z,
+		};
+	} else if (type == "011") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: decisivePoint.y,
+			minZ: decisivePoint.z,
+			maxX: decisivePoint.x,
+			maxY: boundingVolume.maxY,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if (type == "010") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: decisivePoint.y,
+			minZ: boundingVolume.minZ,
+			maxX: decisivePoint.x,
+			maxY: boundingVolume.maxY,
+			maxZ: decisivePoint.z,
+		};
+	} else if (type == "001") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: boundingVolume.minY,
+			minZ: decisivePoint.z,
+			maxX: decisivePoint.x,
+			maxY: decisivePoint.y,
+			maxZ: boundingVolume.maxZ,
+		};
+	} else if (type == "000") {
+		finalboundingVolume = {
+			minX: boundingVolume.minX,
+			minY: boundingVolume.minY,
+			minZ: boundingVolume.minZ,
+			maxX: decisivePoint.x,
+			maxY: decisivePoint.y,
+			maxZ: decisivePoint.z,
+		};
+	}
+
+	return finalboundingVolume;
+}
+
 function calculateBoundingVolumeOcTree(boundingVolume, type) {
 	const midVol = calculateMidPoint(boundingVolume);
 	let finalboundingVolume = 0;
@@ -500,6 +648,228 @@ function calculateBoundingVolumeQuadTree(boundingVolume, type) {
 	}
 
 	return finalboundingVolume;
+}
+
+function divideOctreeDynamic(
+	indicesList,
+	boundingVolume,
+	uri,
+	positionList,
+	TileList,
+	level,
+) {
+	const midPointList = calculateMidPointList(indicesList, positionList);
+	let decisivePoint = calculateDecisivePoint(midPointList);
+	let indiceList_000 = [];
+	let indiceList_001 = [];
+	let indiceList_010 = [];
+	let indiceList_011 = [];
+	let indiceList_100 = [];
+	let indiceList_101 = [];
+	let indiceList_110 = [];
+	let indiceList_111 = [];
+	try {
+		for (let i = 0; i < indicesList.length; i++) {
+			if (
+				midPointList[i].x > decisivePoint.x &&
+				midPointList[i].x <= boundingVolume.maxX
+			) {
+				if (
+					midPointList[i].y > decisivePoint.y &&
+					midPointList[i].y <= boundingVolume.maxY
+				) {
+					if (
+						midPointList[i].z > decisivePoint.z &&
+						midPointList[i].z <= boundingVolume.maxZ
+					) {
+						indiceList_111.push(indicesList[i]);
+					} else {
+						indiceList_110.push(indicesList[i]);
+					}
+				} else {
+					if (
+						midPointList[i].z > decisivePoint.z &&
+						midPointList[i].z <= boundingVolume.maxZ
+					) {
+						indiceList_101.push(indicesList[i]);
+					} else {
+						indiceList_100.push(indicesList[i]);
+					}
+				}
+			} else {
+				if (
+					midPointList[i].y > decisivePoint.y &&
+					midPointList[i].y <= boundingVolume.maxY
+				) {
+					if (
+						midPointList[i].z > decisivePoint.z &&
+						midPointList[i].z <= boundingVolume.maxZ
+					) {
+						indiceList_011.push(indicesList[i]);
+					} else {
+						indiceList_010.push(indicesList[i]);
+					}
+				} else {
+					if (
+						midPointList[i].z > decisivePoint.z &&
+						midPointList[i].z <= boundingVolume.maxZ
+					) {
+						indiceList_001.push(indicesList[i]);
+					} else {
+						indiceList_000.push(indicesList[i]);
+					}
+				}
+			}
+		}
+		const volume_000 = calculateBoundingVolumeDynamic(
+			decisivePoint,
+			boundingVolume,
+			"000",
+		);
+		const volume_001 = calculateBoundingVolumeDynamic(
+			decisivePoint,
+			boundingVolume,
+			"001",
+		);
+		const volume_010 = calculateBoundingVolumeDynamic(
+			decisivePoint,
+			boundingVolume,
+			"010",
+		);
+		const volume_011 = calculateBoundingVolumeDynamic(
+			decisivePoint,
+			boundingVolume,
+			"011",
+		);
+		const volume_100 = calculateBoundingVolumeDynamic(
+			decisivePoint,
+			boundingVolume,
+			"100",
+		);
+		const volume_101 = calculateBoundingVolumeDynamic(
+			decisivePoint,
+			boundingVolume,
+			"101",
+		);
+		const volume_110 = calculateBoundingVolumeDynamic(
+			decisivePoint,
+			boundingVolume,
+			"110",
+		);
+		const volume_111 = calculateBoundingVolumeDynamic(
+			decisivePoint,
+			boundingVolume,
+			"111",
+		);
+		const uri_000 = uri + "_" + level + "_000_";
+		const uri_001 = uri + "_" + level + "_001_";
+		const uri_010 = uri + "_" + level + "_010_";
+		const uri_011 = uri + "_" + level + "_011_";
+		const uri_100 = uri + "_" + level + "_100_";
+		const uri_101 = uri + "_" + level + "_101_";
+		const uri_110 = uri + "_" + level + "_110_";
+		const uri_111 = uri + "_" + level + "_111_";
+
+		const tile_000 = new Tile(
+			level,
+			"000",
+			indiceList_000,
+			0,
+			0,
+			0,
+			indiceList_000.length,
+			volume_000,
+			uri_000,
+		);
+		const tile_001 = new Tile(
+			level,
+			"001",
+			indiceList_001,
+			0,
+			0,
+			0,
+			indiceList_001.length,
+			volume_001,
+			uri_001,
+		);
+		const tile_010 = new Tile(
+			level,
+			"010",
+			indiceList_010,
+			0,
+			0,
+			0,
+			indiceList_010.length,
+			volume_010,
+			uri_010,
+		);
+		const tile_011 = new Tile(
+			level,
+			"011",
+			indiceList_011,
+			0,
+			0,
+			0,
+			indiceList_011.length,
+			volume_011,
+			uri_011,
+		);
+		const tile_100 = new Tile(
+			level,
+			"100",
+			indiceList_100,
+			0,
+			0,
+			0,
+			indiceList_100.length,
+			volume_100,
+			uri_100,
+		);
+		const tile_101 = new Tile(
+			level,
+			"101",
+			indiceList_101,
+			0,
+			0,
+			0,
+			indiceList_101.length,
+			volume_101,
+			uri_101,
+		);
+		const tile_110 = new Tile(
+			level,
+			"110",
+			indiceList_110,
+			0,
+			0,
+			0,
+			indiceList_110.length,
+			volume_110,
+			uri_110,
+		);
+		const tile_111 = new Tile(
+			level,
+			"111",
+			indiceList_111,
+			0,
+			0,
+			0,
+			indiceList_111.length,
+			volume_111,
+			uri_111,
+		);
+
+		TileList.push(tile_000);
+		TileList.push(tile_001);
+		TileList.push(tile_010);
+		TileList.push(tile_011);
+		TileList.push(tile_100);
+		TileList.push(tile_101);
+		TileList.push(tile_110);
+		TileList.push(tile_111);
+	} catch (error) {
+		return { error: error.message };
+	}
 }
 
 function divideOctree(
@@ -749,6 +1119,43 @@ function divideTileTotal_in_X_Z(
 	// return TileList;
 }
 
+function repeatedTilingOctreeDynamic(
+	indicesList,
+	boundingVolume,
+	positionList,
+	maxTriangle,
+) {
+	let TileList = [];
+	divideOctreeDynamic(
+		indicesList,
+		boundingVolume,
+		"_",
+		positionList,
+		TileList,
+		0,
+	);
+	let i = 0;
+	while (i < TileList.length) {
+		if (TileList[i].size > maxTriangle) {
+			const tile = TileList.splice(i, 1);
+			const level = tile[0].level + 1;
+			divideOctreeDynamic(
+				tile[0].indiceList,
+				tile[0].boundingVolume,
+				tile[0].uri,
+				positionList,
+				TileList,
+				level,
+			);
+		} else if (TileList[i].size === 0) {
+			TileList.splice(i, 1);
+		} else {
+			i++;
+		}
+	}
+	return TileList;
+}
+
 function repeatedTilingOcTree(
 	indicesList,
 	boundingVolume,
@@ -890,9 +1297,11 @@ module.exports = {
 	PositionMatrix,
 	repeatedTilingQuadTree,
 	repeatedTilingOcTree,
+	repeatedTilingOctreeDynamic,
 	getIndicesList,
 	reIndexTotalIndices,
 	calculateFinalBoundingVolume,
 	rootBoundingBox,
 	calculateBoxTilesetYupZup,
+	calculateMidPointList,
 };

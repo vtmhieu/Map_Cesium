@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 12,
+      "min": [
+        0
+      ],
+      "max": [
+        11
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 12,
+      "max": [
+        1696.7659912109375,
+        7.5,
+        -802.2769775390625
+      ],
+      "min": [
+        1624.1219482421875,
+        0,
+        -873.0130004882812
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 12,
+      "max": [
+        0.7546231746673584,
+        0,
+        0.7544707655906677
+      ],
+      "min": [
+        -0.6562482118606567,
+        0,
+        -0.7555959224700928
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 12,
+      "max": [
+        0.999786376953125,
+        0.7875181436538696,
+        0.26330968737602234
+      ],
+      "min": [
+        0.999786376953125,
+        0.7875181436538696,
+        0.26330968737602234
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 24,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAwAEAAUABgAHAAgACQAKAAsA"
+    },
+    {
+      "byteLength": 144,
+      "uri": "data:application/octet-stream;base64,gxjURAAAAADBMlbEMTzMRAAAAAC6kUjEMTzMRAAA8EC6kUjEln/PRAAA8EDVQFrEln/PRAAAAADVQFrEln/PRAAAAADVQFrE5wPLRAAAAACcLEvE1UzRRAAAAADnG1bE1UzRRAAA8EDnG1bE1UzRRAAAAADnG1bEln/PRAAAAADVQFrEln/PRAAA8EDVQFrE"
+    },
+    {
+      "byteLength": 144,
+      "uri": "data:application/octet-stream;base64,k7AnvwAAAAC8bkG/k7AnvwAAAAC8bkG/k7AnvwAAAAC8bkG/4v8nvwAAAADeKUG/4v8nvwAAAADeKUG/4v8nvwAAAADeKUG/ewUoPwAAAAD/JEE/ewUoPwAAAAD/JEE/ewUoPwAAAAD/JEE//C5BPwAAAAAA+ie//C5BPwAAAAAA+ie//C5BPwAAAAAA+ie/"
+    },
+    {
+      "byteLength": 144,
+      "uri": "data:application/octet-stream;base64,APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 24
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 144
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 144
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 144
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}
