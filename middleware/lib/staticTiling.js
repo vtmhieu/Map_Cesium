@@ -3,9 +3,10 @@ const calculate = require("./calculate.js");
 const write = require("./write.js");
 
 // const gltfPath =
-// 	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_fixed/data/hanoi2_1mb.gltf";
-async function staticTiling(gltfPath, maxTriangles) {
+// 	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_dynamic/data/4_7.gltf";
+function staticTiling(gltfPath, maxTriangles) {
 	const gltf = readData.ParseGLTF(gltfPath);
+	//console.log(gltf);
 	let positionList = [];
 	let normalList = [];
 	let indicesList = [];
@@ -112,9 +113,11 @@ async function staticTiling(gltfPath, maxTriangles) {
 	}
 	//console.log(newTiles);
 
-	write.writeTilesetTotal(newTiles, rootBoundingVolume);
+	const tileset = write.writeTilesetTotal(newTiles, rootBoundingVolume);
+	return tileset;
 }
 
+//staticTiling(gltfPath, 2000);
 module.exports = {
 	staticTiling,
 };

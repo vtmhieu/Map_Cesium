@@ -4,7 +4,7 @@ const write = require("./write.js");
 
 // const gltfPath =
 // 	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_dynamic/data/4_7.gltf";
-async function adaptiveTiling(gltfPath, maxTriangles) {
+function adaptiveTiling(gltfPath, maxTriangles) {
 	const gltf = readData.ParseGLTF(gltfPath);
 	let positionList = [];
 	let normalList = [];
@@ -115,7 +115,8 @@ async function adaptiveTiling(gltfPath, maxTriangles) {
 	}
 	//console.log(newTiles);
 
-	write.writeTilesetTotal(newTiles, rootBoundingVolume);
+	const tileset = write.writeTilesetTotal(newTiles, rootBoundingVolume);
+	return tileset;
 }
 
 module.exports = {

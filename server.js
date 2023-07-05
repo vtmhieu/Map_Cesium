@@ -51,16 +51,12 @@ app.post("/upload", upload.single("file"), function (req, res) {
 		console.log("Max Triangles:", maxTriangles);
 		console.log("Tiling Type:", tilingType);
 
-		// Return a response indicating success
-		//res.json({ message: "File uploaded successfully." });
+		const tileset = process.process(storageLocation, maxTriangles, tilingType);
+		res.send(tileset);
 	});
-
-	process.process(storageLocation, maxTriangles, tilingType);
-
-	res.sendFile(__dirname + "/server" + "/index.html");
 });
 app.get("/index", function (req, res) {
-	response.sendFile(__dirname + "/server/index.html");
+	res.sendFile(__dirname + "/server/index.html");
 });
 
 // listen for requests :)

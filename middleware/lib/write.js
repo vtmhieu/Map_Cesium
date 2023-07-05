@@ -499,6 +499,7 @@ function writeTilesetTotal(TileList, rootBoundingVolume) {
 
 	const tilesetName = "tileset.json";
 	fs.writeFileSync(tilesetName, JSON.stringify(tileset, null, 2));
+	return tilesetName;
 }
 
 module.exports = {
