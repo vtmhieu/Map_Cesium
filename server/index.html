@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name = "viewport"
+    content = "width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" 
+  />
+  <meta 
+    name = "description"
+    content = "Use 3D tiles styling to assign colors based on matertial or find all office buildings"
+  />
+  <meta 
+    name ="cesium-sandcastle-lables" content = "Beginner, 3D Tiles"
+  />
+  <title>TEST</title>
+  <script type="text/javascript" src = "./cesium/Apps/Sandcastle/Sandcastle-header.js"></script>
+  <script type ="text/javascript" src = "./cesium/Build/CesiumUnminified/Cesium.js" nomodule></script>
+  <script type ="module" src = "./cesium/Apps/Sandcastle/load-cesium-es6.js"></script>
+  <link type="stylesheet" href="./cesium/Apps/Sandcastle/templates/bucket.css">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body 
+  class="sandcastle-loading"
+  data-sandcastle-bucket="./cesium/Apps/Sandcastle/templates/bucket-requirejs.html"
+>
+  <style>
+    @import url("./cesium/Apps/Sandcastle/templates/bucket.css");
+  </style>
+
+  <div id="cesiumContainer" class="fullSize"></div>
+  <div id="loadingOverlay">
+    <h1>Loading...</h1>
+  </div>
+  
+  <script id="cesium_sandcastle_script" src="scripts.js" ></script>
+</body>
+</html>

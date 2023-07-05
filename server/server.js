@@ -10,13 +10,15 @@ app.use(express.static("."));
 
 // http://expressjs.com/en/starter/basic-routing.htmls
 app.get("/", function (request, response) {
-	response.sendFile("index.html");
+	response.sendFile("../client/welcome.html");
 });
 app.post("/upload", upload.single("file"), function (request, response) {
 	const file = request.file;
 	const type = request.body.tilingType;
 	const maxTriangles = request.body.maxTriangles;
+
 	process.process(file, maxTriangles, type);
+
 	const res = {
 		message: "info received and being tiling",
 		file: file.originalname,
@@ -25,6 +27,7 @@ app.post("/upload", upload.single("file"), function (request, response) {
 	};
 
 	response.json(res);
+	response.sendFile("./index.html");
 });
 
 // listen for requests :)

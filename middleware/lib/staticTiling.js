@@ -4,7 +4,7 @@ const write = require("./write.js");
 
 // const gltfPath =
 // 	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_fixed/data/hanoi2_1mb.gltf";
-function staticTiling(gltfPath, maxTriangles) {
+async function staticTiling(gltfPath, maxTriangles) {
 	const gltf = readData.ParseGLTF(gltfPath);
 	let positionList = [];
 	let normalList = [];

@@ -4,7 +4,7 @@ const write = require("./write.js");
 
 // const gltfPath =
 // 	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_dynamic/data/4_7.gltf";
-function AdaptiveTiling(gltfPath, maxTriangles) {
+async function adaptiveTiling(gltfPath, maxTriangles) {
 	const gltf = readData.ParseGLTF(gltfPath);
 	let positionList = [];
 	let normalList = [];
@@ -119,5 +119,5 @@ function AdaptiveTiling(gltfPath, maxTriangles) {
 }
 
 module.exports = {
-	AdaptiveTiling,
+	adaptiveTiling,
 };

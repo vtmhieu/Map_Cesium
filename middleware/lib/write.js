@@ -213,7 +213,7 @@ async function writeGLTF(Tile) {
 	);
 	const gltf = JSON.stringify(glTFData, null, 2);
 	await fs.promises.writeFile(
-		"./output/gltf/" + Tile.uri + ".gltf",
+		"./middleware/output/gltf/" + Tile.uri + ".gltf",
 		gltf,
 		"utf8",
 		(err) => {
@@ -370,8 +370,8 @@ function runCommand(command) {
 async function convertGLTFtoGLB(Tile) {
 	// Run the conversion
 	const inputFile =
-		"/home/hieuvu/DATN/Map_Cesium/output/gltf/" + Tile.uri + ".gltf";
-	const outputFile = "./output/glb/" + Tile.uri + ".glb";
+		"/home/hieuvu/DATN/Map_Cesium/middleware/output/gltf/" + Tile.uri + ".gltf";
+	const outputFile = "./middleware/output/glb/" + Tile.uri + ".glb";
 	try {
 		const command = `gltf-pipeline -f -i ${inputFile} -o ${outputFile}`;
 		const result = await runCommand(command);
@@ -383,8 +383,8 @@ async function convertGLTFtoGLB(Tile) {
 
 async function convertGLBtoB3DM(Tile) {
 	const inputFile =
-		"/home/hieuvu/DATN/Map_Cesium/output/glb/" + Tile.uri + ".glb";
-	const outputFile = "./output/b3dm/" + Tile.uri + ".b3dm";
+		"/home/hieuvu/DATN/Map_Cesium/middleware/output/glb/" + Tile.uri + ".glb";
+	const outputFile = "./middleware/output/b3dm/" + Tile.uri + ".b3dm";
 	try {
 		const command = `npx 3d-tiles-tools glbToB3dm -f -i ${inputFile} -o ${outputFile}`;
 		const result = await runCommand(command);
@@ -484,7 +484,7 @@ function writeTilesetTotal(TileList, rootBoundingVolume) {
 	// };
 	for (const Tile of TileList) {
 		const newBox = calculate.calculateBoxTilesetYupZup(Tile.boundingVolume);
-		const newUri = "./output/b3dm/" + Tile.uri + ".b3dm";
+		const newUri = "./middleware/output/b3dm/" + Tile.uri + ".b3dm";
 
 		tileset.root.children[0].children.push({
 			boundingVolume: {
