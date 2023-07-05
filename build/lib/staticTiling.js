@@ -1,10 +1,10 @@
-const readData = require("../../lib/readData.js");
-const calculate = require("../../lib/calculate.js");
-const write = require("../../lib/write.js");
+const readData = require("./readData.js");
+const calculate = require("./calculate.js");
+const write = require("./write.js");
 
-const gltfPath =
-	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_fixed/data/hanoi2_1mb.gltf";
-function generateTileset(gltfPath) {
+// const gltfPath =
+// 	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_fixed/data/hanoi2_1mb.gltf";
+function staticTiling(gltfPath, maxTriangles) {
 	const gltf = readData.ParseGLTF(gltfPath);
 	let positionList = [];
 	let normalList = [];
@@ -101,7 +101,7 @@ function generateTileset(gltfPath) {
 		indicesList,
 		rootBoundingVolume,
 		positionList,
-		2000,
+		maxTriangles,
 	);
 	for (const Tile of newTiles) {
 		Tile.boundingVolume = calculate.calculateFinalBoundingVolume(
@@ -115,4 +115,6 @@ function generateTileset(gltfPath) {
 	write.writeTilesetTotal(newTiles, rootBoundingVolume);
 }
 
-generateTileset(gltfPath);
+module.exports = {
+	staticTiling,
+};

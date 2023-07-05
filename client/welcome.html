@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>3D Tiling and Streaming</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('../public/img/bachkhoa.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      text-align: center;
+      font-family:'Times New Roman', Times, serif;
+      font-size: xx-large;
+      
+      
+    }
+    .header{
+        
+      margin-bottom: 20px;
+      border: 1px  rgb(255, 255, 255);
+      line-height: 100px;
+      background-color: white;
+      color : black;
+  
+  
+    }
+
+    .center-box {
+      
+      margin-bottom: 20px;
+      border: 1px solid black;
+      line-height: 100px;
+    }
+
+    .tiling{
+      text-decoration-color: aliceblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="header">3D Tiling and Streaming</h1>
+
+    <div class="center-box" onclick="selectFile()" id="gltf-file-box">
+      Choose a GLTF file
+    </div>
+
+    <div class = "tiling">
+      <label for="tiling-type">Choose a tiling type:</label>
+      <select id="tiling-type">
+        <option value="1">Static Tiling Octree</option>
+        <option value="2">Dynamic Tiling Octree</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="max-triangles">Max Triangles:</label>
+      <input type="number" id="max-triangles" min="1" max="3000" />
+    </div>
+
+    <button onclick="generate()">Generate</button>
+  </div>
+
+  <script>
+    var selectedFilePath = '';
+
+    function selectFile() {
+      var gltfFileBox = document.getElementById('gltf-file-box');
+      var gltfFileInput = document.createElement('input');
+      gltfFileInput.type = 'file';
+      gltfFileInput.accept = '.gltf';
+      gltfFileInput.style.display = 'none';
+
+      gltfFileInput.addEventListener('change', function (event) {
+        selectedFilePath = URL.createObjectURL(event.target.files[0]);
+        gltfFileBox.textContent = event.target.files[0].name;
+      });
+
+      gltfFileBox.addEventListener('click', function () {
+        gltfFileInput.click();
+      });
+
+      document.body.appendChild(gltfFileInput);
+    }
+
+    function generate() {
+      var tilingType = document.getElementById('tiling-type').value;
+      var maxTriangles = document.getElementById('max-triangles').value;
+
+      if (!selectedFilePath) {
+        alert('Please select a GLTF file.');
+        return;
+      }
+
+      var formData = new FormData();
+      formData.append('file', selectedFilePath);
+      formData.append('tilingType', tilingType);
+      formData.append('maxTriangles', maxTriangles);
+
+      fetch('http://localhost:6060/data', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        // Handle the response from the server
+        // You can display a success message or process the server's response here
+        console.log('Server response:', response);
+      })
+      .catch(error => {
+        // Handle any errors that occurred during the request
+        console.error('Error:', error);
+      });
+    }
+  </script>
+</body>
+</html>

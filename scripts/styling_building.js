@@ -32,6 +32,7 @@ window.startup = async function (Cesium) {
 			{ enableDebugWireframe: true },
 		);
 		viewer.scene.primitives.add(osmBuildingsTileset);
+
 		osmBuildingsTileset.maximumScreenSpaceError = 100;
 
 		viewer.zoomTo(osmBuildingsTileset);

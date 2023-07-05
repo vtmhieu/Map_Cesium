@@ -2,15 +2,14 @@ const readData = require("../../lib/readData.js");
 const calculate = require("../../lib/calculate.js");
 const write = require("../../lib/write.js");
 
-const gltfPath =
-	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_dynamic/data/4_7.gltf";
-function generateTileset(gltfPath) {
+// const gltfPath =
+// 	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_fixed/data/hanoi2_1mb.gltf";
+function staticTiling(gltfPath, maxTriangles) {
 	const gltf = readData.ParseGLTF(gltfPath);
 	let positionList = [];
 	let normalList = [];
 	let indicesList = [];
 	let colorList = [];
-	//let midPointList = [];
 	for (mesh of gltf.meshes) {
 		for (primitive of mesh.primitives) {
 			if (primitive.mode === 4) {
@@ -95,17 +94,15 @@ function generateTileset(gltfPath) {
 			}
 		}
 	}
-	//midPointList = calculate.calculateMidPointList(indicesList, positionList);
 
 	const rootBoundingVolume = calculate.boundingVolume(gltf);
 
-	let newTiles = calculate.repeatedTilingOctreeDynamic(
+	let newTiles = calculate.repeatedTilingOcTree(
 		indicesList,
 		rootBoundingVolume,
 		positionList,
-		2000,
+		maxTriangles,
 	);
-	//console.log(newTiles);
 	for (const Tile of newTiles) {
 		Tile.boundingVolume = calculate.calculateFinalBoundingVolume(
 			Tile.indiceList,
@@ -118,4 +115,6 @@ function generateTileset(gltfPath) {
 	write.writeTilesetTotal(newTiles, rootBoundingVolume);
 }
 
-generateTileset(gltfPath);
+module.exports = {
+	staticTiling,
+};
