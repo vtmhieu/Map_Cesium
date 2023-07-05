@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="#" />
+  <title>3D Tiling and Streaming</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('../public/img/bachkhoa.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      text-align: center;
+      font-family:'Times New Roman', Times, serif;
+      font-size: xx-large;
+    }
+
+    .header {
+      margin-bottom: 20px;
+      border: 1px rgb(255, 255, 255);
+      line-height: 100px;
+      background-color: white;
+      color: black;
+    }
+
+    .center-box {
+      margin-bottom: 20px;
+      border: 1px solid black;
+      line-height: 100px;
+      background-color: blanchedalmond;
+    }
+
+    .tiling {
+      text-decoration-color: aliceblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="header">3D Tiling and Streaming</h1>
+
+    <div class="center-box">
+      <h3>File Upload</h3>
+      <form id="upload-form">
+        <input type="file" id="file-input" name="file" />
+        <input type="number" id="max-triangles" name="maxTriangles" min="1" max="3000" />
+        <select id="tiling-type" name="tilingType">
+          <option value="1">Static Tiling Octree</option>
+          <option value="2">Dynamic Tiling Octree</option>
+        </select>
+        <input type="submit" value="Generate" />
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("upload-form");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const fileInput = document.getElementById("file-input");
+      const maxTriangles = document.getElementById("max-triangles").value;
+      const tilingType = document.getElementById("tiling-type").value;
+
+      const formData = new FormData();
+      formData.append("file", fileInput.files[0]);
+      formData.append("maxTriangles", maxTriangles);
+      formData.append("tilingType", tilingType);
+
+      fetch("http://localhost:6060/upload", {
+        method: "POST",
+        body: formData,
+      })
+      .then((response) => {
+        if (response.ok) {
+          console.log('File uploaded successfully.');
+          // Redirect to the next page
+          window.location.href = '/index';
+        } else {
+          throw new Error('Error uploading file: ' + response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    });
+  </script>
+</body>
+</html>

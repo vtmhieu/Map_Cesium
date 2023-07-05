@@ -6,15 +6,10 @@ const static = require("./lib/staticTiling.js");
 
 async function process(file, maxTriangles, type) {
 	try {
-		const uploadFile = path.join(__dirname, "data", file.originalname);
-		fs.rename(file, uploadFile, (error) => {
-			if (error) throw error;
-		});
-
 		if (type === 2) {
-			await adaptive.adaptiveTiling(uploadFile, maxTriangles);
+			await adaptive.adaptiveTiling(file, maxTriangles);
 		} else if (type === 1) {
-			await static.staticTiling(uploadFile, maxTriangles);
+			await static.staticTiling(file, maxTriangles);
 		} else {
 			return;
 		}
