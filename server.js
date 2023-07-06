@@ -51,8 +51,14 @@ app.post("/upload", upload.single("file"), function (req, res) {
 		console.log("Max Triangles:", maxTriangles);
 		console.log("Tiling Type:", tilingType);
 
-		const tileset = process.process(storageLocation, maxTriangles, tilingType);
-		res.send(tileset);
+		// const tileset = process.process(storageLocation, maxTriangles, tilingType);
+		// res.send(tileset);
+		process.process(storageLocation, maxTriangles, tilingType, (tileset) => {
+			res.setHeader("Content-Type", "application/json");
+			res.setHeader("Cache-Control", "no-cache");
+
+			res.send(tileset);
+		});
 	});
 });
 app.get("/index", function (req, res) {
