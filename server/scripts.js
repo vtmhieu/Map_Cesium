@@ -25,16 +25,17 @@ window.startup = async function (Cesium) {
 	viewer.scene.globe.depthTestAgainstTerrain = true;
 
 	viewer.extend(Cesium.viewerCesium3DTilesInspectorMixin);
-	const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
+	//const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 	try {
 		const osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
 			"../tileset.json",
 			{ enableDebugWireframe: true },
 		);
 		viewer.scene.primitives.add(osmBuildingsTileset);
-
+		if (osmBuildingsTileset.initialTilesLoaded()) {
+			console.log("loaded");
+		}
 		osmBuildingsTileset.maximumScreenSpaceError = 100;
-
 		viewer.zoomTo(osmBuildingsTileset);
 	} catch (error) {
 		console.log(`Error loading tileset: ${error}`);
