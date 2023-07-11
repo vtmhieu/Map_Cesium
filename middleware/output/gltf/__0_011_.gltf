@@ -1,0 +1,145 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "COLLADA2GLTF"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 72,
+      "min": [
+        0
+      ],
+      "max": [
+        41
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 42,
+      "max": [
+        0.06249615550041199,
+        37.5,
+        138.39244079589844
+      ],
+      "min": [
+        -61.27586364746094,
+        0,
+        -82.38887023925781
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 42,
+      "max": [
+        0.861073911190033,
+        1,
+        0.868234395980835
+      ],
+      "min": [
+        -0.8954856395721436,
+        0,
+        -0.8803699612617493
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 42,
+      "max": [
+        0.999786376953125,
+        0.7875181436538696,
+        0.26330968737602234
+      ],
+      "min": [
+        0.6036774516105652,
+        0.00003051804378628731,
+        0
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 144,
+      "uri": "data:application/octet-stream;base64,AAABAAIAAQACAAMAAgADAAQABQAGAAcABgAHAAgABwAIAAkACgALAAwACwAMAA0ADAANAA4ADQAOAA8AEAARABIAEwAUABUAFAAVABYAFQAWABcAGAAZABoAGQAaABsAGgAbABwAHQAeAB8AIAAhACIAIQAiACMAIgAjACQAJQAmACcAJgAnACgAJwAoACkA"
+    },
+    {
+      "byteLength": 504,
+      "uri": "data:application/octet-stream;base64,0s+nwQAAAADA8tJC0s+nwQAAFkLA8tJCarWTwAAAFkJ3ZApDr9CnwQAAFkJu89JCr9CnwQAAAABu89JC2c6nwQAAAAAz89JC2c6nwQAAFkIz89JCFK6TwAAAFkJaZApD2c6nwQAAFkIz89JC2c6nwQAAAAAz89JCmhl1wgAAFkLdJFzCP7VCwgAAFkKk8AXCbedFwQAAFkKoxqTCbedFwQAAFkKoxqTCP7VCwgAAFkKk8AXCtvN9PQAAFkIXWXXCIrZCwgAAFkIg8AXCfBp1wgAAFkJZJFzCfBp1wgAAAABZJFzCIrZCwgAAAAAg8AXCIrZCwgAAFkIg8AXC+Pt/PQAAFkIzWHXCvbRCwgAAFkLA7wXCvbRCwgAAAADA7wXC5uNFwQAAAADrxqTC5uNFwQAAFkLrxqTCGhp1wgAAFkLCJVzCbOlFwQAAFkIax6TCbOlFwQAAAAAax6TCP7VCwgAAFkKk8AXCmhl1wgAAFkLdJFzCmhl1wgAAAADdJFzCP7VCwgAAAACk8AXCP7VCwgAAFkKk8AXCtvN9PQAAFkIXWXXCP7VCwgAAFkKk8AXCP7VCwgAAAACk8AXCbedFwQAAAACoxqTCbedFwQAAFkKoxqTCmhl1wgAAFkLdJFzCbedFwQAAFkKoxqTCbedFwQAAAACoxqTC"
+    },
+    {
+      "byteLength": 504,
+      "uri": "data:application/octet-stream;base64,1NXyvgAAAADtX2G/1NXyvgAAAADtX2G/jD5lvwAAAADj4uM+jD5lvwAAAADj4uM+jD5lvwAAAADj4uM+1NXyvgAAAADtX2G/1NXyvgAAAADtX2G/jD5lvwAAAADj4uM+jD5lvwAAAADj4uM+jD5lvwAAAADj4uM+AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACANwJdvwAAAADAMQE/NwJdvwAAAADAMQE/NwJdvwAAAADAMQE/NwJdvwAAAIDAMQE/NwJdvwAAAIDAMQE/7wf+PgAAAACcRF4/7wf+PgAAAACcRF4/7wf+PgAAAACcRF4/V29cPwAAAAC8KwK/V29cPwAAAAC8KwK/P+v5vgAAAAAtbl+/P+v5vgAAAAAtbl+/P+v5vgAAAAAtbl+/NwJdvwAAAADAMQE/NwJdvwAAAADAMQE/NwJdvwAAAADAMQE/NwJdvwAAAIDAMQE/NwJdvwAAAIDAMQE/7wf+PgAAAACcRF4/7wf+PgAAAACcRF4/7wf+PgAAAACcRF4/V29cPwAAAAC8KwK/V29cPwAAAAC8KwK/P+v5vgAAAAAtbl+/P+v5vgAAAAAtbl+/P+v5vgAAAAAtbl+/"
+    },
+    {
+      "byteLength": 504,
+      "uri": "data:application/octet-stream;base64,APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+m4oaP4AAADgAAAAAm4oaP4AAADgAAAAAm4oaP4AAADgAAAAAm4oaP4AAADgAAAAAm4oaP4AAADgAAAAAm4oaP4AAADgAAAAAAPJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+APJ/P8qaST+H0IY+"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 144
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 504
+    },
+    {
+      "buffer": 2,
+      "byteOffset": 0,
+      "byteLength": 504
+    },
+    {
+      "buffer": 3,
+      "byteOffset": 0,
+      "byteLength": 504
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "indices": 0,
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "COLOR_0": 3
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0
+}

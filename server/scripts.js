@@ -26,20 +26,20 @@ window.startup = async function (Cesium) {
 
 	viewer.extend(Cesium.viewerCesium3DTilesInspectorMixin);
 	//const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
-	try {
-		const osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
-			"../tileset.json",
-			{ enableDebugWireframe: true },
-		);
-		viewer.scene.primitives.add(osmBuildingsTileset);
-		if (osmBuildingsTileset.initialTilesLoaded()) {
-			console.log("loaded");
-		}
-		osmBuildingsTileset.maximumScreenSpaceError = 100;
-		viewer.zoomTo(osmBuildingsTileset);
-	} catch (error) {
-		console.log(`Error loading tileset: ${error}`);
-	}
+
+	const osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
+		"../tileset.json",
+		{ enableDebugWireframe: true },
+	);
+	viewer.scene.primitives.add(osmBuildingsTileset);
+	osmBuildingsTileset.initialTilesLoaded.addEventListener(function () {
+		console.log("Initial tiles are loaded");
+	});
+	osmBuildingsTileset.maximumScreenSpaceError = 100;
+	viewer.zoomTo(osmBuildingsTileset);
+	// viewer.scene.globe.tileLoadProgressEvent.addEventListener(function (tiles) {
+	// 	console.log(tiles);
+	// });
 
 	// Set the initial camera to look at Seattle = set the initial location of camera
 	/*viewer.scene.camera.setView({
