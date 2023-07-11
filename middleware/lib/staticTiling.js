@@ -4,7 +4,7 @@ const write = require("./write.js");
 
 // const gltfPath =
 // 	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_dynamic/data/4_7.gltf";
-function staticTiling(gltfPath, maxTriangles, callback) {
+function staticTiling(gltfPath, maxTriangles) {
 	const gltf = readData.ParseGLTF(gltfPath);
 	//console.log(gltf);
 	let positionList = [];
@@ -114,7 +114,7 @@ function staticTiling(gltfPath, maxTriangles, callback) {
 	//console.log(newTiles);
 
 	const tileset = write.writeTilesetTotal(newTiles, rootBoundingVolume);
-	callback(tileset);
+	return tileset;
 }
 
 //staticTiling(gltfPath, 2000);
