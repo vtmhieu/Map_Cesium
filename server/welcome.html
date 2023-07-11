@@ -74,7 +74,7 @@
       formData.append("maxTriangles", maxTriangles);
       formData.append("tilingType", tilingType);
 
-      fetch("http://localhost:6060/upload", {
+      fetch("http://localhost:8080/upload", {
         method: "POST",
         body: formData,
       })
