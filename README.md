@@ -1,10 +1,18 @@
 # FINAL PROJECT at Hanoi University of Science and Technology
 
-Hi! This is the project I developed to stream the 3D scenes into web.
+This project developing a tool to divide data of 3D objects based on glTF file to a tileset in terms of 3D Tiles specifications.
 
-In this project, I took the opensource of Cesium as the main base to develop
+The main goals of this project is to develop a tiling method to upgrade the rendering time of the objects to website or any other applicaitons.
+
+In this project, I took the opensource of Cesium JS for the client side.
 
 The data of objects, such as buildings, trees, roads,... all are taken from Openstreetmap.
 
 After getting the .osm file from openstreetmap.com (you can modify the range of geometry that you want to gain data), use OSM2World to convert the .osm to .glTF (also opensource).
+
+There are two method of Tiling proposed in this project: Static Octree Tiling and Dynamic Octree Tiling.
+
+![image](https://github.com/vtmhieu/Map_Cesium/assets/88451173/40e741f6-057e-4a0e-bc4b-91cd42b4009b)
+
+
 
