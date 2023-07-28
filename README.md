@@ -2,7 +2,7 @@
 
 This project developing a tool to divide data of 3D objects based on glTF file to a tileset in terms of 3D Tiles specifications.
 
-The main goals of this project is to develop a tiling method to upgrade the rendering time of the objects to website or any other applicaitons.
+The main goals of this project is to develop a tiling method to upgrade the rendering time of the objects to website or any other applications.
 
 In this project, I took the opensource of Cesium JS for the client side.
 
