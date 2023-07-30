@@ -65,7 +65,7 @@ app.get("/index", function (req, res) {
 	res.sendFile(__dirname + "/server/index.html");
 });
 
-// listen for requests :)
+// listen for requests :
 const listener = app.listen("6060", function () {
 	console.log("Your app is listening on port " + listener.address().port);
 });

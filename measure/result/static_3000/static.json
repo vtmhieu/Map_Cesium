@@ -1,0 +1,398 @@
+[
+    {
+        "processing": 0,
+        "time": 0.306
+    },
+    {
+        "processing": 0,
+        "time": 0.331
+    },
+    {
+        "processing": 1,
+        "time": 0.417
+    },
+    {
+        "processing": 7,
+        "time": 0.518
+    },
+    {
+        "processing": 7,
+        "time": 0.564
+    },
+    {
+        "processing": 6,
+        "time": 0.64
+    },
+    {
+        "processing": 6,
+        "time": 0.687
+    },
+    {
+        "processing": 8,
+        "time": 0.733
+    },
+    {
+        "processing": 8,
+        "time": 0.764
+    },
+    {
+        "processing": 2,
+        "time": 0.787
+    },
+    {
+        "processing": 6,
+        "time": 0.836
+    },
+    {
+        "processing": 6,
+        "time": 0.88
+    },
+    {
+        "processing": 6,
+        "time": 0.952
+    },
+    {
+        "processing": 6,
+        "time": 0.985
+    },
+    {
+        "processing": 1,
+        "time": 1.044
+    },
+    {
+        "processing": 7,
+        "time": 1.099
+    },
+    {
+        "processing": 7,
+        "time": 1.132
+    },
+    {
+        "processing": 6,
+        "time": 1.152
+    },
+    {
+        "processing": 6,
+        "time": 1.207
+    },
+    {
+        "processing": 8,
+        "time": 1.267
+    },
+    {
+        "processing": 8,
+        "time": 1.29
+    },
+    {
+        "processing": 7,
+        "time": 1.34
+    },
+    {
+        "processing": 8,
+        "time": 1.4
+    },
+    {
+        "processing": 8,
+        "time": 1.428
+    },
+    {
+        "processing": 5,
+        "time": 1.465
+    },
+    {
+        "processing": 8,
+        "time": 1.529
+    },
+    {
+        "processing": 8,
+        "time": 1.579
+    },
+    {
+        "processing": 7,
+        "time": 1.614
+    },
+    {
+        "processing": 7,
+        "time": 1.682
+    },
+    {
+        "processing": 8,
+        "time": 1.744
+    },
+    {
+        "processing": 7,
+        "time": 1.771
+    },
+    {
+        "processing": 1,
+        "time": 1.793
+    },
+    {
+        "processing": 2,
+        "time": 1.825
+    },
+    {
+        "processing": 5,
+        "time": 1.866
+    },
+    {
+        "processing": 10,
+        "time": 1.926
+    },
+    {
+        "processing": 8,
+        "time": 1.965
+    },
+    {
+        "processing": 5,
+        "time": 1.999
+    },
+    {
+        "processing": 6,
+        "time": 2.058
+    },
+    {
+        "processing": 6,
+        "time": 2.093
+    },
+    {
+        "processing": 0,
+        "time": 2.141
+    },
+    {
+        "processing": 2,
+        "time": 2.184
+    },
+    {
+        "processing": 6,
+        "time": 2.234
+    },
+    {
+        "processing": 9,
+        "time": 2.283
+    },
+    {
+        "processing": 7,
+        "time": 2.311
+    },
+    {
+        "processing": 4,
+        "time": 2.338
+    },
+    {
+        "processing": 3,
+        "time": 2.38
+    },
+    {
+        "processing": 9,
+        "time": 2.446
+    },
+    {
+        "processing": 9,
+        "time": 2.489
+    },
+    {
+        "processing": 7,
+        "time": 2.512
+    },
+    {
+        "processing": 2,
+        "time": 2.542
+    },
+    {
+        "processing": 6,
+        "time": 2.605
+    },
+    {
+        "processing": 6,
+        "time": 2.631
+    },
+    {
+        "processing": 5,
+        "time": 2.65
+    },
+    {
+        "processing": 1,
+        "time": 2.681
+    },
+    {
+        "processing": 1,
+        "time": 2.706
+    },
+    {
+        "processing": 6,
+        "time": 2.925
+    },
+    {
+        "processing": 11,
+        "time": 3.069
+    },
+    {
+        "processing": 11,
+        "time": 3.12
+    },
+    {
+        "processing": 6,
+        "time": 3.155
+    },
+    {
+        "processing": 1,
+        "time": 3.226
+    },
+    {
+        "processing": 6,
+        "time": 3.309
+    },
+    {
+        "processing": 6,
+        "time": 3.42
+    },
+    {
+        "processing": 11,
+        "time": 3.498
+    },
+    {
+        "processing": 9,
+        "time": 3.568
+    },
+    {
+        "processing": 9,
+        "time": 3.605
+    },
+    {
+        "processing": 3,
+        "time": 3.643
+    },
+    {
+        "processing": 1,
+        "time": 3.692
+    },
+    {
+        "processing": 2,
+        "time": 3.74
+    },
+    {
+        "processing": 2,
+        "time": 3.775
+    },
+    {
+        "processing": 5,
+        "time": 3.844
+    },
+    {
+        "processing": 4,
+        "time": 3.877
+    },
+    {
+        "processing": 5,
+        "time": 3.91
+    },
+    {
+        "processing": 5,
+        "time": 3.976
+    },
+    {
+        "processing": 10,
+        "time": 4.051
+    },
+    {
+        "processing": 9,
+        "time": 4.085
+    },
+    {
+        "processing": 5,
+        "time": 4.114
+    },
+    {
+        "processing": 0,
+        "time": 4.142
+    },
+    {
+        "processing": 6,
+        "time": 4.208
+    },
+    {
+        "processing": 6,
+        "time": 4.243
+    },
+    {
+        "processing": 0,
+        "time": 4.389
+    },
+    {
+        "processing": 6,
+        "time": 4.659
+    },
+    {
+        "processing": 6,
+        "time": 4.724
+    },
+    {
+        "processing": 9,
+        "time": 4.79
+    },
+    {
+        "processing": 9,
+        "time": 4.894
+    },
+    {
+        "processing": 9,
+        "time": 4.944
+    },
+    {
+        "processing": 7,
+        "time": 4.987
+    },
+    {
+        "processing": 3,
+        "time": 5.048
+    },
+    {
+        "processing": 7,
+        "time": 5.131
+    },
+    {
+        "processing": 6,
+        "time": 5.204
+    },
+    {
+        "processing": 4,
+        "time": 5.233
+    },
+    {
+        "processing": 0,
+        "time": 5.266
+    },
+    {
+        "processing": 2,
+        "time": 5.423
+    },
+    {
+        "processing": 8,
+        "time": 5.504
+    },
+    {
+        "processing": 6,
+        "time": 5.567
+    },
+    {
+        "processing": 0,
+        "time": 5.591
+    },
+    {
+        "processing": 5,
+        "time": 5.643
+    },
+    {
+        "processing": 6,
+        "time": 5.696
+    },
+    {
+        "processing": 1,
+        "time": 5.785
+    },
+    {
+        "processing": 0,
+        "time": 5.871
+    }
+]
