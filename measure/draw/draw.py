@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 import json
 
 # Load data from the JSON file
-with open("data.json") as f:
+with open("./measure/result/static_3000/static2.json") as f:
     data = json.load(f)
 
 # Extract "time" and "processing" values into separate lists
@@ -31,8 +31,8 @@ processing_values = [item["processing"] for item in data]
 
 # Plot the line graph
 plt.plot(time_values, processing_values, marker="o", linestyle="-")
-plt.xlabel("Time")
+plt.xlabel("Time (seconds)")
 plt.ylabel("Number of Rendering Tiles")
-plt.title("Rendering Process of Adaptive Tiling")
+plt.title("Time for rendering tileset of Static Tiling at 3000 triangles per tile")
 plt.grid(True)
 plt.show()
