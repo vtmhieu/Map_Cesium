@@ -1,0 +1,286 @@
+[
+    {
+        "processing": 0,
+        "time": 0.224
+    },
+    {
+        "processing": 0,
+        "time": 0.24
+    },
+    {
+        "processing": 1,
+        "time": 0.317
+    },
+    {
+        "processing": 6,
+        "time": 0.35
+    },
+    {
+        "processing": 6,
+        "time": 0.514
+    },
+    {
+        "processing": 12,
+        "time": 0.564
+    },
+    {
+        "processing": 6,
+        "time": 0.645
+    },
+    {
+        "processing": 9,
+        "time": 0.676
+    },
+    {
+        "processing": 6,
+        "time": 0.713
+    },
+    {
+        "processing": 9,
+        "time": 0.757
+    },
+    {
+        "processing": 6,
+        "time": 0.781
+    },
+    {
+        "processing": 3,
+        "time": 0.799
+    },
+    {
+        "processing": 1,
+        "time": 0.826
+    },
+    {
+        "processing": 3,
+        "time": 0.854
+    },
+    {
+        "processing": 3,
+        "time": 0.875
+    },
+    {
+        "processing": 2,
+        "time": 0.898
+    },
+    {
+        "processing": 0,
+        "time": 0.915
+    },
+    {
+        "processing": 6,
+        "time": 1.217
+    },
+    {
+        "processing": 7,
+        "time": 1.269
+    },
+    {
+        "processing": 7,
+        "time": 1.291
+    },
+    {
+        "processing": 1,
+        "time": 1.312
+    },
+    {
+        "processing": 0,
+        "time": 1.33
+    },
+    {
+        "processing": 1,
+        "time": 1.483
+    },
+    {
+        "processing": 1,
+        "time": 1.72
+    },
+    {
+        "processing": 7,
+        "time": 1.829
+    },
+    {
+        "processing": 6,
+        "time": 1.882
+    },
+    {
+        "processing": 0,
+        "time": 1.951
+    },
+    {
+        "processing": 6,
+        "time": 2.015
+    },
+    {
+        "processing": 6,
+        "time": 2.072
+    },
+    {
+        "processing": 0,
+        "time": 2.118
+    },
+    {
+        "processing": 3,
+        "time": 2.164
+    },
+    {
+        "processing": 6,
+        "time": 2.22
+    },
+    {
+        "processing": 6,
+        "time": 2.259
+    },
+    {
+        "processing": 3,
+        "time": 2.296
+    },
+    {
+        "processing": 0,
+        "time": 2.32
+    },
+    {
+        "processing": 4,
+        "time": 2.405
+    },
+    {
+        "processing": 8,
+        "time": 2.491
+    },
+    {
+        "processing": 8,
+        "time": 2.537
+    },
+    {
+        "processing": 7,
+        "time": 2.583
+    },
+    {
+        "processing": 7,
+        "time": 2.661
+    },
+    {
+        "processing": 7,
+        "time": 2.694
+    },
+    {
+        "processing": 4,
+        "time": 2.717
+    },
+    {
+        "processing": 5,
+        "time": 2.774
+    },
+    {
+        "processing": 9,
+        "time": 2.843
+    },
+    {
+        "processing": 9,
+        "time": 2.875
+    },
+    {
+        "processing": 4,
+        "time": 2.902
+    },
+    {
+        "processing": 3,
+        "time": 2.952
+    },
+    {
+        "processing": 9,
+        "time": 3.041
+    },
+    {
+        "processing": 9,
+        "time": 3.082
+    },
+    {
+        "processing": 11,
+        "time": 3.143
+    },
+    {
+        "processing": 10,
+        "time": 3.211
+    },
+    {
+        "processing": 10,
+        "time": 3.246
+    },
+    {
+        "processing": 5,
+        "time": 3.267
+    },
+    {
+        "processing": 6,
+        "time": 3.32
+    },
+    {
+        "processing": 6,
+        "time": 3.372
+    },
+    {
+        "processing": 4,
+        "time": 3.432
+    },
+    {
+        "processing": 4,
+        "time": 3.472
+    },
+    {
+        "processing": 10,
+        "time": 3.541
+    },
+    {
+        "processing": 6,
+        "time": 3.578
+    },
+    {
+        "processing": 0,
+        "time": 3.615
+    },
+    {
+        "processing": 6,
+        "time": 3.722
+    },
+    {
+        "processing": 6,
+        "time": 3.755
+    },
+    {
+        "processing": 4,
+        "time": 3.846
+    },
+    {
+        "processing": 8,
+        "time": 3.926
+    },
+    {
+        "processing": 8,
+        "time": 3.961
+    },
+    {
+        "processing": 6,
+        "time": 4.002
+    },
+    {
+        "processing": 2,
+        "time": 4.027
+    },
+    {
+        "processing": 4,
+        "time": 4.097
+    },
+    {
+        "processing": 0,
+        "time": 4.224
+    },
+    {
+        "processing": 4,
+        "time": 4.293
+    },
+    {
+        "processing": 0,
+        "time": 4.431
+    }
+]

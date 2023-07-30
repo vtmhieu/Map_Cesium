@@ -19,7 +19,9 @@ window.startup = async function (Cesium) {
 	viewer.scene.globe.depthTestAgainstTerrain = true;
 
 	viewer.extend(Cesium.viewerCesium3DTilesInspectorMixin);
+
 	//const inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
+	let drawcall = [];
 	let osmBuildingsTileset;
 	try {
 		osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
@@ -42,13 +44,16 @@ window.startup = async function (Cesium) {
 					(endTime - startTimenow) / 1000 +
 					" seconds",
 			);
+			printProgress(drawcall);
 		});
 		osmBuildingsTileset.loadProgress.addEventListener(function (
 			numberOfPendingRequests,
 			numberOfTilesProcessing,
 		) {
+			//let sum = 0;
 			const endTime = performance.now();
 			const duration = (endTime - startTime) / 1000;
+			const totalDuration = (endTime - startTimenow) / 1000;
 			if (numberOfPendingRequests === 0 && numberOfTilesProcessing === 0) {
 				console.log("Stopped loading");
 				return;
@@ -57,6 +62,11 @@ window.startup = async function (Cesium) {
 			console.log(
 				`Loading: requests: ${numberOfPendingRequests}, processing: ${numberOfTilesProcessing}, duration: ${duration} seconds`,
 			);
+			drawcall.push({
+				processing: numberOfTilesProcessing,
+				time: totalDuration,
+			});
+			//sum += duration;
 			startTime = endTime;
 		});
 
@@ -82,4 +92,10 @@ if (typeof Cesium !== "undefined") {
 		console.error(error);
 	});
 	Sandcastle.finishedLoading();
+}
+
+function printProgress(data) {
+	const jsonData = JSON.stringify(data, null, 2); // The third argument (2) is for indentation (optional)
+
+	console.log(jsonData);
 }

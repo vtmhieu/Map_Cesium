@@ -2,8 +2,7 @@ const readData = require("./readData.js");
 const calculate = require("./calculate.js");
 const write = require("./write.js");
 
-// const gltfPath =
-// 	"/home/hieuvu/DATN/Map_Cesium/build/seperate_octree_dynamic/data/4_7.gltf";
+const gltfPath = "/home/hieuvu/DATN/1_3.gltf";
 function staticTiling(gltfPath, maxTriangles, callback) {
 	const gltf = readData.ParseGLTF(gltfPath);
 	//console.log(gltf);
