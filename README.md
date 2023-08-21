@@ -14,5 +14,16 @@ There are two method of Tiling proposed in this project: Static Octree Tiling an
 
 ![image](https://github.com/vtmhieu/Map_Cesium/assets/88451173/40e741f6-057e-4a0e-bc4b-91cd42b4009b)
 
+# Run application
+
+- node server.js
+- choose the "best.gltf" as input on the website, choose method and maximum num of triangles (recommend 2000 - 3500)
+- wait for generating and rendering
+
+# Get gltf file 
+- Go on OpenStreetMap to download a random osm file
+- open OSM2World
+- convert 
+
 
 
