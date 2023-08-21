@@ -42,12 +42,12 @@ function calculateBoxTilesetYupZup(boundingVolume) {
 	box.push((boundingVolume.minZ + boundingVolume.maxZ) / 2);
 	box.push((boundingVolume.minY + boundingVolume.maxY) / 2);
 
-	box.push((boundingVolume.maxX - boundingVolume.minX) / 2);
+	box.push((boundingVolume.maxZ - boundingVolume.minZ) / 2);
 	box.push(0);
 	box.push(0);
 
 	box.push(0);
-	box.push((boundingVolume.maxZ - boundingVolume.minZ) / 2);
+	box.push((boundingVolume.maxX - boundingVolume.minX) / 2);
 	box.push(0);
 
 	box.push(0);

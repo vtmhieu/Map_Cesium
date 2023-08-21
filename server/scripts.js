@@ -26,6 +26,7 @@ window.startup = async function (Cesium) {
 	try {
 		osmBuildingsTileset = await Cesium.Cesium3DTileset.fromUrl(
 			"../tileset.json",
+
 			{ enableDebugWireframe: true },
 		);
 		viewer.scene.primitives.add(osmBuildingsTileset);
